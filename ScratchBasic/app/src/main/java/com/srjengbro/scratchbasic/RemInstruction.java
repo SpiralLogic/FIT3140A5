@@ -1,0 +1,27 @@
+package com.srjengbro.scratchbasic;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+
+/**
+ * Created by Maidenii on 29/04/16.
+ */
+public class RemInstruction extends Instruction {
+    protected EditText remText;
+
+    public RemInstruction() {
+        name = "REM";
+    }
+
+    public View getLayout(LayoutInflater inflator) {
+        View layout = inflator.inflate(R.layout.inst_rem, null);
+        remText = (EditText) layout.findViewById(R.id.remText);
+        remText.setText(instruction);
+        return layout;
+    }
+    public void commit() {
+        instruction = remText.getText().toString();
+
+    }
+}

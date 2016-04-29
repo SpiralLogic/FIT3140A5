@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="command_list">
+        <item>IF</item>
+        <item>GOTO</item>
+        <item>LET</item>
+        <item>PRINT</item>
+        <item>REM</item>
+    </string-array>
+</resources>
