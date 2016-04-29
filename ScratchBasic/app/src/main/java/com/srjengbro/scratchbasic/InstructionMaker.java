@@ -6,7 +6,7 @@ package com.srjengbro.scratchbasic;
 public class InstructionMaker {
 
 
-    public static Instruction getInstruction(String instructionText) throws Exception {
+    public static Instruction generateInstruction(String instructionText) throws Exception {
 
         switch (instructionText) {
 

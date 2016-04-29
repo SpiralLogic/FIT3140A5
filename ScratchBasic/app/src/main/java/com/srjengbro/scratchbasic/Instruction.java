@@ -9,9 +9,10 @@ import android.view.View;
  */
 public abstract class Instruction {
     protected String name = "UNKNOWN";
+
     public String getName() {
         return name;
-    };
+    }
 
     public String getInstruction() {
         return instruction;
@@ -19,16 +20,18 @@ public abstract class Instruction {
 
     public String instruction;
 
-    public void parseInstruction() {
-        return;
-    }
 
-    public View getLayout(LayoutInflater inflator) {
-        View layout = inflator.inflate(R.layout.instruction_line, null);
+    public View getLayout(LayoutInflater inflater) {
+        View layout = inflater.inflate(R.layout.instruction_line, null);
         return layout;
     }
 
     public void commit() {
+
+        return;
+    }
+
+    public void parse() {
         return;
     }
 }

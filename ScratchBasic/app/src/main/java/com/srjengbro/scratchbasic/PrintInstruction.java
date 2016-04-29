@@ -15,8 +15,8 @@ public class PrintInstruction extends Instruction {
         name = "PRINT";
     }
 
-    public View getLayout(LayoutInflater inflator) {
-        View layout = inflator.inflate(R.layout.inst_print, null);
+    public View getLayout(LayoutInflater inflater) {
+        View layout = inflater.inflate(R.layout.inst_print, null);
         printText  = (EditText) layout.findViewById(R.id.printText);
         printText.setText(instruction);
         return layout;

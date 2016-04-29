@@ -121,7 +121,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
                 String instructionText = spinner.getSelectedItem().toString();
                 if (!i.getName().equals(instructionText)) {
                     try {
-                        i = InstructionMaker.getInstruction(instructionText);
+                        i = InstructionMaker.generateInstruction(instructionText);
                         instructionList.set(position, i);
                     } catch (Exception e) {
                         Toast.makeText(((View) parent.getParent()).getContext(), "Not a valid instruction", Toast.LENGTH_SHORT).show();
