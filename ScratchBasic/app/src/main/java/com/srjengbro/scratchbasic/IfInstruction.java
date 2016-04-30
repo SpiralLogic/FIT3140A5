@@ -31,18 +31,20 @@ public class IfInstruction extends Instruction {
     protected void parse(String line) {
         try {
             expression = ExpressionMaker.generateExpression(line);
-            StringBuilder s = new StringBuilder();
-            s.append(expression.toString());
-            s.append(" ");
-            s.append(gotoInstruction.getName());
-            s.append(" ");
-            s.append(gotoInstruction.getInstruction());
-            instruction = s.toString();
+            updateInstructionText();
         } catch (ExpressionParseException e) {
             System.out.print(e.getMessage());
         }
     }
-
+    public void updateInstructionText() {
+        StringBuilder s = new StringBuilder();
+        s.append(expression.toString());
+        s.append(" ");
+        s.append(gotoInstruction.getName());
+        s.append(" ");
+        s.append(gotoInstruction.getInstruction());
+        instruction = s.toString();
+    }
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_if, null);
         ifText = (EditText) layout.findViewById(R.id.if_text);
@@ -54,6 +56,9 @@ public class IfInstruction extends Instruction {
         return layout;
     }
 
+    public GotoInstruction getGotoInstruction() {
+        return gotoInstruction;
+    }
 
 
     @Override

@@ -202,6 +202,14 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
                     ((GotoInstruction) inst).decreaseGotoLine();
                 }
             }
+            if (inst instanceof IfInstruction) {
+                IfInstruction ifi = (IfInstruction) inst;
+                GotoInstruction gi = ifi.getGotoInstruction();
+                if (gi.getGotoLine() > fromPosition) {
+                    gi.decreaseGotoLine();
+                    ifi.updateInstructionText();
+                }
+            }
         }
     }
 
@@ -212,6 +220,14 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
             if (inst instanceof GotoInstruction) {
                 if (((GotoInstruction) inst).getGotoLine() > toPosition) {
                     ((GotoInstruction) inst).increaseGotoLine();
+                }
+            }
+            if (inst instanceof IfInstruction) {
+                IfInstruction ifi = (IfInstruction) inst;
+                GotoInstruction gi = ifi.getGotoInstruction();
+                if (gi.getGotoLine() > toPosition) {
+                    gi.increaseGotoLine();
+                    ifi.updateInstructionText();
                 }
             }
         }

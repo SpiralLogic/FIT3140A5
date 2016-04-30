@@ -6,12 +6,13 @@ import android.widget.EditText;
 
 public class GotoInstruction extends Instruction {
 
-    protected Expression expression;
     private EditText gotoText;
     private Integer gotoLine;
 
     public GotoInstruction() {
         name = "GOTO";
+        gotoLine = 0;
+        this.instruction = "0";
     }
 
     @Override
