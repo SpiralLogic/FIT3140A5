@@ -15,6 +15,11 @@ public class Expression {
         this.lhs = lhs;
         this.rhs = rhs;
     }
+    public Expression(String lhs) {
+        this.lhs = lhs;
+        operator = null;
+        this.rhs = null;
+    }
 
     public void setVariableStore(VariableStore variableStore) {
         this.variableStore = variableStore;
@@ -30,6 +35,9 @@ public class Expression {
             if (lhsInt == null) {
                 throw new VariableDoesNotExistException();
             }
+        }
+        if (rhs == null || operator == null) {
+            return lhsInt;
         }
         try {
             rhsInt = Integer.parseInt(rhs);
@@ -52,10 +60,12 @@ public class Expression {
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append(lhs);
-        s.append(" ");
-        s.append(operator.symbol);
-        s.append(" ");
-        s.append(rhs);
+        if (rhs != null && operator != null) {
+            s.append(" ");
+            s.append(operator.symbol);
+            s.append(" ");
+            s.append(rhs);
+        }
         return s.toString();
     }
 }

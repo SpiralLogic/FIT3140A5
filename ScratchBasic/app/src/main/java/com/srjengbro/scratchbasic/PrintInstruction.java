@@ -1,5 +1,6 @@
 package com.srjengbro.scratchbasic;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -24,14 +25,23 @@ public class PrintInstruction extends Instruction {
     }
 
     public void commit() {
-        String[] tokens = printText.getText().toString().split("\\s+"); // Split on whitespace
+        parse(printText.getText().toString());
+    }
+
+    public void parse(String line) {
+        String[] tokens = line.split("\\s+"); // Split on whitespace
         try {
-            expression = ExpressionMaker.generateExpression(tokens[1], tokens[0], tokens[2]);
+            if (tokens.length < 3) {
+                expression = ExpressionMaker.generateExpression(tokens[0]);
+
+            }
+            if (tokens.length == 3) {
+                expression = ExpressionMaker.generateExpression(tokens[1], tokens[0], tokens[2]);
+            }
             instruction = expression.toString();
-        } catch (Exception e) {
+        } catch (ExpressionParseException e) {
             System.out.print(e.getMessage());
         }
-
     }
 
     @Override

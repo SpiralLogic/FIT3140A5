@@ -29,4 +29,7 @@ public class ExpressionMaker {
         return new Expression(op, lhs, rhs);
     }
 
+    public static Expression generateExpression(String lhs) throws ExpressionParseException {
+        return new Expression(lhs);
+    }
 }
