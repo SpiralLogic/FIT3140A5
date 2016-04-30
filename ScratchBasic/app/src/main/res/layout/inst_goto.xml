@@ -3,9 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Goto Line:"
+        android:id="@+id/goto_label" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rem_text"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/goto_line"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

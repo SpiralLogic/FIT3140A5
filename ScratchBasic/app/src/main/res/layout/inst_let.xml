@@ -7,12 +7,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Expression:"
-        android:id="@+id/print_label" />
+        android:text="Variable:"
+        android:id="@+id/variable_label" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/print_text"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/variable_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Expression"
+        android:id="@+id/expression_text" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText" />
 </LinearLayout>

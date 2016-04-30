@@ -16,7 +16,7 @@ public class RemInstruction extends Instruction {
 
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_rem, null);
-        remText = (EditText) layout.findViewById(R.id.remText);
+        remText = (EditText) layout.findViewById(R.id.rem_text);
         remText.setText(instruction);
         return layout;
     }

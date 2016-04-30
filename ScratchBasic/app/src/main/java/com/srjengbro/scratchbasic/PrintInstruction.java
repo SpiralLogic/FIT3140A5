@@ -1,6 +1,5 @@
 package com.srjengbro.scratchbasic;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -19,7 +18,7 @@ public class PrintInstruction extends Instruction {
 
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_print, null);
-        printText = (EditText) layout.findViewById(R.id.printText);
+        printText = (EditText) layout.findViewById(R.id.print_text);
         printText.setText(instruction);
         return layout;
     }

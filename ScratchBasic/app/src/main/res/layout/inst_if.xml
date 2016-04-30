@@ -3,9 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Expression:"
+        android:id="@+id/if_label" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rem_text"
+        android:id="@+id/if_text"
         android:layout_gravity="center_horizontal" />
+    <include layout="@layout/inst_goto"/>
+
 </LinearLayout>
