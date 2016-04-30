@@ -2,6 +2,7 @@ package com.srjengbro.scratchbasic;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,6 +128,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
                         Toast.makeText(((View) parent.getParent()).getContext(), "Not a valid instruction", Toast.LENGTH_SHORT).show();
                     }
                 }
+                notifyDataSetChanged();
             }
 
             @Override
@@ -173,6 +175,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
                 Integer position = (Integer) v.getTag();
                 Instruction newInstruction = new RemInstruction();
                 instructionList.add(position + 1, newInstruction);
+                updateGotoLinesBefore(position);
                 notifyDataSetChanged();
             }
         };
@@ -184,12 +187,32 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 int position = (int) v.getTag();
                 instructionList.remove(position);
+                updateGotoLinesAfter(position);
                 notifyDataSetChanged();
             }
         };
     }
 
-
+    private void updateGotoLinesAfter(int fromPosition) {
+        Instruction inst;
+        int endValue = instructionList.size();
+        for(int i = fromPosition; i < endValue; i++ ) {
+            inst = instructionList.get(i);
+            if (inst instanceof GotoInstruction) {
+                ((GotoInstruction) inst).decreaseGotoLine();
+            }
+        }
+    }
+    private void updateGotoLinesBefore(int toPosition) {
+        Instruction inst;
+        int endValue = toPosition;
+        for(int i = 0; i < toPosition; i++ ) {
+            inst = instructionList.get(i);
+            if (inst instanceof GotoInstruction) {
+                ((GotoInstruction) inst).increaseGotoLine();
+            }
+        }
+    }
     private static class ViewHolder {
 
         public TextView lineNumber;

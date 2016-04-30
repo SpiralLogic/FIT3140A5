@@ -1,8 +1,14 @@
 package com.srjengbro.scratchbasic;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+
 public class GotoInstruction extends Instruction {
 
     protected Expression expression;
+    private EditText gotoText;
+    private Integer gotoLine;
 
     public GotoInstruction() {
         name = "GOTO";
@@ -10,22 +16,38 @@ public class GotoInstruction extends Instruction {
 
     @Override
     public String run() {
+
         return null;
     }
 
-    public void parse(String line) {
-        String[] tokens = line.split("\\s+"); // Split on whitespace
-        try {
-            if (tokens.length < 3) {
-                expression = ExpressionMaker.generateExpression(tokens[0]);
+    @Override
+    public View getLayout(LayoutInflater inflater) {
+        View layout = inflater.inflate(R.layout.inst_goto, null);
+        gotoText = (EditText) layout.findViewById(R.id.goto_line);
+        gotoText.setText(instruction);
+        return layout;
+    }
 
-            }
-            if (tokens.length == 3) {
-                expression = ExpressionMaker.generateExpression(tokens[1], tokens[0], tokens[2]);
-            }
-            instruction = expression.toString();
-        } catch (ExpressionParseException e) {
+    @Override
+    public void update() {
+        parse(gotoText.getText().toString());
+    }
+
+    public void parse(String line) {
+        try {
+            gotoLine = Integer.parseInt(line);
+            instruction = line;
+        } catch (NumberFormatException e) {
             System.out.print(e.getMessage());
         }
+    }
+
+    public void decreaseGotoLine() {
+        gotoLine -= 1;
+        instruction = gotoLine.toString();
+    }
+    public void increaseGotoLine() {
+        gotoLine += 1;
+        instruction = gotoLine.toString();
     }
 }

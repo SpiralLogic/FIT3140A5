@@ -18,26 +18,19 @@ public abstract class Instruction {
         return instruction;
     }
 
-    public String instruction;
+    protected String instruction;
 
 
-    public View getLayout(LayoutInflater inflater) {
-        View layout = inflater.inflate(R.layout.instruction_line, null);
-        return layout;
-    }
+    public abstract View getLayout(LayoutInflater inflater);
 
-    public void commit() {
-
-        return;
-    }
+    public abstract void update();
 
     public Integer getNextLine() {
         return null;
     }
 
-    public void parse() {
-        return;
+    protected abstract void parse(String line);
 
-    }
     public abstract String run();
+
 }

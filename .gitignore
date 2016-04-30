@@ -1,5 +1,10 @@
 .gradle
 build/
+ScratchBasic/.idea
+ScratchBasic/.idea/
+ScratchBasic/.idea/gradle.xml
+ScratchBasic/.idea/vcs.xml
+ScratchBasic/.idea/modules.xml
 
 # Ignore Gradle GUI config
 gradle-app.setting

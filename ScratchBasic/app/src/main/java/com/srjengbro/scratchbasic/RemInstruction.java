@@ -12,6 +12,7 @@ public class RemInstruction extends Instruction {
 
     public RemInstruction() {
         name = "REM";
+        instruction = "This is just a comment!";
     }
 
     public View getLayout(LayoutInflater inflater) {
@@ -20,8 +21,13 @@ public class RemInstruction extends Instruction {
         remText.setText(instruction);
         return layout;
     }
-    public void commit() {
+    public void update() {
         instruction = remText.getText().toString();
+
+    }
+
+    @Override
+    protected void parse(String line) {
 
     }
 

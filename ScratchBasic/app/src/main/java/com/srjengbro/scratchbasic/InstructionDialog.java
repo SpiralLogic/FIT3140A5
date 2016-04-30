@@ -41,7 +41,7 @@ public class InstructionDialog extends DialogFragment {
         builder.setView(layout)
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        instruction.commit();
+                        instruction.update();
                         adapter.notifyDataSetChanged();
                     }
                 })

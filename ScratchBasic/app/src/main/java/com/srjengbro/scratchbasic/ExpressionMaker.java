@@ -5,7 +5,18 @@ package com.srjengbro.scratchbasic;
  */
 public class ExpressionMaker {
 
-    public static Expression generateExpression(String type, String lhs, String rhs) throws ExpressionParseException {
+    public static Expression generateExpression(String expressionString) throws ExpressionParseException {
+        String[] tokens = expressionString.split("\\s+"); // Split on whitespace
+        String type;
+        String lhs;
+        String rhs;
+        if (tokens.length < 3) {
+            lhs = tokens[0];
+            return new Expression(lhs);
+        }
+        type = tokens[1];
+        lhs = tokens[0];
+        rhs = tokens[2];
         Operator op;
         switch (type) {
             case "+":
@@ -26,10 +37,8 @@ public class ExpressionMaker {
             default:
                 throw new ExpressionParseException("Not a valid instruction");
         }
+
         return new Expression(op, lhs, rhs);
     }
 
-    public static Expression generateExpression(String lhs) throws ExpressionParseException {
-        return new Expression(lhs);
-    }
 }

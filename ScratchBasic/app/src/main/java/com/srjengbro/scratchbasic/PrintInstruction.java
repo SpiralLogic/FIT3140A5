@@ -23,20 +23,13 @@ public class PrintInstruction extends Instruction {
         return layout;
     }
 
-    public void commit() {
+    public void update() {
         parse(printText.getText().toString());
     }
 
-    public void parse(String line) {
-        String[] tokens = line.split("\\s+"); // Split on whitespace
+    protected void parse(String line) {
         try {
-            if (tokens.length < 3) {
-                expression = ExpressionMaker.generateExpression(tokens[0]);
-
-            }
-            if (tokens.length == 3) {
-                expression = ExpressionMaker.generateExpression(tokens[1], tokens[0], tokens[2]);
-            }
+            expression = ExpressionMaker.generateExpression(line);
             instruction = expression.toString();
         } catch (ExpressionParseException e) {
             System.out.print(e.getMessage());
@@ -45,11 +38,7 @@ public class PrintInstruction extends Instruction {
 
     @Override
     public String run() {
-        try {
-            return expression.evaluate().toString();
-        } catch (VariableDoesNotExistException e) {
-
-        }
+//TODO
         return "";
     }
 
