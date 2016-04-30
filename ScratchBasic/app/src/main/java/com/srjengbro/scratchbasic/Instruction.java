@@ -31,7 +31,13 @@ public abstract class Instruction {
         return;
     }
 
+    public Integer getNextLine() {
+        return null;
+    }
+
     public void parse() {
         return;
+
     }
+    public abstract String run();
 }

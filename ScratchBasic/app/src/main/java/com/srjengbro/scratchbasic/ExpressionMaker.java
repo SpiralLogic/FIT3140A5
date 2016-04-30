@@ -5,7 +5,7 @@ package com.srjengbro.scratchbasic;
  */
 public class ExpressionMaker {
 
-    public static Expression generateExpression(String type, String lhs, String rhs) throws Exception {
+    public static Expression generateExpression(String type, String lhs, String rhs) throws ExpressionParseException {
         Operator op;
         switch (type) {
             case "+":
@@ -24,7 +24,7 @@ public class ExpressionMaker {
                 op = new LessThan();
                 break;
             default:
-                throw new Exception("Not a valid instruction");
+                throw new ExpressionParseException("Not a valid instruction");
         }
         return new Expression(op, lhs, rhs);
     }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class GotoEditor extends FragmentActivity {
 
     private ArrayList<Instruction> instructions = new ArrayList<>();
+    private VariableStore variableStore = new VariableStore();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

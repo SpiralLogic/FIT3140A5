@@ -24,4 +24,9 @@ public class RemInstruction extends Instruction {
         instruction = remText.getText().toString();
 
     }
+
+    @Override
+    public String run() {
+        return null;
+    }
 }

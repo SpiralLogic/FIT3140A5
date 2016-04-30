@@ -20,7 +20,7 @@ public class Expression {
         this.variableStore = variableStore;
     }
 
-    public int evaluate() throws VariableDoesNotExistException {
+    public Integer evaluate() throws VariableDoesNotExistException {
         Integer lhsInt;
         Integer rhsInt;
         try {
@@ -35,7 +35,7 @@ public class Expression {
             rhsInt = Integer.parseInt(rhs);
         } catch (NumberFormatException e) {
             rhsInt = variableStore.getVariable(rhs).getValue();
-            if (lhsInt == null) {
+            if (rhsInt == null) {
                 throw new VariableDoesNotExistException();
             }
         }
@@ -47,5 +47,15 @@ public class Expression {
 
     public void parse() {
         return;
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append(lhs);
+        s.append(" ");
+        s.append(operator.symbol);
+        s.append(" ");
+        s.append(rhs);
+        return s.toString();
     }
 }

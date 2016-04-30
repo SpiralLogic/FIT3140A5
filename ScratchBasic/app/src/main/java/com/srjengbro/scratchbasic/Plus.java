@@ -5,8 +5,13 @@ package com.srjengbro.scratchbasic;
  */
 public class Plus extends Operator {
 
+
+    public Plus() {
+        name = "Plus";
+        symbol = "+";
+    }
     @Override
-    public int evaluate(int lhs, int rhs) {
+    public Integer evaluate(Integer lhs, Integer rhs) {
         return lhs + rhs;
     }
 }

@@ -7,6 +7,6 @@ public abstract class Operator {
     protected String name;
     protected String symbol;
 
-    public abstract int evaluate(int lhs, int rhs);
+    public abstract Integer evaluate(Integer lhs, Integer rhs);
 
 }

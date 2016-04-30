@@ -5,7 +5,7 @@ package com.srjengbro.scratchbasic;
  */
 public class GreaterThan extends Operator {
     @Override
-    public int evaluate(int lhs, int rhs) {
+    public Integer evaluate(Integer lhs, Integer rhs) {
         if (lhs > rhs) {
             return 1;
         }

@@ -12,7 +12,10 @@ public class Equal extends Operator {
     }
 
     @Override
-    public int evaluate(int LHS, int RHS) {
+    public Integer evaluate(Integer lhs, Integer rhs) {
+        if (lhs.equals(rhs)) {
+            return 1;
+        }
         return 0;
     }
 }

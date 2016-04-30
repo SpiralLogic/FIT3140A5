@@ -13,4 +13,9 @@ public class IfInstruction extends Instruction {
     public String getName() {
         return this.name;
     }
+
+    @Override
+    public String run() {
+        return null;
+    }
 }
