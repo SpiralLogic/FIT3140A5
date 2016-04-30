@@ -2,7 +2,6 @@ package com.srjengbro.scratchbasic;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -175,7 +174,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
                 Integer position = (Integer) v.getTag();
                 Instruction newInstruction = new RemInstruction();
                 instructionList.add(position + 1, newInstruction);
-                updateGotoLinesBefore(position);
+                updateGotoLinesAdd(position);
                 notifyDataSetChanged();
             }
         };
@@ -187,32 +186,37 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 int position = (int) v.getTag();
                 instructionList.remove(position);
-                updateGotoLinesAfter(position);
+                updateGotoLinesDelete(position);
                 notifyDataSetChanged();
             }
         };
     }
 
-    private void updateGotoLinesAfter(int fromPosition) {
+    private void updateGotoLinesDelete(int fromPosition) {
         Instruction inst;
-        int endValue = instructionList.size();
-        for(int i = fromPosition; i < endValue; i++ ) {
+        for (int i = 0; i < instructionList.size(); i++) {
             inst = instructionList.get(i);
             if (inst instanceof GotoInstruction) {
-                ((GotoInstruction) inst).decreaseGotoLine();
+                if (((GotoInstruction) inst).getGotoLine() < fromPosition) {
+
+                    ((GotoInstruction) inst).decreaseGotoLine();
+                }
             }
         }
     }
-    private void updateGotoLinesBefore(int toPosition) {
+
+    private void updateGotoLinesAdd(int toPosition) {
         Instruction inst;
-        int endValue = toPosition;
-        for(int i = 0; i < toPosition; i++ ) {
+        for (int i = 0; i < instructionList.size(); i++) {
             inst = instructionList.get(i);
             if (inst instanceof GotoInstruction) {
-                ((GotoInstruction) inst).increaseGotoLine();
+                if (((GotoInstruction) inst).getGotoLine() > toPosition) {
+                    ((GotoInstruction) inst).increaseGotoLine();
+                }
             }
         }
     }
+
     private static class ViewHolder {
 
         public TextView lineNumber;

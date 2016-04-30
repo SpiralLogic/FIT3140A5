@@ -50,4 +50,7 @@ public class GotoInstruction extends Instruction {
         gotoLine += 1;
         instruction = gotoLine.toString();
     }
+    public Integer getGotoLine() {
+        return gotoLine;
+    }
 }
