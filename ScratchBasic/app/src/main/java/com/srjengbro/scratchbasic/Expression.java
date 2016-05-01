@@ -1,5 +1,7 @@
 package com.srjengbro.scratchbasic;
 
+import com.srjengbro.scratchbasic.operators.Operator;
+
 /**
  * Created by Maidenii on 29/04/16.
  */
@@ -62,7 +64,7 @@ public class Expression {
         s.append(lhs);
         if (rhs != null && operator != null) {
             s.append(" ");
-            s.append(operator.symbol);
+            s.append(operator.getSymbol());
             s.append(" ");
             s.append(rhs);
         }

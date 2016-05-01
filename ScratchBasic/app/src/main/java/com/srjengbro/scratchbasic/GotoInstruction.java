@@ -4,6 +4,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import com.srjengbro.scratchbasic.instructions.Instruction;
+
 public class GotoInstruction extends Instruction {
 
     private EditText gotoText;

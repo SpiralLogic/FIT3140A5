@@ -4,6 +4,9 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.srjengbro.scratchbasic.instructions.*;
+
+
 import java.util.ArrayList;
 
 public class GotoEditor extends FragmentActivity {
@@ -16,7 +19,7 @@ public class GotoEditor extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goto_editor);
         Instruction instruction = new RemInstruction();
-        instruction.instruction = "Your first line!";
+        instruction.parse( "Your first line!");
         instructions.add(instruction);
 
 

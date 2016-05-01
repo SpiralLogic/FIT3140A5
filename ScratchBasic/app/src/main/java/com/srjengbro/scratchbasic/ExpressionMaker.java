@@ -1,5 +1,12 @@
 package com.srjengbro.scratchbasic;
 
+import com.srjengbro.scratchbasic.operators.Equal;
+import com.srjengbro.scratchbasic.operators.GreaterThan;
+import com.srjengbro.scratchbasic.operators.LessThan;
+import com.srjengbro.scratchbasic.operators.Minus;
+import com.srjengbro.scratchbasic.operators.Operator;
+import com.srjengbro.scratchbasic.operators.Plus;
+
 /**
  * Created by Maidenii on 29/04/16.
  */

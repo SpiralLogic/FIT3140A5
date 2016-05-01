@@ -1,4 +1,4 @@
-package com.srjengbro.scratchbasic;
+package com.srjengbro.scratchbasic.instructions;
 
 
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ public abstract class Instruction {
         return null;
     }
 
-    protected abstract void parse(String line);
+    public abstract void parse(String line);
 
     public abstract String run();
 

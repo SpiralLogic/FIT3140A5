@@ -14,6 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.srjengbro.scratchbasic.instructions.IfInstruction;
+import com.srjengbro.scratchbasic.instructions.Instruction;
+import com.srjengbro.scratchbasic.instructions.RemInstruction;
+
 import java.util.ArrayList;
 
 /**

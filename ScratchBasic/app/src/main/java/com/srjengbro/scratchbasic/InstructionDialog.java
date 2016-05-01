@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.srjengbro.scratchbasic.instructions.Instruction;
+
 
 public class InstructionDialog extends DialogFragment {
 

@@ -1,5 +1,11 @@
 package com.srjengbro.scratchbasic;
 
+import com.srjengbro.scratchbasic.instructions.IfInstruction;
+import com.srjengbro.scratchbasic.instructions.Instruction;
+import com.srjengbro.scratchbasic.instructions.LetInstruction;
+import com.srjengbro.scratchbasic.instructions.PrintInstruction;
+import com.srjengbro.scratchbasic.instructions.RemInstruction;
+
 /**
  * Created by Maidenii on 29/04/16.
  */
