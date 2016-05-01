@@ -1,5 +1,7 @@
 package com.srjengbro.scratchbasic;
 
+import android.util.Log;
+
 import com.srjengbro.scratchbasic.operators.Operator;
 
 /**
@@ -17,26 +19,26 @@ public class Expression {
         this.lhs = lhs;
         this.rhs = rhs;
     }
+
     public Expression(String lhs) {
         this.lhs = lhs;
         operator = null;
         this.rhs = null;
     }
 
-    public void setVariableStore(VariableStore variableStore) {
-        this.variableStore = variableStore;
-    }
-
-    public Integer evaluate() throws VariableDoesNotExistException {
+    public Integer evaluate(VariableStore variableStore) throws VariableDoesNotExistException {
         Integer lhsInt;
         Integer rhsInt;
         try {
             lhsInt = Integer.parseInt(lhs);
         } catch (NumberFormatException e) {
-            lhsInt = variableStore.getVariable(lhs).getValue();
-            if (lhsInt == null) {
-                throw new VariableDoesNotExistException();
+            Log.d("LHS",lhs);
+            Variable var = variableStore.getVariable(lhs);
+
+            if (var == null) {
+                throw new VariableDoesNotExistException("Variable " + lhs + " does not exist");
             }
+            lhsInt = var.getValue();
         }
         if (rhs == null || operator == null) {
             return lhsInt;
@@ -44,10 +46,13 @@ public class Expression {
         try {
             rhsInt = Integer.parseInt(rhs);
         } catch (NumberFormatException e) {
-            rhsInt = variableStore.getVariable(rhs).getValue();
-            if (rhsInt == null) {
-                throw new VariableDoesNotExistException();
+            Variable var = variableStore.getVariable(rhs);
+
+            if (var == null) {
+                throw new VariableDoesNotExistException("Variable " + rhs + " does not exist");
             }
+            rhsInt = var.getValue();
+
         }
 
         return operator.evaluate(rhsInt, lhsInt);

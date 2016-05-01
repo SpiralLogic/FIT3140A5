@@ -13,15 +13,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button runButton = (Button) findViewById(R.id.run_button);
+        Button newButton = (Button) findViewById(R.id.new_button);
 
-        runButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditorActivity.class);
-                startActivity(i);
-            }
-        }
+        newButton.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+                                             Intent i = new Intent(getApplicationContext(), EditorActivity.class);
+                                             startActivity(i);
+                                         }
+                                     }
         );
 
     }

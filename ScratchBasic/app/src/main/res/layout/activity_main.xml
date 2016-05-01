@@ -13,8 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Program"
-        android:id="@+id/run_button"
+        android:id="@+id/new_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="146dp" />
+
+
+
 </RelativeLayout>

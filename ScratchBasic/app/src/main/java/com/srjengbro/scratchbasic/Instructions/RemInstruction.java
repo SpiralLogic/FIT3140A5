@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.srjengbro.scratchbasic.R;
+import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * Created by Maidenii on 29/04/16.
@@ -23,6 +24,7 @@ public class RemInstruction extends Instruction {
         remText.setText(instruction);
         return layout;
     }
+
     public void update() {
         instruction = remText.getText().toString();
 
@@ -34,7 +36,9 @@ public class RemInstruction extends Instruction {
     }
 
     @Override
-    public String run() {
+    public String run(Integer line_no, VariableStore variableStore) throws InstructionRunException {
         return null;
     }
+
+
 }

@@ -4,6 +4,8 @@ package com.srjengbro.scratchbasic.instructions;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.srjengbro.scratchbasic.VariableStore;
+
 /**
  * Created by Maidenii on 12/04/16.
  */
@@ -26,11 +28,11 @@ public abstract class Instruction {
     public abstract void update();
 
     public Integer getNextLine() {
-        return null;
+                return null;
     }
 
     public abstract void parse(String line);
 
-    public abstract String run();
+    public abstract String run(Integer line_no, VariableStore variableStore) throws InstructionRunException;
 
 }

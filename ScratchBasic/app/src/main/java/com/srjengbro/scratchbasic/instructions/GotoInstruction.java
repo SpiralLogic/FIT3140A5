@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.srjengbro.scratchbasic.R;
-import com.srjengbro.scratchbasic.instructions.Instruction;
+import com.srjengbro.scratchbasic.VariableStore;
 
 public class GotoInstruction extends Instruction {
 
@@ -19,9 +19,9 @@ public class GotoInstruction extends Instruction {
     }
 
     @Override
-    public String run() {
+    public String run(Integer line_no, VariableStore variableStore) {
 
-        return null;
+        return "";
     }
 
     @Override
@@ -50,11 +50,16 @@ public class GotoInstruction extends Instruction {
         gotoLine -= 1;
         instruction = gotoLine.toString();
     }
+
     public void increaseGotoLine() {
         gotoLine += 1;
         instruction = gotoLine.toString();
     }
+
     public Integer getGotoLine() {
         return gotoLine;
+    }
+    public Integer getNextLine() {
+        return getGotoLine();
     }
 }

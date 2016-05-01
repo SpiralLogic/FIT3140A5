@@ -19,6 +19,7 @@ public class VariableStore {
             var = new Variable();
         }
         var.setValue(value);
+        variables.put(name,var);
     }
 
     public void delVariable(String name) {
