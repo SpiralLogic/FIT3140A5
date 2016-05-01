@@ -9,7 +9,7 @@ import com.srjengbro.scratchbasic.instructions.*;
 
 import java.util.ArrayList;
 
-public class GotoEditor extends FragmentActivity {
+public class EditorActivity extends FragmentActivity {
 
     private ArrayList<Instruction> instructions = new ArrayList<>();
     private VariableStore variableStore = new VariableStore();

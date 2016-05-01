@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
         runButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), GotoEditor.class);
+                Intent i = new Intent(getApplicationContext(), EditorActivity.class);
                 startActivity(i);
             }
         }
