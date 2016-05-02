@@ -3,7 +3,9 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
@@ -21,6 +23,9 @@ public class IfInstruction extends Instruction {
     protected GotoInstruction gotoInstruction;
     protected EditText gotoText;
     protected Expression expression;
+    protected EditText lhsText;
+    protected Spinner opSpinner;
+    protected EditText rhsText;
     private Boolean evaluatedAs = false;
     public IfInstruction() {
         name = "IF";
@@ -32,8 +37,13 @@ public class IfInstruction extends Instruction {
     }
 
     public void update() {
+        String type = opSpinner.getSelectedItem().toString();
+        String lhs = lhsText.getText().toString();
+        String rhs = rhsText.getText().toString();
+        expression = ExpressionMaker.generateExpression(type,lhs,rhs);
         gotoInstruction.parse(gotoText.getText().toString());
-        parse(ifText.getText().toString());
+        updateInstructionText();
+
     }
 
     @Override
@@ -58,9 +68,14 @@ public class IfInstruction extends Instruction {
 
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_if, null);
-      //  ifText = (EditText) layout.findViewById(R.id.if_text);
+        lhsText = (EditText) layout.findViewById(R.id.lhs_text);
+        rhsText = (EditText) layout.findViewById(R.id.rhs_text);
+        opSpinner = (Spinner) layout.findViewById(R.id.operator_spinner);
         if (expression != null) {
-            ifText.setText(expression.toString());
+            lhsText.setText(expression.getLhs());
+            rhsText.setText(expression.getRhs());
+            Integer oppos = ((ArrayAdapter<String>) opSpinner.getAdapter()).getPosition(expression.getOperator().getSymbol());
+            opSpinner.setSelection(oppos);
         }
         gotoText = (EditText) layout.findViewById(R.id.goto_line);
         gotoText.setText(gotoInstruction.getInstruction());
