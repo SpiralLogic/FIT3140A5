@@ -33,6 +33,6 @@ public abstract class Instruction {
 
     public abstract void parse(String line);
 
-    public abstract String run(Integer line_no, VariableStore variableStore) throws InstructionRunException;
+    public abstract String run(VariableStore variableStore) throws InstructionRunException;
 
 }

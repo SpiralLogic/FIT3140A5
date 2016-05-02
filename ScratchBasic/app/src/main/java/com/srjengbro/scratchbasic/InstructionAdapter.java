@@ -128,6 +128,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
                     try {
                         i = InstructionMaker.generateInstruction(instructionText);
                         instructionList.set(position, i);
+                        openInstructionDialog(i);
                     } catch (Exception e) {
                         Toast.makeText(((View) parent.getParent()).getContext(), "Not a valid instruction", Toast.LENGTH_SHORT).show();
                     }
@@ -157,19 +158,23 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     private View.OnClickListener onEditClick() {
-        final InstructionAdapter adapter = this;
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Integer position = (Integer) v.getTag();
-                Instruction i = instructionList.get(position);
-                InstructionDialog newFragment = new InstructionDialog();
-                newFragment.setInstruction(i);
-                newFragment.setAdapter(adapter);
-                newFragment.show(((FragmentActivity) context).getFragmentManager(), context.getString(R.string.instructiondialog_title));
+                Instruction inst = instructionList.get(position);
+                openInstructionDialog(inst);
                 notifyDataSetChanged();
             }
         };
+    }
+
+    private void openInstructionDialog(Instruction inst) {
+        final InstructionAdapter adapter = this;
+        InstructionDialog newFragment = new InstructionDialog();
+        newFragment.setInstruction(inst);
+        newFragment.setAdapter(adapter);
+        newFragment.show(((FragmentActivity) context).getFragmentManager(), context.getString(R.string.instructiondialog_title));
     }
 
     private View.OnClickListener onAddClick() {

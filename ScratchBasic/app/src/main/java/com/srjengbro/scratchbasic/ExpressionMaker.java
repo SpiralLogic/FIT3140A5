@@ -24,6 +24,10 @@ public class ExpressionMaker {
         type = tokens[1];
         lhs = tokens[0];
         rhs = tokens[2];
+        return generateExpression(type, lhs, rhs);
+    }
+
+    public static Expression generateExpression(String type, String lhs, String rhs) {
         Operator op;
         switch (type) {
             case "+":
@@ -42,7 +46,7 @@ public class ExpressionMaker {
                 op = new LessThan();
                 break;
             default:
-                throw new ExpressionParseException("Not a valid instruction");
+                return new Expression(lhs);
         }
 
         return new Expression(op, lhs, rhs);

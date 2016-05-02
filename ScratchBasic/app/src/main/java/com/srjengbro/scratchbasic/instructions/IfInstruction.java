@@ -58,7 +58,7 @@ public class IfInstruction extends Instruction {
 
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_if, null);
-        ifText = (EditText) layout.findViewById(R.id.if_text);
+      //  ifText = (EditText) layout.findViewById(R.id.if_text);
         if (expression != null) {
             ifText.setText(expression.toString());
         }
@@ -73,16 +73,16 @@ public class IfInstruction extends Instruction {
 
 
     @Override
-    public String run(Integer lineno, VariableStore variableStore) throws InstructionRunException {
+    public String run(VariableStore variableStore) throws InstructionRunException {
         Integer result;
         try {
             result = expression.evaluate(variableStore);
 
         } catch (VariableDoesNotExistException e) {
-            throw new InstructionRunException("Error on line " + lineno.toString() + " " + e.getMessage());
+            throw new InstructionRunException(e.getMessage());
         }
         if (result > 0) {
-            gotoInstruction.run(lineno,variableStore );
+            gotoInstruction.run(variableStore );
             evaluatedAs = true;
         }else {
             evaluatedAs = false;

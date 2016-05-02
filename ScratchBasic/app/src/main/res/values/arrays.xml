@@ -8,4 +8,12 @@
         <item>PRINT</item>
         <item>REM</item>
     </string-array>
+    <string-array name="operator_list">
+        <item> </item>
+        <item>+</item>
+        <item>-</item>
+        <item>&lt;</item>
+        <item>&gt;</item>
+        <item>==</item>
+    </string-array>
 </resources>

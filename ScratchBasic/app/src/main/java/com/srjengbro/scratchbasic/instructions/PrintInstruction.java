@@ -2,7 +2,9 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
@@ -18,6 +20,10 @@ public class PrintInstruction extends Instruction {
 
     protected EditText printText;
     protected Expression expression;
+    protected EditText lhsText;
+    protected Spinner opSpinner;
+    protected EditText rhsText;
+
 
     public PrintInstruction() {
         name = "PRINT";
@@ -25,13 +31,24 @@ public class PrintInstruction extends Instruction {
 
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_print, null);
-        printText = (EditText) layout.findViewById(R.id.print_text);
-        printText.setText(instruction);
+        lhsText = (EditText) layout.findViewById(R.id.lhs_text);
+        rhsText = (EditText) layout.findViewById(R.id.rhs_text);
+        opSpinner = (Spinner) layout.findViewById(R.id.operator_spinner);
+        if (expression != null) {
+            lhsText.setText(expression.getLhs());
+            rhsText.setText(expression.getRhs());
+            Integer oppos = ((ArrayAdapter<String>) opSpinner.getAdapter()).getPosition(expression.getOperator().getSymbol());
+            opSpinner.setSelection(oppos);
+        }
         return layout;
     }
 
     public void update() {
-        parse(printText.getText().toString());
+        String type = opSpinner.getSelectedItem().toString();
+        String lhs = lhsText.getText().toString();
+        String rhs = rhsText.getText().toString();
+        expression = ExpressionMaker.generateExpression(type,lhs,rhs);
+        instruction = expression.toString();
     }
 
     public void parse(String line) {
@@ -44,12 +61,12 @@ public class PrintInstruction extends Instruction {
     }
 
     @Override
-    public String run(Integer line_no, VariableStore variableStore) throws InstructionRunException {
+    public String run(VariableStore variableStore) throws InstructionRunException {
         Integer result;
         try {
             result = expression.evaluate(variableStore);
         } catch (VariableDoesNotExistException e) {
-            throw new InstructionRunException("Error on line " + line_no.toString() + " " + e.getMessage());
+            throw new InstructionRunException(e.getMessage());
         }
         return result.toString();
     }

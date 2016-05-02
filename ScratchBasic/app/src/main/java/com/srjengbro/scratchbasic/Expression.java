@@ -2,6 +2,7 @@ package com.srjengbro.scratchbasic;
 
 import android.util.Log;
 
+import com.srjengbro.scratchbasic.operators.NoOp;
 import com.srjengbro.scratchbasic.operators.Operator;
 
 /**
@@ -9,20 +10,36 @@ import com.srjengbro.scratchbasic.operators.Operator;
  */
 public class Expression {
 
+    public String getLhs() {
+        return lhs;
+    }
+
     private String lhs;
+
+    public String getRhs() {
+        return rhs;
+    }
+
+    public Operator getOperator() {
+        return operator;
+    }
+
     private String rhs;
-    private Operator operator;
-    private VariableStore variableStore;
+    private Operator operator = new NoOp();
 
     public Expression(Operator op, String lhs, String rhs) {
-        operator = op;
+
+        if (rhs.length() > 0) {
+            operator = op;
+            this.rhs = rhs;
+        }
         this.lhs = lhs;
-        this.rhs = rhs;
+
     }
 
     public Expression(String lhs) {
         this.lhs = lhs;
-        operator = null;
+        operator = new NoOp();
         this.rhs = null;
     }
 
@@ -32,7 +49,7 @@ public class Expression {
         try {
             lhsInt = Integer.parseInt(lhs);
         } catch (NumberFormatException e) {
-            Log.d("LHS",lhs);
+            Log.d("LHS", lhs);
             Variable var = variableStore.getVariable(lhs);
 
             if (var == null) {
@@ -40,7 +57,7 @@ public class Expression {
             }
             lhsInt = var.getValue();
         }
-        if (rhs == null || operator == null) {
+        if (rhs == null || operator instanceof NoOp) {
             return lhsInt;
         }
         try {
@@ -63,6 +80,7 @@ public class Expression {
     public void parse() {
         return;
     }
+
 
     public String toString() {
         StringBuilder s = new StringBuilder();

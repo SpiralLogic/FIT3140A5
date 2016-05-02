@@ -9,10 +9,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Expression:"
         android:id="@+id/print_label" />
+    <include layout="@layout/expression"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/print_text"
-        android:layout_gravity="center_horizontal" />
 </LinearLayout>

@@ -9,7 +9,6 @@ import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
 import com.srjengbro.scratchbasic.ExpressionParseException;
 import com.srjengbro.scratchbasic.R;
-import com.srjengbro.scratchbasic.Variable;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
 
@@ -31,7 +30,7 @@ public class LetInstruction extends Instruction {
         View layout = inflater.inflate(R.layout.inst_let, null);
         letVariableText = (EditText) layout.findViewById(R.id.let_variable);
         letVariableText.setText(variable);
-        letExpressionText = (EditText) layout.findViewById(R.id.let_expression);
+        //letExpressionText = (EditText) layout.findViewById(R.id.let_expression);
         if (expression != null) {
             letExpressionText.setText(expression.toString());
         }
@@ -67,14 +66,14 @@ public class LetInstruction extends Instruction {
     }
 
     @Override
-    public String run(Integer lineno, VariableStore variableStore) throws InstructionRunException {
+    public String run(VariableStore variableStore) throws InstructionRunException {
         Integer result;
         try {
             result = expression.evaluate(variableStore);
             variableStore.setVariable(variable, result);
             Log.d("Result",result.toString());
         } catch (VariableDoesNotExistException e) {
-            throw new InstructionRunException("Error on line " + lineno.toString() + " " + e.getMessage());
+            throw new InstructionRunException(e.getMessage());
         }
         result = variableStore.getVariable(variable).getValue();
         Log.d("Result",result.toString());

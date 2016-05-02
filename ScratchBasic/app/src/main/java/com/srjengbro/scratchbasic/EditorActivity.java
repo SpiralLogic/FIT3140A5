@@ -25,6 +25,13 @@ public class EditorActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+
+        ScratchApplication app = (ScratchApplication) getApplication();
+
+        app.instructions = instructions;
+        app.variableStore = variableStore;
+
+
         final Instruction instruction = new RemInstruction();
         instruction.parse("Your first line!");
         instructions.add(instruction);
@@ -40,15 +47,9 @@ public class EditorActivity extends FragmentActivity {
         newButton.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             if (!running) {
-                                                 instructionListView.setVisibility(View.INVISIBLE);
-                                                 commandOutput.setVisibility(View.VISIBLE);
-                                                 runInstructions();
-                                             } else {
-                                                 instructionListView.setVisibility(View.VISIBLE);
-                                                 commandOutput.setVisibility(View.INVISIBLE);
-                                             }
-                                             running = !running;
+
+                                             Intent i = new Intent(getApplicationContext(), RunActivity.class);
+                                             startActivity(i);
 
                                          }
 
@@ -58,29 +59,5 @@ public class EditorActivity extends FragmentActivity {
 
     }
 
-    private void runInstructions() {
-        int i = 0;
-        while (i < instructions.size()) {
-            Instruction inst = instructions.get(i);
-            String result;
-            try {
-                result = inst.run(i, variableStore);
-            }catch (InstructionRunException e){
-                result = e.getMessage();
-            }
-            updateCommandOutput(result);
-            Integer nextLine = inst.getNextLine();
-            if ((null != nextLine) && (nextLine < instructions.size())) {
-                i = nextLine;
-            }
-            i++;
-        }
 
-    }
-    private void updateCommandOutput(String line) {
-        String text = commandOutput.getText().toString();
-        text += "\n" + line;
-        commandOutput.setText(text);
-        return;
-    }
 }

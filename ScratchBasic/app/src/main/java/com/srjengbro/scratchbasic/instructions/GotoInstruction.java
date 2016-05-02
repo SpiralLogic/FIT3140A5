@@ -7,6 +7,12 @@ import android.widget.EditText;
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableStore;
 
+/**
+ *
+ *
+ *
+ *
+ */
 public class GotoInstruction extends Instruction {
 
     private EditText gotoText;
@@ -19,7 +25,7 @@ public class GotoInstruction extends Instruction {
     }
 
     @Override
-    public String run(Integer line_no, VariableStore variableStore) {
+    public String run(VariableStore variableStore) {
 
         return "";
     }

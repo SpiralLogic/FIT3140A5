@@ -36,7 +36,7 @@ public class RemInstruction extends Instruction {
     }
 
     @Override
-    public String run(Integer line_no, VariableStore variableStore) throws InstructionRunException {
+    public String run(VariableStore variableStore) throws InstructionRunException {
         return null;
     }
 
