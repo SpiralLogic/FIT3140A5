@@ -1,18 +1,13 @@
 package com.srjengbro.scratchbasic;
 
-import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.srjengbro.scratchbasic.instructions.Instruction;
-import com.srjengbro.scratchbasic.instructions.InstructionRunException;
-
+import com.srjengbro.scratchbasic.instructions.*;
 import java.util.ArrayList;
 
 public class RunActivity extends AppCompatActivity {
@@ -21,7 +16,7 @@ public class RunActivity extends AppCompatActivity {
     private Boolean running = false;
     private TextView outputText;
     private TextView lineText;
-    private Integer nextLine;
+    private Integer nextLine=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +29,8 @@ public class RunActivity extends AppCompatActivity {
         outputText.setMovementMethod(new ScrollingMovementMethod());
         Button newButton = (Button) findViewById(R.id.start_button);
         Button stopButton = (Button) findViewById(R.id.stop_button);
+        Button pauseButton = (Button) findViewById(R.id.pause_button);
+
         lineText = (TextView) findViewById(R.id.line_text);
         newButton.setOnClickListener(new View.OnClickListener() {
                                          @Override
@@ -46,8 +43,17 @@ public class RunActivity extends AppCompatActivity {
                                           @Override
                                           public void onClick(View v) {
                                               running = false;
+                                              nextLine = 0;
+
                                           }
                                       }
+        );
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {
+                                               running = false;
+                                           }
+                                       }
         );
 
 
@@ -57,7 +63,6 @@ public class RunActivity extends AppCompatActivity {
 
     private void runInstructions() {
         running = true;
-        nextLine = 0;
         runInstruction();
     }
 
@@ -94,7 +99,7 @@ public class RunActivity extends AppCompatActivity {
     }
 
     private void updateCommandOutput(String line) {
-        if (line.length() > 0) {
+        if (line != null && line.length() > 0) {
             outputText.append("\n" + line);
         }
 

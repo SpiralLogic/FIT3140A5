@@ -17,8 +17,6 @@ import com.srjengbro.scratchbasic.VariableStore;
 public class LetInstruction extends Instruction {
 
     private EditText letVariableText;
-    private EditText letExpressionText;
-
     private String variable;
     private Expression expression;
     protected EditText lhsText;
@@ -49,12 +47,11 @@ public class LetInstruction extends Instruction {
 
     @Override
     public void update() {
-
         variable = letVariableText.getText().toString();
         String type = opSpinner.getSelectedItem().toString();
         String lhs = lhsText.getText().toString();
         String rhs = rhsText.getText().toString();
-        expression = ExpressionMaker.generateExpression(type,lhs,rhs);
+        expression = ExpressionMaker.generateExpression(type, lhs, rhs);
         instruction = variable + " = " + expression.toString();
 
     }
@@ -79,6 +76,12 @@ public class LetInstruction extends Instruction {
 
     @Override
     public String run(VariableStore variableStore) throws InstructionRunException {
+        if (expression == null) {
+            throw new InstructionRunException("Instruction missing expression");
+        }
+        if (variable == null) {
+            throw new InstructionRunException("Instruction missing variable");
+        }
         Integer result;
         try {
             result = expression.evaluate(variableStore);

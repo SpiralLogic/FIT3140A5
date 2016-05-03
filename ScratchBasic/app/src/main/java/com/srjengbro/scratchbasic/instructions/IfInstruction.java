@@ -90,13 +90,15 @@ public class IfInstruction extends Instruction {
     @Override
     public String run(VariableStore variableStore) throws InstructionRunException {
         Integer result;
+        if (expression==null) {
+            throw new InstructionRunException("Instruction missing expression");
+        }
         try {
             result = expression.evaluate(variableStore);
 
         } catch (VariableDoesNotExistException e) {
             throw new InstructionRunException(e.getMessage());
         }
-        Log.d("Result",result.toString());
         if (result > 0) {
             gotoInstruction.run(variableStore);
             evaluatedAs = true;

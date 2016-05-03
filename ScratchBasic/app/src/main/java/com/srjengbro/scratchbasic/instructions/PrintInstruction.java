@@ -18,7 +18,6 @@ import com.srjengbro.scratchbasic.VariableStore;
  */
 public class PrintInstruction extends Instruction {
 
-    protected EditText printText;
     protected Expression expression;
     protected EditText lhsText;
     protected Spinner opSpinner;
@@ -47,7 +46,7 @@ public class PrintInstruction extends Instruction {
         String type = opSpinner.getSelectedItem().toString();
         String lhs = lhsText.getText().toString();
         String rhs = rhsText.getText().toString();
-        expression = ExpressionMaker.generateExpression(type,lhs,rhs);
+        expression = ExpressionMaker.generateExpression(type, lhs, rhs);
         instruction = expression.toString();
     }
 
@@ -62,6 +61,9 @@ public class PrintInstruction extends Instruction {
 
     @Override
     public String run(VariableStore variableStore) throws InstructionRunException {
+        if (expression==null) {
+            throw new InstructionRunException("Instruction missing expression");
+        }
         Integer result;
         try {
             result = expression.evaluate(variableStore);
