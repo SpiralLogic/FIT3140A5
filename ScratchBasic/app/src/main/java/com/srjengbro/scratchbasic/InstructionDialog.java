@@ -18,8 +18,6 @@ public class InstructionDialog extends DialogFragment {
 
     private Instruction instruction;
     private InstructionAdapter adapter;
-    private Spinner spinner;
-    private EditText editText;
 
     public void setInstruction(Instruction instruction) {
         this.instruction = instruction;

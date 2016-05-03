@@ -25,4 +25,7 @@ public class VariableStore {
     public void delVariable(String name) {
         variables.remove(name);
     }
+    public void clear() {
+        variables = new TreeMap<>();
+    }
 }

@@ -30,10 +30,10 @@
         android:id="@+id/start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/start"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/start" />
+        android:layout_toLeftOf="@+id/pause_button"
+        android:layout_toStartOf="@+id/pause_button" />
 
     <Button
         android:id="@+id/stop_button"
@@ -61,8 +61,9 @@
         android:layout_height="wrap_content"
         android:text="@string/pause"
         android:id="@+id/pause_button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/line_text"
+        android:layout_toLeftOf="@+id/stop_button"
+        android:layout_toStartOf="@+id/stop_button" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,4 +88,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/line_text"
         android:layout_alignEnd="@+id/line_text" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

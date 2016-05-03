@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class RunActivity extends AppCompatActivity {
     private Button startButton;
     private Button stopButton;
     private Button pauseButton;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class RunActivity extends AppCompatActivity {
         startButton = (Button) findViewById(R.id.start_button);
         stopButton = (Button) findViewById(R.id.stop_button);
         pauseButton = (Button) findViewById(R.id.pause_button);
-
+        backButton = (Button) findViewById(R.id.back_button);
         lineText = (TextView) findViewById(R.id.line_text);
         if (startButton != null) {
             startButton.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +65,14 @@ public class RunActivity extends AppCompatActivity {
                                                }
                                            }
             );
+        if (backButton != null)
+            backButton.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  backButton();
+                                              }
+                                          }
+            );
 
 
     }
@@ -86,6 +96,7 @@ public class RunActivity extends AppCompatActivity {
         stopButton.setEnabled(false);
         startButton.setEnabled(true);
         pauseButton.setEnabled(false);
+        variableStore.clear();
     }
 
     private void run() {
@@ -107,7 +118,7 @@ public class RunActivity extends AppCompatActivity {
             lineText.setText("Line " + nextLine.toString() + ": " + inst.getName() + " " + inst.getInstruction());
             result = inst.run(variableStore);
         } catch (InstructionRunException e) {
-            result = "Error on line " + nextLine.toString() + " " + e.getMessage();
+            result = "Error on line " + nextLine.toString() + ": " + e.getMessage();
             running = false;
         }
         updateCommandOutput(result);
@@ -137,5 +148,10 @@ public class RunActivity extends AppCompatActivity {
 
     private void clearCommandOutput() {
         outputText.setText("");
+    }
+
+    private void backButton() {
+        this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
+        this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
     }
 }

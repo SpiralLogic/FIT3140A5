@@ -19,8 +19,8 @@ public class GotoInstruction extends Instruction {
 
     public GotoInstruction() {
         name = "GOTO";
-        gotoLine = 0;
-        this.instruction = "0";
+        gotoLine = null;
+        this.instruction = "";
     }
 
     @Override
@@ -53,11 +53,13 @@ public class GotoInstruction extends Instruction {
     }
 
     public void decreaseGotoLine() {
+        if (gotoLine == null) return;
         gotoLine -= 1;
         instruction = gotoLine.toString();
     }
 
     public void increaseGotoLine() {
+        if (gotoLine == null) return;
         gotoLine += 1;
         instruction = gotoLine.toString();
     }

@@ -206,16 +206,17 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         Instruction inst;
         for (int i = 0; i < instructionList.size(); i++) {
             inst = instructionList.get(i);
+            GotoInstruction gi;
             if (inst instanceof GotoInstruction) {
-                if (((GotoInstruction) inst).getGotoLine() < fromPosition) {
-
-                    ((GotoInstruction) inst).decreaseGotoLine();
+                gi = (GotoInstruction) inst;
+                if (gi.getGotoLine() != null && gi.getGotoLine() < fromPosition) {
+                    gi.decreaseGotoLine();
                 }
             }
             if (inst instanceof IfInstruction) {
                 IfInstruction ifi = (IfInstruction) inst;
-                GotoInstruction gi = ifi.getGotoInstruction();
-                if (gi.getGotoLine() > fromPosition) {
+                gi = ifi.getGotoInstruction();
+                if (gi.getGotoLine() != null && gi.getGotoLine() > fromPosition) {
                     gi.decreaseGotoLine();
                     ifi.updateInstructionText();
                 }
@@ -227,15 +228,17 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         Instruction inst;
         for (int i = 0; i < instructionList.size(); i++) {
             inst = instructionList.get(i);
+            GotoInstruction gi;
             if (inst instanceof GotoInstruction) {
-                if (((GotoInstruction) inst).getGotoLine() > toPosition) {
+                gi = (GotoInstruction) inst;
+                if (gi.getGotoLine() != null && gi.getGotoLine() > toPosition) {
                     ((GotoInstruction) inst).increaseGotoLine();
                 }
             }
             if (inst instanceof IfInstruction) {
                 IfInstruction ifi = (IfInstruction) inst;
-                GotoInstruction gi = ifi.getGotoInstruction();
-                if (gi.getGotoLine() > toPosition) {
+                gi = ifi.getGotoInstruction();
+                if (gi.getGotoLine() != null && gi.getGotoLine() > toPosition) {
                     gi.increaseGotoLine();
                     ifi.updateInstructionText();
                 }
