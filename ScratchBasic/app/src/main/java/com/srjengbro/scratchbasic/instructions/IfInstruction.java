@@ -1,6 +1,7 @@
 package com.srjengbro.scratchbasic.instructions;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,7 +20,6 @@ import com.srjengbro.scratchbasic.VariableStore;
  */
 public class IfInstruction extends Instruction {
 
-    protected EditText ifText;
     protected GotoInstruction gotoInstruction;
     protected EditText gotoText;
     protected Expression expression;
@@ -96,8 +96,9 @@ public class IfInstruction extends Instruction {
         } catch (VariableDoesNotExistException e) {
             throw new InstructionRunException(e.getMessage());
         }
+        Log.d("Result",result.toString());
         if (result > 0) {
-            gotoInstruction.run(variableStore );
+            gotoInstruction.run(variableStore);
             evaluatedAs = true;
         }else {
             evaluatedAs = false;
@@ -106,6 +107,8 @@ public class IfInstruction extends Instruction {
     }
 
     public Integer getNextLine() {
+        Log.d("Evaluated",evaluatedAs.toString());
+
         if (evaluatedAs) {
             return gotoInstruction.getNextLine();
         }

@@ -49,7 +49,6 @@ public class Expression {
         try {
             lhsInt = Integer.parseInt(lhs);
         } catch (NumberFormatException e) {
-            Log.d("LHS", lhs);
             Variable var = variableStore.getVariable(lhs);
 
             if (var == null) {
@@ -72,7 +71,7 @@ public class Expression {
 
         }
 
-        return operator.evaluate(rhsInt, lhsInt);
+        return operator.evaluate(lhsInt,rhsInt);
 
 
     }

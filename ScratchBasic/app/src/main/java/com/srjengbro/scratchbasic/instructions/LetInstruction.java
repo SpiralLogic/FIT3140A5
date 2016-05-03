@@ -83,12 +83,9 @@ public class LetInstruction extends Instruction {
         try {
             result = expression.evaluate(variableStore);
             variableStore.setVariable(variable, result);
-            Log.d("Result",result.toString());
         } catch (VariableDoesNotExistException e) {
             throw new InstructionRunException(e.getMessage());
         }
-        result = variableStore.getVariable(variable).getValue();
-        Log.d("Result",result.toString());
         return "";
     }
 }

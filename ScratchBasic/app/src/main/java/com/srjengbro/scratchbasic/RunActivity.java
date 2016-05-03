@@ -1,9 +1,13 @@
 package com.srjengbro.scratchbasic;
 
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.srjengbro.scratchbasic.instructions.Instruction;
@@ -17,6 +21,7 @@ public class RunActivity extends AppCompatActivity {
     private Boolean running = false;
     private TextView outputText;
     private TextView lineText;
+    private Integer nextLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,9 @@ public class RunActivity extends AppCompatActivity {
         instructions = app.instructions;
         variableStore = app.variableStore;
         outputText = (TextView) findViewById(R.id.output_text);
+        outputText.setMovementMethod(new ScrollingMovementMethod());
         Button newButton = (Button) findViewById(R.id.start_button);
+        Button stopButton = (Button) findViewById(R.id.stop_button);
         lineText = (TextView) findViewById(R.id.line_text);
         newButton.setOnClickListener(new View.OnClickListener() {
                                          @Override
@@ -35,38 +42,61 @@ public class RunActivity extends AppCompatActivity {
                                          }
                                      }
         );
+        stopButton.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              running = false;
+                                          }
+                                      }
+        );
+
 
     }
 
-    private void runInstructions() {
+    private Handler mHandler = new Handler();
 
-        int i = 0;
+    private void runInstructions() {
         running = true;
-        while (i < instructions.size() && running) {
-            Instruction inst = instructions.get(i);
-            String result;
-            try {
-                lineText.setText("Line : " + ((Integer) i).toString() + ": " + inst.getName() + " " + inst.getInstruction());
-                result = inst.run(variableStore);
-            } catch (InstructionRunException e) {
-                result = "Error on line " + ((Integer) i).toString() + " " + e.getMessage();
-                running = false;
-            }
-            updateCommandOutput(result);
-            Integer nextLine = inst.getNextLine();
-            if ((null != nextLine) && (nextLine < instructions.size())) {
-                i = nextLine;
-            }
-            i++;
+        nextLine = 0;
+        runInstruction();
+    }
+
+    private void runInstruction() {
+        if (!running) {
+            return;
         }
-        running = false;
+        Instruction inst = instructions.get(nextLine);
+        String result;
+        try {
+            lineText.setText("Line " + nextLine.toString() + ": " + inst.getName() + " " + inst.getInstruction());
+            result = inst.run(variableStore);
+        } catch (InstructionRunException e) {
+            result = "Error on line " + nextLine.toString() + " " + e.getMessage();
+            running = false;
+        }
+        updateCommandOutput(result);
+        if (null == inst.getNextLine()) {
+            nextLine += 1;
+        } else {
+            nextLine = inst.getNextLine();
+        }
+        if (nextLine >= instructions.size()) {
+            running = false;
+        }
+        if (running) {
+            mHandler.postDelayed(new Runnable() {
+                public void run() {
+                    runInstruction();
+                }
+            }, 500);
+        }
 
     }
 
     private void updateCommandOutput(String line) {
-        String text = outputText.getText().toString();
-        text += "\n" + line;
-        outputText.setText(text);
-        return;
+        if (line.length() > 0) {
+            outputText.append("\n" + line);
+        }
+
     }
 }
