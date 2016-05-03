@@ -1,6 +1,5 @@
 package com.srjengbro.scratchbasic.instructions;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,12 +15,12 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 public class LetInstruction extends Instruction {
 
-    private EditText letVariableText;
+    private transient EditText letVariableText;
     private String variable;
     private Expression expression;
-    protected EditText lhsText;
-    protected Spinner opSpinner;
-    protected EditText rhsText;
+    protected transient EditText lhsText;
+    protected transient Spinner opSpinner;
+    protected transient EditText rhsText;
 
     public LetInstruction() {
         name = "LET";
@@ -53,7 +52,6 @@ public class LetInstruction extends Instruction {
         String rhs = rhsText.getText().toString();
         expression = ExpressionMaker.generateExpression(type, lhs, rhs);
         instruction = variable + " = " + expression.toString();
-
     }
 
     @Override

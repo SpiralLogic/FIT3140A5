@@ -11,7 +11,7 @@ import com.srjengbro.scratchbasic.VariableStore;
  * Created by Maidenii on 29/04/16.
  */
 public class RemInstruction extends Instruction {
-    protected EditText remText;
+    protected transient EditText remText;
 
     public RemInstruction() {
         name = "REM";

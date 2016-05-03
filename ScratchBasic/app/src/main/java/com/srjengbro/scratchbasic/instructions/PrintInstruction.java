@@ -19,9 +19,9 @@ import com.srjengbro.scratchbasic.VariableStore;
 public class PrintInstruction extends Instruction {
 
     protected Expression expression;
-    protected EditText lhsText;
-    protected Spinner opSpinner;
-    protected EditText rhsText;
+    protected transient EditText lhsText;
+    protected transient Spinner opSpinner;
+    protected transient EditText rhsText;
 
 
     public PrintInstruction() {

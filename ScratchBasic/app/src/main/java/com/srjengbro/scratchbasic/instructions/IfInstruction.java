@@ -21,12 +21,13 @@ import com.srjengbro.scratchbasic.VariableStore;
 public class IfInstruction extends Instruction {
 
     protected GotoInstruction gotoInstruction;
-    protected EditText gotoText;
+    protected transient EditText gotoText;
     protected Expression expression;
-    protected EditText lhsText;
-    protected Spinner opSpinner;
-    protected EditText rhsText;
+    protected transient EditText lhsText;
+    protected transient Spinner opSpinner;
+    protected transient EditText rhsText;
     private Boolean evaluatedAs = false;
+
     public IfInstruction() {
         name = "IF";
         gotoInstruction = new GotoInstruction();
@@ -40,7 +41,7 @@ public class IfInstruction extends Instruction {
         String type = opSpinner.getSelectedItem().toString();
         String lhs = lhsText.getText().toString();
         String rhs = rhsText.getText().toString();
-        expression = ExpressionMaker.generateExpression(type,lhs,rhs);
+        expression = ExpressionMaker.generateExpression(type, lhs, rhs);
         gotoInstruction.parse(gotoText.getText().toString());
         updateInstructionText();
 
@@ -90,7 +91,7 @@ public class IfInstruction extends Instruction {
     @Override
     public String run(VariableStore variableStore) throws InstructionRunException {
         Integer result;
-        if (expression==null) {
+        if (expression == null) {
             throw new InstructionRunException("Instruction missing expression");
         }
         try {
@@ -102,15 +103,13 @@ public class IfInstruction extends Instruction {
         if (result > 0) {
             gotoInstruction.run(variableStore);
             evaluatedAs = true;
-        }else {
+        } else {
             evaluatedAs = false;
         }
         return "";
     }
 
     public Integer getNextLine() {
-        Log.d("Evaluated",evaluatedAs.toString());
-
         if (evaluatedAs) {
             return gotoInstruction.getNextLine();
         }

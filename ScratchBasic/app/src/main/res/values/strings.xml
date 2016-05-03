@@ -4,4 +4,20 @@
     <string name="confirm">Confirm</string>
 
     <string name="instructiondialog_title">Edit Instruction</string>
+    <string name="restart">Restart</string>
+    <string name="pause">Pause</string>
+    <string name="run">Run</string>
+    <string name="save">Save</string>
+    <string name="new_program">New Program</string>
+    <string name="load_program">Load Program</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="left">Left:</string>
+    <string name="operator">Operator:</string>
+    <string name="right">Right:</string>
+    <string name="output">Output:</string>
+    <string name="current_line">Current Line:</string>
+    <string name="goto_line">Goto Line:</string>
+    <string name="expression">Expression:</string>
+    <string name="variable">Variable:</string>
 </resources>

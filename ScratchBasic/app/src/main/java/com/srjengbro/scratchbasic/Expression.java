@@ -8,7 +8,7 @@ import com.srjengbro.scratchbasic.operators.Operator;
 /**
  * Created by Maidenii on 29/04/16.
  */
-public class Expression {
+public class Expression implements java.io.Serializable {
 
     public String getLhs() {
         return lhs;
@@ -50,7 +50,6 @@ public class Expression {
             lhsInt = Integer.parseInt(lhs);
         } catch (NumberFormatException e) {
             Variable var = variableStore.getVariable(lhs);
-
             if (var == null) {
                 throw new VariableDoesNotExistException("Variable " + lhs + " does not exist");
             }
@@ -71,7 +70,7 @@ public class Expression {
 
         }
 
-        return operator.evaluate(lhsInt,rhsInt);
+        return operator.evaluate(lhsInt, rhsInt);
 
 
     }

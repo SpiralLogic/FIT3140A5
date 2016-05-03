@@ -7,16 +7,15 @@ import android.widget.EditText;
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableStore;
 
-/**
- *
- *
- *
- *
- */
 public class GotoInstruction extends Instruction {
 
-    private EditText gotoText;
+    private transient EditText gotoText;
     private Integer gotoLine;
+
+    public Integer getGotoLine() {
+
+        return gotoLine;
+    }
 
     public GotoInstruction() {
         name = "GOTO";
@@ -40,6 +39,7 @@ public class GotoInstruction extends Instruction {
 
     @Override
     public void update() {
+
         parse(gotoText.getText().toString());
     }
 
@@ -62,10 +62,9 @@ public class GotoInstruction extends Instruction {
         instruction = gotoLine.toString();
     }
 
-    public Integer getGotoLine() {
-        return gotoLine;
-    }
+
     public Integer getNextLine() {
+
         return getGotoLine();
     }
 }

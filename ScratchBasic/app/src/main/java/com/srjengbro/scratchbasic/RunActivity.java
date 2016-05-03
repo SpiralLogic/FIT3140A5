@@ -7,7 +7,9 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.srjengbro.scratchbasic.instructions.*;
+
 import java.util.ArrayList;
 
 public class RunActivity extends AppCompatActivity {
@@ -16,7 +18,10 @@ public class RunActivity extends AppCompatActivity {
     private Boolean running = false;
     private TextView outputText;
     private TextView lineText;
-    private Integer nextLine=0;
+    private Integer nextLine = 0;
+    private Button startButton;
+    private Button stopButton;
+    private Button pauseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,46 +32,72 @@ public class RunActivity extends AppCompatActivity {
         variableStore = app.variableStore;
         outputText = (TextView) findViewById(R.id.output_text);
         outputText.setMovementMethod(new ScrollingMovementMethod());
-        Button newButton = (Button) findViewById(R.id.start_button);
-        Button stopButton = (Button) findViewById(R.id.stop_button);
-        Button pauseButton = (Button) findViewById(R.id.pause_button);
+        startButton = (Button) findViewById(R.id.start_button);
+        stopButton = (Button) findViewById(R.id.stop_button);
+        pauseButton = (Button) findViewById(R.id.pause_button);
 
         lineText = (TextView) findViewById(R.id.line_text);
-        newButton.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             runInstructions();
-                                         }
-                                     }
-        );
-        stopButton.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View v) {
-                                              running = false;
-                                              nextLine = 0;
+        if (startButton != null) {
+            startButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clearCommandOutput();
+                    run();
+                }
+            });
+        }
+        if (stopButton != null)
+            stopButton.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  stop();
 
+                                              }
                                           }
-                                      }
-        );
-        pauseButton.setOnClickListener(new View.OnClickListener() {
-                                           @Override
-                                           public void onClick(View v) {
-                                               running = false;
+            );
+        if (pauseButton != null)
+            pauseButton.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View v) {
+                                                   pause();
+                                               }
                                            }
-                                       }
-        );
+            );
 
 
     }
 
     private Handler mHandler = new Handler();
 
-    private void runInstructions() {
-        running = true;
-        runInstruction();
+    private void pause() {
+        if (running) {
+            running = false;
+            pauseButton.setText(R.string.restart);
+        } else {
+            pauseButton.setText(R.string.pause);
+            running = true;
+            runNextInstruction();
+        }
     }
 
-    private void runInstruction() {
+    private void stop() {
+        running = false;
+        nextLine = 0;
+        stopButton.setEnabled(false);
+        startButton.setEnabled(true);
+        pauseButton.setEnabled(false);
+    }
+
+    private void run() {
+        running = true;
+        runNextInstruction();
+        startButton.setEnabled(false);
+        stopButton.setEnabled(true);
+        pauseButton.setEnabled(true);
+        pauseButton.setText(R.string.pause);
+    }
+
+    private void runNextInstruction() {
         if (!running) {
             return;
         }
@@ -86,12 +117,12 @@ public class RunActivity extends AppCompatActivity {
             nextLine = inst.getNextLine();
         }
         if (nextLine >= instructions.size()) {
-            running = false;
+            stop();
         }
         if (running) {
             mHandler.postDelayed(new Runnable() {
                 public void run() {
-                    runInstruction();
+                    runNextInstruction();
                 }
             }, 500);
         }
@@ -102,6 +133,9 @@ public class RunActivity extends AppCompatActivity {
         if (line != null && line.length() > 0) {
             outputText.append("\n" + line);
         }
+    }
 
+    private void clearCommandOutput() {
+        outputText.setText("");
     }
 }

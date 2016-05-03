@@ -28,7 +28,7 @@ public class InstructionMaker {
             case "LET" :
                 return new LetInstruction();
             default:
-                throw new Exception("Not a valid instruction");
+                throw new InvalidInstructionException(instructionText + " is not a valid instruction");
 
         }
 
