@@ -8,8 +8,9 @@
         android:id="@+id/variable_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Variable:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="@string/variable"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/let_variable"
@@ -22,8 +23,9 @@
         android:id="@+id/expression_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Expression"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="@string/expression"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="30sp" />
 
     <include layout="@layout/expression"/>
 

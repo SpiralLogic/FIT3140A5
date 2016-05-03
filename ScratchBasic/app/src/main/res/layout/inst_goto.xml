@@ -7,14 +7,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Goto Line:"
-        android:id="@+id/goto_label" />
+        android:text="@string/goto_line"
+        android:id="@+id/goto_label"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/goto_line"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/goto_line" />
 </LinearLayout>

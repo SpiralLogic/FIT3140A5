@@ -23,7 +23,8 @@
         android:textSize="20sp"
         android:background="@color/dim_foreground_material_dark"
         android:layout_below="@+id/output_label"
-        android:layout_above="@+id/line_label" />
+        android:layout_above="@+id/line_label"
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/start_button"

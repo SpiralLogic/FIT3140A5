@@ -7,8 +7,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Expression:"
-        android:id="@+id/print_label" />
+        android:text="@string/expression"
+        android:id="@+id/print_label"
+        android:textSize="30sp" />
     <include layout="@layout/expression"/>
 
 </LinearLayout>
