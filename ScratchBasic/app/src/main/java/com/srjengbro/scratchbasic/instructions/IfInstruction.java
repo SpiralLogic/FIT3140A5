@@ -1,12 +1,9 @@
 package com.srjengbro.scratchbasic.instructions;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
@@ -15,22 +12,18 @@ import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
 
-/**
- * Created by Maidenii on 20/04/16.
- */
+
 public class IfInstruction extends Instruction {
 
     protected GotoInstruction gotoInstruction;
     protected transient EditText gotoText;
     protected Expression expression;
-    protected transient EditText lhsText;
-    protected transient Spinner opSpinner;
-    protected transient EditText rhsText;
     private Boolean evaluatedAs = false;
 
     public IfInstruction() {
         name = "IF";
         gotoInstruction = new GotoInstruction();
+        expression = new Expression();
     }
 
     public String getName() {
@@ -38,9 +31,9 @@ public class IfInstruction extends Instruction {
     }
 
     public void update() {
-        String type = opSpinner.getSelectedItem().toString();
-        String lhs = lhsText.getText().toString();
-        String rhs = rhsText.getText().toString();
+        String type = expression.opSpinner.getSelectedItem().toString();
+        String lhs = expression.lhsText.getText().toString();
+        String rhs = expression.rhsText.getText().toString();
         expression = ExpressionMaker.generateExpression(type, lhs, rhs);
         gotoInstruction.parse(gotoText.getText().toString());
         updateInstructionText();
@@ -69,15 +62,7 @@ public class IfInstruction extends Instruction {
 
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_if, null);
-        lhsText = (EditText) layout.findViewById(R.id.lhs_text);
-        rhsText = (EditText) layout.findViewById(R.id.rhs_text);
-        opSpinner = (Spinner) layout.findViewById(R.id.operator_spinner);
-        if (expression != null) {
-            lhsText.setText(expression.getLhs());
-            rhsText.setText(expression.getRhs());
-            Integer oppos = ((ArrayAdapter<String>) opSpinner.getAdapter()).getPosition(expression.getOperator().getSymbol());
-            opSpinner.setSelection(oppos);
-        }
+        expression.layout(inflater, layout);
         gotoText = (EditText) layout.findViewById(R.id.goto_line);
         gotoText.setText(gotoInstruction.getInstruction());
         return layout;
@@ -97,7 +82,7 @@ public class IfInstruction extends Instruction {
         try {
             result = expression.evaluate(variableStore);
 
-        } catch (VariableDoesNotExistException e) {
+        } catch (VariableDoesNotExistException | ExpressionParseException e) {
             throw new InstructionRunException(e.getMessage());
         }
         if (result > 0) {

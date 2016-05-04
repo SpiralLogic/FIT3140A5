@@ -2,9 +2,7 @@ package com.srjengbro.scratchbasic;
 
 import java.util.TreeMap;
 
-/**
- * Created by Maidenii on 29/04/16.
- */
+
 public class VariableStore {
     private TreeMap<String, Variable> variables = new TreeMap<>();
 

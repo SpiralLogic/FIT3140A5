@@ -2,9 +2,7 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
@@ -18,12 +16,11 @@ public class LetInstruction extends Instruction {
     private transient EditText letVariableText;
     private String variable;
     private Expression expression;
-    protected transient EditText lhsText;
-    protected transient Spinner opSpinner;
-    protected transient EditText rhsText;
 
     public LetInstruction() {
         name = "LET";
+        expression = new Expression();
+
     }
 
 
@@ -32,24 +29,16 @@ public class LetInstruction extends Instruction {
         View layout = inflater.inflate(R.layout.inst_let, null);
         letVariableText = (EditText) layout.findViewById(R.id.let_variable);
         letVariableText.setText(variable);
-        lhsText = (EditText) layout.findViewById(R.id.lhs_text);
-        rhsText = (EditText) layout.findViewById(R.id.rhs_text);
-        opSpinner = (Spinner) layout.findViewById(R.id.operator_spinner);
-        if (expression != null) {
-            lhsText.setText(expression.getLhs());
-            rhsText.setText(expression.getRhs());
-            Integer oppos = ((ArrayAdapter<String>) opSpinner.getAdapter()).getPosition(expression.getOperator().getSymbol());
-            opSpinner.setSelection(oppos);
-        }
+        expression.layout(inflater, layout);
         return layout;
     }
 
     @Override
     public void update() {
         variable = letVariableText.getText().toString();
-        String type = opSpinner.getSelectedItem().toString();
-        String lhs = lhsText.getText().toString();
-        String rhs = rhsText.getText().toString();
+        String type = expression.opSpinner.getSelectedItem().toString();
+        String lhs = expression.lhsText.getText().toString();
+        String rhs = expression.rhsText.getText().toString();
         expression = ExpressionMaker.generateExpression(type, lhs, rhs);
         instruction = variable + " = " + expression.toString();
     }
@@ -84,7 +73,7 @@ public class LetInstruction extends Instruction {
         try {
             result = expression.evaluate(variableStore);
             variableStore.setVariable(variable, result);
-        } catch (VariableDoesNotExistException e) {
+        } catch (VariableDoesNotExistException | ExpressionParseException e) {
             throw new InstructionRunException(e.getMessage());
         }
         return "";

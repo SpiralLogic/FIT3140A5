@@ -16,9 +16,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
     protected ArrayList<Instruction> instructions;
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

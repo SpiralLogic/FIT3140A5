@@ -3,11 +3,10 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
+
 import com.srjengbro.scratchbasic.VariableStore;
 
-/**
- * Created by Maidenii on 12/04/16.
- */
+
 public abstract class Instruction implements java.io.Serializable {
     protected String name = "UNKNOWN";
 
@@ -16,9 +15,10 @@ public abstract class Instruction implements java.io.Serializable {
         return name;
     }
 
-    protected String instruction;
+    protected String instruction = "";
 
     public String getInstruction() {
+
         return instruction;
     }
 

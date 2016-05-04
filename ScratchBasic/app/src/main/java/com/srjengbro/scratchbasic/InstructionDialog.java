@@ -16,15 +16,33 @@ import com.srjengbro.scratchbasic.instructions.Instruction;
 
 public class InstructionDialog extends DialogFragment {
 
+    /**
+     *
+     */
     private Instruction instruction;
+    /**
+     *
+     */
     private InstructionAdapter adapter;
 
+    /**
+     * @param instruction
+     */
     public void setInstruction(Instruction instruction) {
         this.instruction = instruction;
     }
+
+    /**
+     * @param adapter
+     */
     public void setAdapter(InstructionAdapter adapter) {
         this.adapter = adapter;
     }
+
+    /**
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction

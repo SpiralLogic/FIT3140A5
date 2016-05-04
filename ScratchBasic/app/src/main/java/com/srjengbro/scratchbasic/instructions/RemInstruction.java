@@ -7,9 +7,7 @@ import android.widget.EditText;
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableStore;
 
-/**
- * Created by Maidenii on 29/04/16.
- */
+
 public class RemInstruction extends Instruction {
     protected transient EditText remText;
 

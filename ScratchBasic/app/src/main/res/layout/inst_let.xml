@@ -20,6 +20,15 @@
         android:inputType="text" />
 
     <TextView
+        android:id="@+id/equals_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="="
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="50sp" />
+
+    <TextView
         android:id="@+id/expression_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +36,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="30sp" />
 
-    <include layout="@layout/expression"/>
+    <include layout="@layout/expression" />
 
 </LinearLayout>

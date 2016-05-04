@@ -2,9 +2,7 @@ package com.srjengbro.scratchbasic.operators;
 
 import android.util.Log;
 
-/**
- * Created by Maidenii on 29/04/16.
- */
+
 public class GreaterThan extends Operator {
 
     public GreaterThan() {

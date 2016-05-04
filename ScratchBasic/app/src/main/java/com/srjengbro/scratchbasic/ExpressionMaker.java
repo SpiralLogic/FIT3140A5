@@ -7,9 +7,7 @@ import com.srjengbro.scratchbasic.operators.Minus;
 import com.srjengbro.scratchbasic.operators.Operator;
 import com.srjengbro.scratchbasic.operators.Plus;
 
-/**
- * Created by Maidenii on 29/04/16.
- */
+
 public class ExpressionMaker {
 
     public static Expression generateExpression(String expressionString) throws ExpressionParseException {

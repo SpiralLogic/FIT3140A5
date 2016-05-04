@@ -1,13 +1,17 @@
 package com.srjengbro.scratchbasic;
 
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.srjengbro.scratchbasic.operators.NoOp;
 import com.srjengbro.scratchbasic.operators.Operator;
 
-/**
- * Created by Maidenii on 29/04/16.
- */
+
 public class Expression implements java.io.Serializable {
 
     public String getLhs() {
@@ -26,6 +30,10 @@ public class Expression implements java.io.Serializable {
 
     private String rhs;
     private Operator operator = new NoOp();
+    public transient EditText lhsText;
+    public transient Spinner opSpinner;
+    public transient EditText rhsText;
+    public transient TextView rhsLabel;
 
     public Expression(Operator op, String lhs, String rhs) {
 
@@ -43,9 +51,18 @@ public class Expression implements java.io.Serializable {
         this.rhs = null;
     }
 
-    public Integer evaluate(VariableStore variableStore) throws VariableDoesNotExistException {
+    public Expression() {
+        operator = new NoOp();
+        this.lhs = null;
+        this.rhs = null;
+    }
+
+    public Integer evaluate(VariableStore variableStore) throws VariableDoesNotExistException, ExpressionParseException {
         Integer lhsInt;
         Integer rhsInt;
+        if (lhs == null) {
+            throw new ExpressionParseException("Expression missing left hand side");
+        }
         try {
             lhsInt = Integer.parseInt(lhs);
         } catch (NumberFormatException e) {
@@ -90,5 +107,41 @@ public class Expression implements java.io.Serializable {
             s.append(rhs);
         }
         return s.toString();
+    }
+
+    public void layout(LayoutInflater inflator, View layout) {
+
+        lhsText = (EditText) layout.findViewById(R.id.lhs_text);
+        rhsText = (EditText) layout.findViewById(R.id.rhs_text);
+        opSpinner = (Spinner) layout.findViewById(R.id.operator_spinner);
+        rhsLabel = (TextView) layout.findViewById(R.id.rhs_label);
+        opSpinner.setOnItemSelectedListener(onOperatorSelect());
+        lhsText.setText(lhs);
+        rhsText.setText(rhs);
+        Integer oppos = ((ArrayAdapter<String>) opSpinner.getAdapter()).getPosition(operator.getSymbol());
+        opSpinner.setSelection(oppos);
+    }
+
+    private AdapterView.OnItemSelectedListener onOperatorSelect() {
+        return new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
+                Spinner spinner = (Spinner) parent;
+                String instructionText = spinner.getSelectedItem().toString();
+                if (instructionText.length() == 0) {
+                    rhsText.setVisibility(View.INVISIBLE);
+                    rhsLabel.setVisibility(View.INVISIBLE);
+                } else {
+                    rhsText.setVisibility(View.VISIBLE);
+                    rhsLabel.setVisibility(View.VISIBLE);
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
     }
 }

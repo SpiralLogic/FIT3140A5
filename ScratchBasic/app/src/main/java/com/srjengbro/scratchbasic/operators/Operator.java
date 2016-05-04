@@ -1,8 +1,6 @@
 package com.srjengbro.scratchbasic.operators;
 
-/**
- * Created by Maidenii on 29/04/16.
- */
+
 public abstract class Operator implements java.io.Serializable {
     protected String name;
     protected String symbol;

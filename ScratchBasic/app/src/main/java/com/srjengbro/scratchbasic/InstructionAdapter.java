@@ -21,16 +21,27 @@ import com.srjengbro.scratchbasic.instructions.RemInstruction;
 
 import java.util.ArrayList;
 
-/**
- * Created by Maidenii on 12/04/16.
- */
+
 public class InstructionAdapter extends BaseAdapter implements ListAdapter {
 
+    /**
+     *
+     */
     private LayoutInflater inflater;
+    /**
+     *
+     */
     private ArrayList<Instruction> instructionList;
+    /**
+     *
+     */
     private Context context;
 
 
+    /**
+     * @param instructionList
+     * @param ctx
+     */
     public InstructionAdapter(ArrayList<Instruction> instructionList, Context ctx) {
         super();
         inflater = LayoutInflater.from(ctx);
@@ -39,16 +50,27 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
 
     }
 
+    /**
+     * @return
+     */
     @Override
     public int getCount() {
         return instructionList.size();
     }
 
+    /**
+     * @param position
+     * @return
+     */
     @Override
     public Object getItem(int position) {
         return instructionList.get(position);
     }
 
+    /**
+     * @param position
+     * @return
+     */
     @Override
     public long getItemId(int position) {
         return position;
@@ -101,6 +123,9 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
 
+    /**
+     * @return
+     */
     private View.OnClickListener onViewClick() {
         return new View.OnClickListener() {
             @Override
@@ -113,6 +138,9 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         };
     }
 
+    /**
+     * @return
+     */
     private AdapterView.OnItemSelectedListener onCommandSelected() {
         return new AdapterView.OnItemSelectedListener() {
             @Override
@@ -143,20 +171,10 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         };
     }
 
-    private AdapterView.OnItemSelectedListener onNoSelection() {
-        return new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        };
-    }
-
+    /**
+     * @return
+     */
     private View.OnClickListener onEditClick() {
         return new View.OnClickListener() {
             @Override
@@ -169,6 +187,9 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         };
     }
 
+    /**
+     * @param inst
+     */
     private void openInstructionDialog(Instruction inst) {
         final InstructionAdapter adapter = this;
         InstructionDialog newFragment = new InstructionDialog();
@@ -177,6 +198,9 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         newFragment.show(((FragmentActivity) context).getFragmentManager(), context.getString(R.string.instructiondialog_title));
     }
 
+    /**
+     * @return
+     */
     private View.OnClickListener onAddClick() {
         return new View.OnClickListener() {
             @Override
@@ -190,6 +214,9 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         };
     }
 
+    /**
+     * @return
+     */
     private View.OnClickListener onRemoveClick() {
         return new View.OnClickListener() {
             @Override
@@ -202,6 +229,9 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         };
     }
 
+    /**
+     * @param fromPosition
+     */
     private void updateGotoLinesDelete(int fromPosition) {
         Instruction inst;
         for (int i = 0; i < instructionList.size(); i++) {
@@ -224,6 +254,9 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         }
     }
 
+    /**
+     * @param toPosition
+     */
     private void updateGotoLinesAdd(int toPosition) {
         Instruction inst;
         for (int i = 0; i < instructionList.size(); i++) {
@@ -246,6 +279,9 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         }
     }
 
+    /**
+     *
+     */
     private static class ViewHolder {
 
         public TextView lineNumber;
