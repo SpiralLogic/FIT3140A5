@@ -10,7 +10,10 @@ import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
 
-
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public class PrintInstruction extends Instruction {
 
     protected Expression expression;
@@ -23,7 +26,7 @@ public class PrintInstruction extends Instruction {
 
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_print, null);
-        expression.layout(inflater, layout);
+        expression.layout(layout);
         return layout;
     }
 
@@ -34,15 +37,6 @@ public class PrintInstruction extends Instruction {
         String rhs = expression.rhsText.getText().toString();
         expression = ExpressionMaker.generateExpression(type, lhs, rhs);
         instruction = expression.toString();
-    }
-
-    public void parse(String line) {
-        try {
-            expression = ExpressionMaker.generateExpression(line);
-            instruction = expression.toString();
-        } catch (ExpressionParseException e) {
-            System.out.print(e.getMessage());
-        }
     }
 
     @Override

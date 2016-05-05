@@ -1,6 +1,5 @@
 package com.srjengbro.scratchbasic;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,7 +10,10 @@ import android.widget.TextView;
 import com.srjengbro.scratchbasic.operators.NoOp;
 import com.srjengbro.scratchbasic.operators.Operator;
 
-
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public class Expression implements java.io.Serializable {
 
     public String getLhs() {
@@ -92,10 +94,6 @@ public class Expression implements java.io.Serializable {
 
     }
 
-    public void parse() {
-        return;
-    }
-
 
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -109,7 +107,7 @@ public class Expression implements java.io.Serializable {
         return s.toString();
     }
 
-    public void layout(LayoutInflater inflator, View layout) {
+    public void layout(View layout) {
 
         lhsText = (EditText) layout.findViewById(R.id.lhs_text);
         rhsText = (EditText) layout.findViewById(R.id.rhs_text);

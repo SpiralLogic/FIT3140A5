@@ -3,10 +3,13 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
-
 import com.srjengbro.scratchbasic.VariableStore;
 
 
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public abstract class Instruction implements java.io.Serializable {
     protected String name = "UNKNOWN";
 
@@ -27,7 +30,6 @@ public abstract class Instruction implements java.io.Serializable {
 
     public abstract void update();
 
-    public abstract void parse(String line);
 
     public abstract String run(VariableStore variableStore) throws InstructionRunException;
 

@@ -7,7 +7,10 @@ import android.widget.EditText;
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableStore;
 
-
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public class RemInstruction extends Instruction {
     protected transient EditText remText;
 
@@ -28,11 +31,9 @@ public class RemInstruction extends Instruction {
 
     }
 
-    @Override
-    public void parse(String line) {
-        instruction = line;
+    public void update(String instruction) {
+        this.instruction = instruction;
     }
-
     @Override
     public String run(VariableStore variableStore) throws InstructionRunException {
         return null;

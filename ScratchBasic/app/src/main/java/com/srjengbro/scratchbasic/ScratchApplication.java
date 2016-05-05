@@ -5,10 +5,17 @@ import com.srjengbro.scratchbasic.instructions.Instruction;
 import java.util.ArrayList;
 
 /**
- * @author: Sol Jennings 26356015
- * @date: 2/05/16
+ * @author      Sol Jennings
+ * @description
  */
 public class ScratchApplication extends Application {
-    protected ArrayList<Instruction> instructions = new ArrayList<>();
-    protected VariableStore variableStore = new VariableStore();
+
+    private ScratchBasicContext scratchBasicContext = new ScratchBasicContext();
+
+    public ScratchBasicContext getSratchBasicContext() {
+        return this.scratchBasicContext;
+    }
+    public void setScratchBasicContext(ScratchBasicContext scratchBasicContext) {
+        this.scratchBasicContext = scratchBasicContext;
+    }
 }

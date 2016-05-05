@@ -8,11 +8,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.srjengbro.scratchbasic.instructions.*;
-
 import java.util.ArrayList;
-
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public class RunActivity extends AppCompatActivity {
     private ArrayList<Instruction> instructions;
     private VariableStore variableStore;
@@ -30,8 +31,8 @@ public class RunActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
         ScratchApplication app = (ScratchApplication) getApplication();
-        instructions = app.instructions;
-        variableStore = app.variableStore;
+        instructions = app.getSratchBasicContext().getInstructions();
+        variableStore = new VariableStore();
         outputText = (TextView) findViewById(R.id.output_text);
         outputText.setMovementMethod(new ScrollingMovementMethod());
         startButton = (Button) findViewById(R.id.start_button);
@@ -151,6 +152,7 @@ public class RunActivity extends AppCompatActivity {
     }
 
     private void backButton() {
+        stop();
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
     }

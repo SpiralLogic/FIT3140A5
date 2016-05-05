@@ -10,7 +10,10 @@ import com.srjengbro.scratchbasic.ExpressionParseException;
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
-
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public class LetInstruction extends Instruction {
 
     private transient EditText letVariableText;
@@ -29,7 +32,7 @@ public class LetInstruction extends Instruction {
         View layout = inflater.inflate(R.layout.inst_let, null);
         letVariableText = (EditText) layout.findViewById(R.id.let_variable);
         letVariableText.setText(variable);
-        expression.layout(inflater, layout);
+        expression.layout(layout);
         return layout;
     }
 
@@ -41,24 +44,6 @@ public class LetInstruction extends Instruction {
         String rhs = expression.rhsText.getText().toString();
         expression = ExpressionMaker.generateExpression(type, lhs, rhs);
         instruction = variable + " = " + expression.toString();
-    }
-
-    @Override
-    public void parse(String line) {
-
-    }
-
-    protected void parse(String var, String exp) {
-
-        String[] tokens = var.split("\\s+"); // Split on whitespace
-        variable = tokens[0];
-
-        try {
-            expression = ExpressionMaker.generateExpression(exp);
-            instruction = variable + " = " + expression.toString();
-        } catch (ExpressionParseException e) {
-            System.out.print(e.getMessage());
-        }
     }
 
     @Override
