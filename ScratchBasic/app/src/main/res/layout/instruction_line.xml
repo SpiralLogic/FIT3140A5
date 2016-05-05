@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 The layout template for an instructionText line. Eventually this will include a spinner for selecting
 an instructionText.
 
@@ -10,58 +9,62 @@ an instructionText.
     android:layout_gravity="center_horizontal">
 
     <TextView
+        android:id="@+id/line_number"
         android:layout_width="30dp"
         android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="1"
-        android:id="@+id/line_number"
         android:layout_alignBottom="@+id/instruction"
         android:layout_alignParentStart="true"
-        android:textAlignment="center"
+        android:gravity="center"
         android:paddingTop="11dp"
-        android:gravity="center" />
+        android:text="1"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <Spinner
+        android:id="@+id/spn_command"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:id="@+id/spn_command"
-        android:entries="@array/command_list"
-        android:spinnerMode="dialog"
         android:layout_toEndOf="@+id/line_number"
-        android:textAlignment="center"
-        android:gravity="left" />
+        android:entries="@array/command_list"
+        android:gravity="left"
+        android:spinnerMode="dialog"
+        android:textAlignment="center" />
+
     <TextView
+        android:id="@+id/instruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/instruction"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/edit_button"
-        android:layout_toEndOf="@+id/spn_command"
         android:layout_alignBottom="@+id/edit_button"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/spn_command"
+        android:layout_toStartOf="@+id/edit_button"
         android:gravity="center_vertical|left" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
         android:id="@+id/edit_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_margin="0dp"
         android:layout_toStartOf="@+id/add_button"
-        android:layout_margin="0dp" />
+        android:text="Edit" />
+
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
         android:id="@+id/add_button"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/remove_button" />
-    <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-"
-        android:id="@+id/remove_button"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toStartOf="@+id/remove_button"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/remove_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="-" />
 </RelativeLayout>

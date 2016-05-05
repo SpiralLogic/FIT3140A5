@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/if_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/expression"
-        android:id="@+id/if_label"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="30sp" />
-    <include layout="@layout/expression"/>
 
-    <include layout="@layout/inst_goto"/>
+    <include layout="@layout/expression" />
+
+    <include layout="@layout/inst_goto" />
 
 </LinearLayout>

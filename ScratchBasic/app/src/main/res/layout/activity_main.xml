@@ -10,21 +10,21 @@
     tools:context="com.srjengbro.scratchbasic.MainActivity">
 
     <Button
+        android:id="@+id/new_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_program"
-        android:id="@+id/new_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="146dp" />
+        android:layout_marginTop="146dp"
+        android:text="@string/new_program" />
 
     <Button
+        android:id="@+id/load_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/load_program"
-        android:id="@+id/load_button"
         android:layout_below="@+id/new_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/load_program" />
 
 
 </RelativeLayout>
