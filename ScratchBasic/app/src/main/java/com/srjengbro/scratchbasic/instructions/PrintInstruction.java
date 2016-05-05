@@ -12,18 +12,28 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description prints an expression result to the output
  */
 public class PrintInstruction extends Instruction {
 
+    /**
+     * expression to evaluate
+     */
     protected Expression expression;
 
 
+    /**
+     * constructor
+     */
     public PrintInstruction() {
         name = "PRINT";
         expression = new Expression();
     }
 
+    /**
+     * @param inflater inflater
+     * @return get layout for the instruction
+     */
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_print, null);
         expression.layout(layout);
@@ -31,6 +41,9 @@ public class PrintInstruction extends Instruction {
     }
 
 
+    /**
+     * update after edit
+     */
     public void update() {
         String type = expression.opSpinner.getSelectedItem().toString();
         String lhs = expression.lhsText.getText().toString();
@@ -39,6 +52,11 @@ public class PrintInstruction extends Instruction {
         instruction = expression.toString();
     }
 
+    /**
+     * @param variableStore variables
+     * @return execute the instruction
+     * @throws InstructionRunException
+     */
     @Override
     public String run(VariableStore variableStore) throws InstructionRunException {
         if (expression == null) {

@@ -7,9 +7,17 @@ import com.srjengbro.scratchbasic.operators.Minus;
 import com.srjengbro.scratchbasic.operators.Operator;
 import com.srjengbro.scratchbasic.operators.Plus;
 
-
+/**
+ * @author      Sol Jennings
+ * @description Creates an expression object
+ */
 public class ExpressionMaker {
 
+    /**
+     * @param expressionString
+     * @return
+     * @throws ExpressionParseException
+     */
     public static Expression generateExpression(String expressionString) throws ExpressionParseException {
         String[] tokens = expressionString.split("\\s+"); // Split on whitespace
         String type;
@@ -25,6 +33,12 @@ public class ExpressionMaker {
         return generateExpression(type, lhs, rhs);
     }
 
+    /**
+     * @param type
+     * @param lhs
+     * @param rhs
+     * @return
+     */
     public static Expression generateExpression(String type, String lhs, String rhs) {
         Operator op;
         switch (type) {

@@ -9,16 +9,26 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description Remark instruction, acts as a way to comment code
  */
 public class RemInstruction extends Instruction {
+    /**
+     * textbox for the instruction
+     */
     protected transient EditText remText;
 
+    /**
+     * constructor
+     */
     public RemInstruction() {
         name = "REM";
         instruction = "This is just a comment!";
     }
 
+    /**
+     * @param inflater inflater
+     * @return get layout for the instruction
+     */
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_rem, null);
         remText = (EditText) layout.findViewById(R.id.rem_text);
@@ -26,14 +36,26 @@ public class RemInstruction extends Instruction {
         return layout;
     }
 
+    /**
+     * update after edit
+     */
     public void update() {
         instruction = remText.getText().toString();
 
     }
 
+    /**
+     * @param instruction allow instruction to be aded by string
+     */
     public void update(String instruction) {
         this.instruction = instruction;
     }
+
+    /**
+     * @param variableStore variables
+     * @return execute the instruction
+     * @throws InstructionRunException
+     */
     @Override
     public String run(VariableStore variableStore) throws InstructionRunException {
         return null;

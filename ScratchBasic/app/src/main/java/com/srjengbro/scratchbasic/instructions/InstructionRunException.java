@@ -1,7 +1,8 @@
 package com.srjengbro.scratchbasic.instructions;
 
 /**
- * Created by Complex on 1/05/2016.
+ * @author      Sol Jennings
+ * @description Exception for when an instruction has an error
  */
 public class InstructionRunException extends Exception {
     public InstructionRunException() {

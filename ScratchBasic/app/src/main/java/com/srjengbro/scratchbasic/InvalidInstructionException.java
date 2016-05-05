@@ -1,8 +1,8 @@
 package com.srjengbro.scratchbasic;
 
 /**
- * @author: Sol Jennings 26356015
- * @date: 3/05/16
+ * @author      Sol Jennings
+ * @description
  */
 public class InvalidInstructionException extends Exception {
 

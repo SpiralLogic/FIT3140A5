@@ -14,7 +14,7 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * @author      Sol Jennings
- * @description code for the if instruciton, if the expression is 1 then it will goto the line
+ * @description code for the if instruction, if the expression is 1 then it will goto the line
  */
 public class IfInstruction extends Instruction {
 

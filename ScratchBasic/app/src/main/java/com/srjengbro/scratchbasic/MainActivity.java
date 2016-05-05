@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
     private void newProgram() {
         ScratchApplication app = (ScratchApplication) getApplication();
         app.getSratchBasicContext().newProgram();
@@ -59,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    /**
+     *
+     */
     private void loadProgram() {
 
         FileInputStream fileIn;

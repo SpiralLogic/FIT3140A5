@@ -1,6 +1,9 @@
 package com.srjengbro.scratchbasic;
 
-
+/**
+ * @author      Sol Jennings
+ * @description Thrown when an expression creation fails
+ */
 public class ExpressionParseException extends Exception {
     public ExpressionParseException() {
     }

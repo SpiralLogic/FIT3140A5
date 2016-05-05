@@ -7,10 +7,18 @@ import com.srjengbro.scratchbasic.instructions.LetInstruction;
 import com.srjengbro.scratchbasic.instructions.PrintInstruction;
 import com.srjengbro.scratchbasic.instructions.RemInstruction;
 
-
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public class InstructionMaker {
 
 
+    /**
+     * @param instructionText
+     * @return
+     * @throws Exception
+     */
     public static Instruction generateInstruction(String instructionText) throws Exception {
 
         switch (instructionText) {

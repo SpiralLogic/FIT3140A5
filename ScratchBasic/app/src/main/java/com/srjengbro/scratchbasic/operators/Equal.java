@@ -2,15 +2,26 @@ package com.srjengbro.scratchbasic.operators;
 
 import android.util.Log;
 
-
+/**
+ * @author      Sol Jennings
+ * @description Equal operator, tests if 2 things are equal
+ */
 public class Equal extends Operator {
 
+    /**
+     * constructor
+     */
     public Equal() {
         name = "Equal";
         symbol = "==";
 
     }
 
+    /**
+     * @param lhs LHS operand
+     * @param rhs RHS operand
+     * @return 1 if things are equal 0 otherwise
+     */
     @Override
     public Integer evaluate(Integer lhs, Integer rhs) {
         Log.d("LHS",lhs.toString());

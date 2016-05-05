@@ -16,10 +16,22 @@ import com.srjengbro.scratchbasic.VariableStore;
  */
 public class LetInstruction extends Instruction {
 
+    /**
+     * text box for instruction
+     */
     private transient EditText letVariableText;
+    /**
+     * the variable whos value will change
+     */
     private String variable;
+    /**
+     * The expression of the instruction
+     */
     private Expression expression;
 
+    /**
+     * constructor
+     */
     public LetInstruction() {
         name = "LET";
         expression = new Expression();
@@ -27,6 +39,10 @@ public class LetInstruction extends Instruction {
     }
 
 
+    /**
+     * @param inflater inflater
+     * @return the layout for the instruction
+     */
     @Override
     public View getLayout(LayoutInflater inflater) {
         View layout = inflater.inflate(R.layout.inst_let, null);
@@ -36,6 +52,9 @@ public class LetInstruction extends Instruction {
         return layout;
     }
 
+    /**
+     * update after edit
+     */
     @Override
     public void update() {
         variable = letVariableText.getText().toString();
@@ -46,6 +65,11 @@ public class LetInstruction extends Instruction {
         instruction = variable + " = " + expression.toString();
     }
 
+    /**
+     * @param variableStore variables
+     * @return execture and return the result
+     * @throws InstructionRunException
+     */
     @Override
     public String run(VariableStore variableStore) throws InstructionRunException {
         if (expression == null) {

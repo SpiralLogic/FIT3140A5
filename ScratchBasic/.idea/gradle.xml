@@ -8,14 +8,14 @@
         <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.10" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$USER_HOME$/Documents/Uni/FIT3140/Assignment 5/FIT3140A5/ScratchBasic" />
+            <option value="$USER_HOME$/Documents/Uni/FIT3140/Assignment 5/FIT3140A5/ScratchBasic/app" />
           </set>
         </option>
         <option name="myModules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$USER_HOME$/Documents/Uni/FIT3140/Assignment 5/FIT3140A5/ScratchBasic" />
+            <option value="$USER_HOME$/Documents/Uni/FIT3140/Assignment 5/FIT3140A5/ScratchBasic/app" />
           </set>
         </option>
       </GradleProjectSettings>

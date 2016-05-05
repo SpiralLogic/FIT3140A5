@@ -16,27 +16,62 @@ import com.srjengbro.scratchbasic.operators.Operator;
  */
 public class Expression implements java.io.Serializable {
 
+    /**
+     * @return get LHS of the expression
+     */
     public String getLhs() {
         return lhs;
     }
 
+    /**
+     * lhs of the expression
+     */
     private String lhs;
 
+    /**
+     * @return get the rhs of the expression
+     */
     public String getRhs() {
         return rhs;
     }
 
+    /**
+     * @return get the expressions operator
+     */
     public Operator getOperator() {
         return operator;
     }
 
+    /**
+     * rhs of the instruction
+     */
     private String rhs;
+    /**
+     * operator of the instruction defaults to no operation
+     */
     private Operator operator = new NoOp();
+    /**
+     * lhs textbox
+     */
     public transient EditText lhsText;
+    /**
+     * operator spinner
+     */
     public transient Spinner opSpinner;
+    /**
+     * rhs textbox
+     */
     public transient EditText rhsText;
+    /**
+     * rhs label
+     */
     public transient TextView rhsLabel;
 
+    /**
+     * @param op
+     * @param lhs
+     * @param rhs
+     */
     public Expression(Operator op, String lhs, String rhs) {
 
         if (rhs.length() > 0) {
@@ -47,18 +82,30 @@ public class Expression implements java.io.Serializable {
 
     }
 
+    /**
+     * @param lhs
+     */
     public Expression(String lhs) {
         this.lhs = lhs;
         operator = new NoOp();
         this.rhs = null;
     }
 
+    /**
+     *
+     */
     public Expression() {
         operator = new NoOp();
         this.lhs = null;
         this.rhs = null;
     }
 
+    /**
+     * @param variableStore variables
+     * @return evaluates the expression
+     * @throws VariableDoesNotExistException
+     * @throws ExpressionParseException
+     */
     public Integer evaluate(VariableStore variableStore) throws VariableDoesNotExistException, ExpressionParseException {
         Integer lhsInt;
         Integer rhsInt;
@@ -95,6 +142,9 @@ public class Expression implements java.io.Serializable {
     }
 
 
+    /**
+     * @return represents expression as a string
+     */
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append(lhs);
@@ -107,6 +157,9 @@ public class Expression implements java.io.Serializable {
         return s.toString();
     }
 
+    /**
+     * @param layout
+     */
     public void layout(View layout) {
 
         lhsText = (EditText) layout.findViewById(R.id.lhs_text);
@@ -120,6 +173,9 @@ public class Expression implements java.io.Serializable {
         opSpinner.setSelection(oppos);
     }
 
+    /**
+     * @return
+     */
     private AdapterView.OnItemSelectedListener onOperatorSelect() {
         return new AdapterView.OnItemSelectedListener() {
             @Override

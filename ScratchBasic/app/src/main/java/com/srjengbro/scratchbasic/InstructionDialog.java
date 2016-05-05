@@ -13,7 +13,10 @@ import android.widget.Spinner;
 
 import com.srjengbro.scratchbasic.instructions.Instruction;
 
-
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public class InstructionDialog extends DialogFragment {
 
     /**

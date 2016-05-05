@@ -1,6 +1,9 @@
 package com.srjengbro.scratchbasic;
 
-
+/**
+ * @author      Sol Jennings
+ * @description
+ */
 public class VariableDoesNotExistException extends Throwable {
     public VariableDoesNotExistException() {
     }

@@ -15,17 +15,55 @@ import java.util.ArrayList;
  * @description
  */
 public class RunActivity extends AppCompatActivity {
+    /**
+     *
+     */
     private ArrayList<Instruction> instructions;
+    /**
+     *
+     */
     private VariableStore variableStore;
+    /**
+     *
+     */
     private Boolean running = false;
+    /**
+     *
+     */
+    private Handler mHandler = new Handler();
+    /**
+     *
+     */
+
     private TextView outputText;
+    /**
+     *
+     */
     private TextView lineText;
+    /**
+     *
+     */
     private Integer nextLine = 0;
+    /**
+     *
+     */
     private Button startButton;
+    /**
+     *
+     */
     private Button stopButton;
+    /**
+     *
+     */
     private Button pauseButton;
+    /**
+     *
+     */
     private Button backButton;
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,8 +116,10 @@ public class RunActivity extends AppCompatActivity {
 
     }
 
-    private Handler mHandler = new Handler();
 
+    /**
+     *
+     */
     private void pause() {
         if (running) {
             running = false;
@@ -91,6 +131,9 @@ public class RunActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     */
     private void stop() {
         running = false;
         nextLine = 0;
@@ -100,6 +143,9 @@ public class RunActivity extends AppCompatActivity {
         variableStore.clear();
     }
 
+    /**
+     *
+     */
     private void run() {
         running = true;
         runNextInstruction();
@@ -109,6 +155,9 @@ public class RunActivity extends AppCompatActivity {
         pauseButton.setText(R.string.pause);
     }
 
+    /**
+     *
+     */
     private void runNextInstruction() {
         if (!running) {
             return;
@@ -141,16 +190,25 @@ public class RunActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * @param line
+     */
     private void updateCommandOutput(String line) {
         if (line != null && line.length() > 0) {
             outputText.append("\n" + line);
         }
     }
 
+    /**
+     *
+     */
     private void clearCommandOutput() {
         outputText.setText("");
     }
 
+    /**
+     *
+     */
     private void backButton() {
         stop();
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));

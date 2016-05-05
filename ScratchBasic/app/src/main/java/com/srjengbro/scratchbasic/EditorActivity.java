@@ -15,14 +15,26 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 /**
  * @author      Sol Jennings
- * @description
+ * @description Activity for editing a program
  */
 public class EditorActivity extends AppCompatActivity {
 
+    /**
+     * the set of instructions of the program
+     */
     private ArrayList<Instruction> instructions;
+    /**
+     * listview to show the instructions on the screen
+     */
     private ListView instructionListView;
+    /**
+     * adapter for the instructions
+     */
     private InstructionAdapter instructionAdapter;
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +52,7 @@ public class EditorActivity extends AppCompatActivity {
             runButton.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View v) {
-                                                 Intent i = new Intent(getApplicationContext(), RunActivity.class);
-                                                 startActivity(i);
+                                                 run();
                                              }
                                          }
             );
@@ -51,20 +62,7 @@ public class EditorActivity extends AppCompatActivity {
             saveButton.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View v) {
-                                                  try {
-                                                      FileOutputStream fos = new FileOutputStream(getFilesDir() + "MyData.ser");
-                                                      // Serialize data object to a file
-                                                      ObjectOutputStream out = new ObjectOutputStream(fos);
-                                                      out.writeObject(((ScratchApplication) getApplication()).getSratchBasicContext());
-                                                      out.close();
-                                                      fos.close();
-                                                      Toast.makeText(v.getContext(), "File Saved", Toast.LENGTH_LONG).show();
-
-                                                  } catch (IOException e) {
-                                                      e.printStackTrace();
-
-                                                      Toast.makeText(v.getContext(), "Save Failed", Toast.LENGTH_LONG).show();
-                                                  }
+                                                  save();
 
                                               }
                                           }
@@ -73,12 +71,49 @@ public class EditorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
+    private void run() {
+        Intent i = new Intent(getApplicationContext(), RunActivity.class);
+        startActivity(i);
+    }
+
+    /**
+     *
+     */
+    private void save() {
+        try {
+            FileOutputStream fos = new FileOutputStream(getFilesDir() + "MyData.ser");
+            // Serialize data object to a file
+            ObjectOutputStream out = new ObjectOutputStream(fos);
+            out.writeObject(((ScratchApplication) getApplication()).getSratchBasicContext());
+            out.close();
+            fos.close();
+            Toast.makeText(getApplicationContext(), "File Saved", Toast.LENGTH_LONG).show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            Toast.makeText(getApplicationContext(), "Save Failed", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     *
+     */
     @Override
     protected void onResume() {
         super.onResume();
         instructionAdapter.notifyDataSetChanged();
 
     }
+
+    /**
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
