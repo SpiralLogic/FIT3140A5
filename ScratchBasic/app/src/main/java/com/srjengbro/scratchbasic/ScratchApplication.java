@@ -10,11 +10,21 @@ import java.util.ArrayList;
  */
 public class ScratchApplication extends Application {
 
+    /**
+     *
+     */
     private ScratchBasicContext scratchBasicContext = new ScratchBasicContext();
 
+    /**
+     * @return
+     */
     public ScratchBasicContext getSratchBasicContext() {
         return this.scratchBasicContext;
     }
+
+    /**
+     * @param scratchBasicContext
+     */
     public void setScratchBasicContext(ScratchBasicContext scratchBasicContext) {
         this.scratchBasicContext = scratchBasicContext;
     }
