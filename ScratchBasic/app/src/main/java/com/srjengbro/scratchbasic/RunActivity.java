@@ -69,7 +69,7 @@ public class RunActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
         ScratchApplication app = (ScratchApplication) getApplication();
-        instructions = app.getSratchBasicContext().getInstructions();
+        instructions = app.getScratchBasicContext().getInstructions();
         variableStore = new VariableStore();
         outputText = (TextView) findViewById(R.id.output_text);
         outputText.setMovementMethod(new ScrollingMovementMethod());

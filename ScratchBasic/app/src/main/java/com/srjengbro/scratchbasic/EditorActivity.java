@@ -6,12 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.srjengbro.scratchbasic.instructions.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 /**
  * @author      Sol Jennings
@@ -32,6 +31,8 @@ public class EditorActivity extends AppCompatActivity {
      */
     private InstructionAdapter instructionAdapter;
 
+    private EditText filenameText;
+    private EditText authorText;
     /**
      * @param savedInstanceState
      */
@@ -41,12 +42,17 @@ public class EditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editor);
 
         ScratchApplication app = (ScratchApplication) getApplication();
-        instructions = app.getSratchBasicContext().getInstructions();
+        instructions = app.getScratchBasicContext().getInstructions();
 
 
         instructionListView = (ListView) findViewById(R.id.instruction_listView);
         instructionAdapter = new InstructionAdapter(instructions, this);
         instructionListView.setAdapter(instructionAdapter);
+
+        filenameText = (EditText) findViewById(R.id.filename_text);
+        authorText = (EditText) findViewById(R.id.author_text);
+        authorText.setText(app.getScratchBasicContext().getAuthor());
+        filenameText.setText(app.getScratchBasicContext().getFilename());
         Button runButton = (Button) findViewById(R.id.run_button);
         if (runButton != null) {
             runButton.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +68,7 @@ public class EditorActivity extends AppCompatActivity {
             saveButton.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View v) {
-                                                  save();
+                                                saveProgram();
 
                                               }
                                           }
@@ -82,22 +88,14 @@ public class EditorActivity extends AppCompatActivity {
     /**
      *
      */
-    private void save() {
-        try {
-            FileOutputStream fos = new FileOutputStream(getFilesDir() + "MyData.ser");
-            // Serialize data object to a file
-            ObjectOutputStream out = new ObjectOutputStream(fos);
-            out.writeObject(((ScratchApplication) getApplication()).getSratchBasicContext());
-            out.close();
-            fos.close();
-            Toast.makeText(getApplicationContext(), "File Saved", Toast.LENGTH_LONG).show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-
-            Toast.makeText(getApplicationContext(), "Save Failed", Toast.LENGTH_LONG).show();
-        }
+    private void saveProgram() {
+        ScratchApplication app =((ScratchApplication) getApplication());
+        app.getScratchBasicContext().setFilename(filenameText.getText().toString());
+        app.getScratchBasicContext().setAuthor(authorText.getText().toString());
+        app.saveProgram();
     }
+
+
 
     /**
      *
@@ -105,8 +103,11 @@ public class EditorActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        ScratchApplication app =((ScratchApplication) getApplication());
         instructionAdapter.notifyDataSetChanged();
+        authorText.setText(app.getScratchBasicContext().getAuthor());
 
+        filenameText.setText(app.getScratchBasicContext().getFilename());
     }
 
     /**

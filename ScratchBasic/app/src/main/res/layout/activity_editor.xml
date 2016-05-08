@@ -12,11 +12,11 @@
     <ListView
         android:id="@+id/instruction_listView"
         android:layout_width="match_parent"
-        android:layout_height="409dp"
-        android:layout_above="@+id/run_button"
+        android:layout_height="100dp"
         android:layout_alignParentStart="false"
         android:layout_alignParentTop="true"
-        android:descendantFocusability="afterDescendants" />
+        android:descendantFocusability="afterDescendants"
+        android:layout_above="@+id/author_text" />
 
     <Button
         android:id="@+id/run_button"
@@ -28,19 +28,6 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/run" />
 
-    <TextView
-        android:id="@+id/command_output"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/instruction_listView"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="New Text"
-        android:visibility="invisible" />
-
     <Button
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
@@ -49,6 +36,52 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="@string/save" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/filename_text"
+        android:layout_above="@+id/save_button"
+        android:layout_alignRight="@+id/instruction_listView"
+        android:layout_alignEnd="@+id/instruction_listView"
+        android:layout_toRightOf="@+id/save_button"
+        android:layout_toEndOf="@+id/save_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:text="Filename:"
+        android:id="@+id/filename_label"
+        android:layout_alignBottom="@+id/filename_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/filename_text"
+        android:layout_toStartOf="@+id/filename_text"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/author_text" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/author_text"
+        android:layout_above="@+id/filename_text"
+        android:layout_alignRight="@+id/filename_text"
+        android:layout_alignEnd="@+id/filename_text"
+        android:layout_toRightOf="@+id/filename_label"
+        android:layout_toEndOf="@+id/filename_label" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author:"
+        android:id="@+id/author_label"
+        android:gravity="center_vertical"
+        android:layout_above="@+id/filename_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/filename_text"
+        android:layout_toStartOf="@+id/filename_text"
+        android:layout_alignTop="@+id/author_text" />
 
 
 </RelativeLayout>

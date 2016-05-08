@@ -1,23 +1,22 @@
 package com.srjengbro.scratchbasic;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import android.widget.EditText;
 
 /**
- * @author      Sol Jennings
+ * @author Sol Jennings
  * @description
  */
 public class MainActivity extends AppCompatActivity {
+
+    private String filename;
 
     /**
      * @param savedInstanceState something to do with android
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void newProgram() {
         ScratchApplication app = (ScratchApplication) getApplication();
-        app.getSratchBasicContext().newProgram();
+        app.getScratchBasicContext().newProgram();
         Intent i = new Intent(getApplicationContext(), EditorActivity.class);
         startActivity(i);
     }
@@ -66,29 +65,34 @@ public class MainActivity extends AppCompatActivity {
      *
      */
     private void loadProgram() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Filename to load");
+        // Set up the input
+        final EditText input = new EditText(this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
 
-        FileInputStream fileIn;
-        ObjectInputStream in;
-        try {
-            fileIn = new FileInputStream(getFilesDir() + "MyData.ser");
-            in = new ObjectInputStream(fileIn);
-            ScratchApplication app = (ScratchApplication) getApplication();
-            app.setScratchBasicContext((ScratchBasicContext) in.readObject());
-            in.close();
-            fileIn.close();
-            Intent i = new Intent(getApplicationContext(), EditorActivity.class);
-            startActivity(i);
-        } catch (FileNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, no save program", Toast.LENGTH_LONG).show();
-        } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, cannot read file", Toast.LENGTH_LONG).show();
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                filename = input.getText().toString();
+                ScratchApplication app = (ScratchApplication) getApplication();
+                if (app.loadProgram(filename)) {
+                    Intent i = new Intent(getApplicationContext(), EditorActivity.class);
+                    startActivity(i);
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
 
-        } catch (ClassNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, critical error", Toast.LENGTH_LONG).show();
+        builder.show();
 
-        } catch (ClassCastException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, invalid file data", Toast.LENGTH_LONG).show();
-
-        }
     }
 }
