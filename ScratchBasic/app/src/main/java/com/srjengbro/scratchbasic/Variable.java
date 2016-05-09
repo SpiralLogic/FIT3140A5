@@ -2,7 +2,8 @@ package com.srjengbro.scratchbasic;
 
 /**
  * @author      Sol Jennings
- * @description object for storing a single variable
+ * @description Class for storing a single variable. Variables are stored within a
+ *              Variable store object.
  */
 public class Variable {
     /**

@@ -12,7 +12,10 @@ import com.srjengbro.scratchbasic.operators.Operator;
 
 /**
  * @author      Sol Jennings
- * @description Stores an expression that can be evaluated
+ * @description Expression class Stores an expression that can be evaluated. An object holds the
+ *              LHS, RHS an operator of an expression. The lhs and rhs can be variables or
+ *              integer values. Handles the evaluation of an expression at run time
+ *
  */
 public class Expression implements java.io.Serializable {
 

@@ -3,7 +3,8 @@ package com.srjengbro.scratchbasic.operators;
 
 /**
  * @author      Sol Jennings
- * @description tests if 1 things is bigger than the other
+ * @description tests if 1 things is bigger than the other. Inherits from the Operator abstract
+ *              class and handles the evaluation of any greater than operations
  */
 public class GreaterThan extends Operator {
 

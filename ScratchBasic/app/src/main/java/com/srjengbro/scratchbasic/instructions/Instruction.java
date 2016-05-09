@@ -8,7 +8,9 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * @author      Sol Jennings
- * @description abstract class for all instructions
+ * @description This is the main abstract Instruction class for any scratch basic instructions
+ *              All instructions must inherit from this class and it dictates which methods
+ *              must be implemented by an instruction
  */
 public abstract class Instruction implements java.io.Serializable {
     /**

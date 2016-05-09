@@ -14,7 +14,11 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * @author      Sol Jennings
- * @description code for the if instruction, if the expression is 1 then it will goto the line
+ * @description GotoInstruction This class allows for the creation of a IF GOTO instruction
+ *              It allows an instruction to change the next line to be executed in a ScratchBasic
+ *              program based on the evaluation of an expression. It inherits from the instruction
+ *              class. It handles the layout, running,
+ *              and processing of any IF GOTO instruction
  */
 public class IfInstruction extends Instruction {
 

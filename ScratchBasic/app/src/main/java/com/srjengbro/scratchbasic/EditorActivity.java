@@ -14,7 +14,10 @@ import com.srjengbro.scratchbasic.instructions.*;
 import java.util.ArrayList;
 /**
  * @author      Sol Jennings
- * @description Activity for editing a program
+ * @description Activity Class for editing a program. handles the GUI for the editing activity
+ *              on an android device. Allows the addition and deletion of instructions
+ *              from a scratch basic program. Also opens a dialogue for editing a
+ *              scratch basic instruction
  */
 public class EditorActivity extends AppCompatActivity {
 
@@ -98,7 +101,7 @@ public class EditorActivity extends AppCompatActivity {
 
 
     /**
-     * resumt the activity, make sure that the instructions and the metadata are up to date
+     * resumes the activity, make sure that the instructions and the metadata are up to date
      */
     @Override
     protected void onResume() {

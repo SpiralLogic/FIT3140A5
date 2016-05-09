@@ -8,13 +8,23 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.srjengbro.scratchbasic.instructions.*;
+
 import java.util.ArrayList;
+
 /**
- * @author      Sol Jennings
- * @description Run a program activity. Allows a program to be run and the output observed
+ * @author Sol Jennings
+ * @description Run a program activity. Allows a program to be run and the output observed.
+ * A program can be in 3 states, stopped paused or running.  Each instruction is
+ * executed after a time delay to ensure that the UI thread isn't locked.
  */
 public class RunActivity extends AppCompatActivity {
+
+    /**
+     * constant for the time between instruction evaluations
+     */
+    private int TIME_BETWEEN_INSTRUCTIONS = 500;
     /**
      * list of instructions to run
      */
@@ -63,6 +73,7 @@ public class RunActivity extends AppCompatActivity {
 
     /**
      * Create the activity
+     *
      * @param savedInstanceState
      */
     @Override
@@ -145,7 +156,7 @@ public class RunActivity extends AppCompatActivity {
     }
 
     /**
-     *handler for run button being pression
+     * handler for run button being pression
      */
     private void run() {
         running = true;
@@ -186,7 +197,7 @@ public class RunActivity extends AppCompatActivity {
                 public void run() {
                     runNextInstruction();
                 }
-            }, 500);
+            }, TIME_BETWEEN_INSTRUCTIONS);
         }
 
     }

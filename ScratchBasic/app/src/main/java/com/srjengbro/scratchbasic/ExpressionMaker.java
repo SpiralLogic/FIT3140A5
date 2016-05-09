@@ -9,7 +9,9 @@ import com.srjengbro.scratchbasic.operators.Plus;
 
 /**
  * @author      Sol Jennings
- * @description Creates an expression object
+ * @description Expression factory. Creates an expression object an returns that object
+ *              An expression with just a LHS will default to using a NoOp operator for its
+ *              operator
  */
 public class ExpressionMaker {
 

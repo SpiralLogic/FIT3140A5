@@ -9,7 +9,9 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * @author      Sol Jennings
- * @description Remark instruction, acts as a way to comment code
+ * @description RemInstruction This class allows for the creation of a REM instruction
+ *              It allows an instruction to be just a remark. It inherits from the instruction
+ *              class.It handles the layout, running, and processing of any REM instruction.
  */
 public class RemInstruction extends Instruction {
     /**

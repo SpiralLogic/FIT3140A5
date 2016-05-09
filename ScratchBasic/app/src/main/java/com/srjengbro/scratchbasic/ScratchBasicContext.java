@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 /**
  * @author      Sol Jennings
- * @description The context of the program, stores the metadata and instruction
+ * @description The context of the program, stores the metadata and instructions of a program.
+ *              can be serialized so that a program can be saved and loaded.
  */
 public class ScratchBasicContext implements Serializable {
 

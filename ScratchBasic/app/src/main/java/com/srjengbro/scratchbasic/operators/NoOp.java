@@ -3,6 +3,8 @@ package com.srjengbro.scratchbasic.operators;
 /**
  * @author      Sol Jennings
  * @description represents no operation so an expression can have just a lhs
+ *              Inherits from the Operator abstract
+ *              class and handles the evaluation of any NoOp operations
  */
 public class NoOp extends Operator {
 

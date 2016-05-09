@@ -4,8 +4,8 @@ import java.util.TreeMap;
 
 /**
  * @author      Sol Jennings
- * @description Object for storing and retrieving variables
- * only integer variables are currently allowed
+ * @description Object class for storing and retrieving variables
+ *              only integer variables are currently allowed
  */
 public class VariableStore {
     /**

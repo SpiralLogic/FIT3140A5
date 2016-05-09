@@ -11,7 +11,11 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * @author      Sol Jennings
- * @description prints an expression result to the output
+ * @description PrintInstruction This class allows for the creation of a PRINT instruction
+ *              It allows an instruction to change the print the result of an expression in a
+ *              ScratchBasic program based on the result of an expression. It inherits from the
+ *              instruction class.It handles the layout, running, and processing of any PRINT
+ *              instruction.
  */
 public class PrintInstruction extends Instruction {
 

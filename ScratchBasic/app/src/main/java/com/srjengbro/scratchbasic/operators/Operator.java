@@ -2,7 +2,8 @@ package com.srjengbro.scratchbasic.operators;
 
 /**
  * @author      Sol Jennings
- * @description abstract operator class that all operations extend from
+ * @description Abstract operator class that all operations extend from and defines the methods
+ *              than any operator must implement.
  */
 public abstract class Operator implements java.io.Serializable {
     /**
