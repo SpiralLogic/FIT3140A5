@@ -23,27 +23,27 @@ import java.util.ArrayList;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description Adapter for providing the list of instructions to the list view
  */
 public class InstructionAdapter extends BaseAdapter implements ListAdapter {
 
     /**
-     *
+     * layout inflater
      */
     private LayoutInflater inflater;
     /**
-     *
+     * instruction list
      */
     private ArrayList<Instruction> instructionList;
     /**
-     *
+     * contxt activity the adapter is for
      */
     private Context context;
 
 
     /**
-     * @param instructionList
-     * @param ctx
+     * @param instructionList instuction list
+     * @param ctx context
      */
     public InstructionAdapter(ArrayList<Instruction> instructionList, Context ctx) {
         super();
@@ -54,7 +54,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     * @return
+     * @return returns the count of the instructions
      */
     @Override
     public int getCount() {
@@ -62,8 +62,8 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     * @param position
-     * @return
+     * @param position gets a specific instruction
+     * @return the position of the instruction
      */
     @Override
     public Object getItem(int position) {
@@ -127,22 +127,22 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
 
 
     /**
-     * @return
+     * @return click listener for when an item is clicked
      */
     private View.OnClickListener onViewClick() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int[] position = new int[2];
-                v.getLocationOnScreen(position);
-                Toast.makeText(((View) v.getParent()).getContext(), ((Integer) position[1]).toString(), Toast.LENGTH_SHORT).show();
+                // int[] position = new int[2];
+                // v.getLocationOnScreen(position);
+                // Toast.makeText(((View) v.getParent()).getContext(), ((Integer) position[1]).toString(), Toast.LENGTH_SHORT).show();
 
             }
         };
     }
 
     /**
-     * @return
+     * @return command list listner for when a command is connected
      */
     private AdapterView.OnItemSelectedListener onCommandSelected() {
         return new AdapterView.OnItemSelectedListener() {
@@ -176,7 +176,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
 
 
     /**
-     * @return
+     * @return listener for when the edit button is clicked
      */
     private View.OnClickListener onEditClick() {
         return new View.OnClickListener() {
@@ -191,7 +191,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     * @param inst
+     * @param inst dialogue to edit an instruction
      */
     private void openInstructionDialog(Instruction inst) {
         final InstructionAdapter adapter = this;
@@ -202,7 +202,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     * @return
+     * @return listener for add instruction button
      */
     private View.OnClickListener onAddClick() {
         return new View.OnClickListener() {
@@ -218,7 +218,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     * @return
+     * @return listener for remove instruction button
      */
     private View.OnClickListener onRemoveClick() {
         return new View.OnClickListener() {
@@ -233,7 +233,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     * @param fromPosition
+     * @param fromPosition update all of the goto lines when a line is deleted
      */
     private void updateGotoLinesDelete(int fromPosition) {
         Instruction inst;
@@ -258,7 +258,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     * @param toPosition
+     * @param toPosition update all of the goto lines when a line is added
      */
     private void updateGotoLinesAdd(int toPosition) {
         Instruction inst;
@@ -283,7 +283,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     *
+     * static class for caching all of the instruction line views
      */
     private static class ViewHolder {
 

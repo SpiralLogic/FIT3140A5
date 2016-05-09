@@ -78,7 +78,7 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Run the program by starting the run activity
      */
     private void run() {
         Intent i = new Intent(getApplicationContext(), RunActivity.class);
@@ -86,7 +86,7 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Save the program
      */
     private void saveProgram() {
         ScratchApplication app =((ScratchApplication) getApplication());
@@ -98,7 +98,7 @@ public class EditorActivity extends AppCompatActivity {
 
 
     /**
-     *
+     * resumt the activity, make sure that the instructions and the metadata are up to date
      */
     @Override
     protected void onResume() {
@@ -113,7 +113,7 @@ public class EditorActivity extends AppCompatActivity {
     /**
      * @param keyCode
      * @param event
-     * @return
+     * @return finish this activity when the back buttn is pressed
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)

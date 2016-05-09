@@ -9,7 +9,7 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 /**
  * @author      Sol Jennings
- * @description GotoInstruction, allows proram to go to another line to execute
+ * @description GotoInstruction, allows program to go to another line to execute
  */
 public class GotoInstruction extends Instruction {
 

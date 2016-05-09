@@ -12,7 +12,7 @@ import com.srjengbro.scratchbasic.operators.Operator;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description Stores an expression that can be evaluated
  */
 public class Expression implements java.io.Serializable {
 
@@ -158,7 +158,7 @@ public class Expression implements java.io.Serializable {
     }
 
     /**
-     * @param layout
+     * @param layout the layout to add the expression to
      */
     public void layout(View layout) {
 
@@ -174,7 +174,7 @@ public class Expression implements java.io.Serializable {
     }
 
     /**
-     * @return
+     * @return event for when a user choses an operator
      */
     private AdapterView.OnItemSelectedListener onOperatorSelect() {
         return new AdapterView.OnItemSelectedListener() {

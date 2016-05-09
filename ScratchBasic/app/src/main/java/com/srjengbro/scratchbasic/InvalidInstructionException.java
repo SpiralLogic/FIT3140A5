@@ -2,7 +2,7 @@ package com.srjengbro.scratchbasic;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description instruction for when an invalid instruction was tried to be created
  */
 public class InvalidInstructionException extends Exception {
 

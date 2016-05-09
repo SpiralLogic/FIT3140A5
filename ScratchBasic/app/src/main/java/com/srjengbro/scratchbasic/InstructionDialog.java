@@ -15,28 +15,28 @@ import com.srjengbro.scratchbasic.instructions.Instruction;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description Dialogue box for editing an instruction
  */
 public class InstructionDialog extends DialogFragment {
 
     /**
-     *
+     * The instruction that is being edited
      */
     private Instruction instruction;
     /**
-     *
+     * The adapter that the dialogue runs from
      */
     private InstructionAdapter adapter;
 
     /**
-     * @param instruction
+     * @param instruction set the instruction text
      */
     public void setInstruction(Instruction instruction) {
         this.instruction = instruction;
     }
 
     /**
-     * @param adapter
+     * @param adapter set the instruction adapter
      */
     public void setAdapter(InstructionAdapter adapter) {
         this.adapter = adapter;

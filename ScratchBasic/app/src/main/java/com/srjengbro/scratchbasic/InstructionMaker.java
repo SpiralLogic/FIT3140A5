@@ -9,17 +9,17 @@ import com.srjengbro.scratchbasic.instructions.RemInstruction;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description Creates an instruction object from  a text string
  */
 public class InstructionMaker {
 
 
     /**
-     * @param instructionText
-     * @return
+     * @param instructionText instruction type to create
+     * @return  the instruction object
      * @throws Exception
      */
-    public static Instruction generateInstruction(String instructionText) throws Exception {
+    public static Instruction generateInstruction(String instructionText) throws InvalidInstructionException {
 
         switch (instructionText) {
 

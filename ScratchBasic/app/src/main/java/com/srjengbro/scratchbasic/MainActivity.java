@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 /**
  * @author Sol Jennings
- * @description
+ * @description Main activity for the application. allows creating a new program and loading
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     *  Create a new program and go the editor activity
      */
     private void newProgram() {
         ScratchApplication app = (ScratchApplication) getApplication();
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Load a program and go to the editor activity
      */
     private void loadProgram() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

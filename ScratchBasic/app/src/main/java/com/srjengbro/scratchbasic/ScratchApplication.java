@@ -13,31 +13,33 @@ import java.io.ObjectOutputStream;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description overides the main android application to store the state of the program
+ *
  */
 public class ScratchApplication extends Application {
 
     /**
-     *
+     * the context of the program, holds all of the metadata and insturction list
      */
     private ScratchBasicContext scratchBasicContext = new ScratchBasicContext();
 
     /**
-     * @return
+     * @return the context of the program
      */
     public ScratchBasicContext getScratchBasicContext() {
         return this.scratchBasicContext;
     }
 
     /**
-     * @param scratchBasicContext
+     * used when loading
+     * @param scratchBasicContext set the context of the program
      */
     public void setScratchBasicContext(ScratchBasicContext scratchBasicContext) {
         this.scratchBasicContext = scratchBasicContext;
     }
 
     /**
-     *
+     * save the current prgoram
      */
     public void saveProgram() {
         try {
@@ -57,7 +59,7 @@ public class ScratchApplication extends Application {
     }
 
     /**
-     *
+     * load a specific filename if it exists
      */
     public Boolean loadProgram(String filename){
 

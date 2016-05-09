@@ -2,7 +2,6 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
-
 import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
 import com.srjengbro.scratchbasic.ExpressionParseException;

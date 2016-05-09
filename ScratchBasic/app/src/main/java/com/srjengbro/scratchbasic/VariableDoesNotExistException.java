@@ -2,7 +2,7 @@ package com.srjengbro.scratchbasic;
 
 /**
  * @author      Sol Jennings
- * @description
+ * @description Exception for when a variable does not exist
  */
 public class VariableDoesNotExistException extends Throwable {
     public VariableDoesNotExistException() {

@@ -12,56 +12,57 @@ import com.srjengbro.scratchbasic.instructions.*;
 import java.util.ArrayList;
 /**
  * @author      Sol Jennings
- * @description
+ * @description Run a program activity. Allows a program to be run and the output observed
  */
 public class RunActivity extends AppCompatActivity {
     /**
-     *
+     * list of instructions to run
      */
     private ArrayList<Instruction> instructions;
     /**
-     *
+     * List of variables created uring execution
      */
     private VariableStore variableStore;
     /**
-     *
+     * Whether the program is running
      */
     private Boolean running = false;
     /**
-     *
+     * Handler for executing each instruction after a period of time
      */
     private Handler mHandler = new Handler();
     /**
-     *
+     * The command ouput text box
      */
 
     private TextView outputText;
     /**
-     *
+     * the text box showing the current line of execution
      */
     private TextView lineText;
     /**
-     *
+     * the next line to execute
      */
     private Integer nextLine = 0;
     /**
-     *
+     * button to start the prgram
      */
     private Button startButton;
     /**
-     *
+     * button to stop the program
      */
     private Button stopButton;
     /**
-     *
+     * button to pause the program
      */
     private Button pauseButton;
     /**
-     *
+     * button to return to the editor activity
      */
     private Button backButton;
 
     /**
+     * Create the activity
      * @param savedInstanceState
      */
     @Override
@@ -118,7 +119,7 @@ public class RunActivity extends AppCompatActivity {
 
 
     /**
-     *
+     * handler for pause button being pressed
      */
     private void pause() {
         if (running) {
@@ -132,7 +133,7 @@ public class RunActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * handler for stop button being pressed
      */
     private void stop() {
         running = false;
@@ -144,7 +145,7 @@ public class RunActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     *handler for run button being pression
      */
     private void run() {
         running = true;
@@ -156,7 +157,7 @@ public class RunActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * run the next instruction, will add a time delay before the next instruction is run
      */
     private void runNextInstruction() {
         if (!running) {
@@ -191,7 +192,7 @@ public class RunActivity extends AppCompatActivity {
     }
 
     /**
-     * @param line
+     * @param line update the command output text
      */
     private void updateCommandOutput(String line) {
         if (line != null && line.length() > 0) {
@@ -200,14 +201,14 @@ public class RunActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * clear the command output text
      */
     private void clearCommandOutput() {
         outputText.setText("");
     }
 
     /**
-     *
+     * return to the editor activity making sure the program is stopped first
      */
     private void backButton() {
         stop();

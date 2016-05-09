@@ -14,8 +14,8 @@ import com.srjengbro.scratchbasic.operators.Plus;
 public class ExpressionMaker {
 
     /**
-     * @param expressionString
-     * @return
+     * @param expressionString the string of the expression
+     * @return an expression object
      * @throws ExpressionParseException
      */
     public static Expression generateExpression(String expressionString) throws ExpressionParseException {
@@ -34,9 +34,9 @@ public class ExpressionMaker {
     }
 
     /**
-     * @param type
-     * @param lhs
-     * @param rhs
+     * @param type type of operator to use
+     * @param lhs lhs of the pexression
+     * @param rhs rhs of the expression
      * @return
      */
     public static Expression generateExpression(String type, String lhs, String rhs) {
