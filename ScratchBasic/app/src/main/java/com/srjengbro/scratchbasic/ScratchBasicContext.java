@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description The context of the program, stores the metadata and instructions of a program.
  *              can be serialized so that a program can be saved and loaded.
  */

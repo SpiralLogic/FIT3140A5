@@ -8,7 +8,7 @@ import com.srjengbro.scratchbasic.operators.Operator;
 import com.srjengbro.scratchbasic.operators.Plus;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Expression factory. Creates an expression object an returns that object
  *              An expression with just a LHS will default to using a NoOp operator for its
  *              operator

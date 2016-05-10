@@ -10,7 +10,7 @@ import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description PrintInstruction This class allows for the creation of a PRINT instruction
  *              It allows an instruction to change the print the result of an expression in a
  *              ScratchBasic program based on the result of an expression. It inherits from the

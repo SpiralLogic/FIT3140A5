@@ -1,7 +1,7 @@
 package com.srjengbro.scratchbasic.operators;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description tests if 1 thing is less than another. Inherits from the Operator abstract
  *              class and handles the evaluation of any less than operations
  */

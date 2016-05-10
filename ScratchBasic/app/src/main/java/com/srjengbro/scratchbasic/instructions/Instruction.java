@@ -7,7 +7,7 @@ import com.srjengbro.scratchbasic.VariableStore;
 
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description This is the main abstract Instruction class for any scratch basic instructions
  *              All instructions must inherit from this class and it dictates which methods
  *              must be implemented by an instruction

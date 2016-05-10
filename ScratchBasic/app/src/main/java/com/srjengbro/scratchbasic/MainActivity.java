@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 /**
- * @author Sol Jennings
+ * @author Sol Jennigns & Giles Browne
  * @description Main activity for the application. allows creating a new program and loading
  */
 public class MainActivity extends AppCompatActivity {

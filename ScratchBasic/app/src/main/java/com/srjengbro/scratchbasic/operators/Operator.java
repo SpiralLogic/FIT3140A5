@@ -1,7 +1,7 @@
 package com.srjengbro.scratchbasic.operators;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Abstract operator class that all operations extend from and defines the methods
  *              than any operator must implement.
  */

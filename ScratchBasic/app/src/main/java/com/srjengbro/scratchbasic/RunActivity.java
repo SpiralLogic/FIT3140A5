@@ -14,7 +14,7 @@ import com.srjengbro.scratchbasic.instructions.*;
 import java.util.ArrayList;
 
 /**
- * @author Sol Jennings
+ * @author Sol Jennigns & Giles Browne
  * @description Run a program activity. Allows a program to be run and the output observed.
  * A program can be in 3 states, stopped paused or running.  Each instruction is
  * executed after a time delay to ensure that the UI thread isn't locked.

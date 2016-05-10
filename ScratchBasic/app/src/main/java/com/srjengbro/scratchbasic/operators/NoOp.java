@@ -1,7 +1,7 @@
 package com.srjengbro.scratchbasic.operators;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description represents no operation so an expression can have just a lhs
  *              Inherits from the Operator abstract
  *              class and handles the evaluation of any NoOp operations

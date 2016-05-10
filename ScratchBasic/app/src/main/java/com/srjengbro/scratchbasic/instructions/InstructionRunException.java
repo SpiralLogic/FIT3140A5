@@ -1,7 +1,7 @@
 package com.srjengbro.scratchbasic.instructions;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Exception for when an instruction when run
  */
 public class InstructionRunException extends Exception {

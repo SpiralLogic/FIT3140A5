@@ -1,7 +1,7 @@
 package com.srjengbro.scratchbasic.operators;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Adds the lhs to the rhs. Inherits from the Operator abstract
  *              class and handles the evaluation of any plus operation
  */

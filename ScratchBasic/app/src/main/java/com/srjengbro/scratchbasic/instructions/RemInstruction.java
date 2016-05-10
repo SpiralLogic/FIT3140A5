@@ -8,7 +8,7 @@ import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableStore;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description RemInstruction This class allows for the creation of a REM instruction
  *              It allows an instruction to be just a remark. It inherits from the instruction
  *              class.It handles the layout, running, and processing of any REM instruction.

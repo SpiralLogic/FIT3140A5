@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.srjengbro.scratchbasic.instructions.*;
 import java.util.ArrayList;
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Activity Class for editing a program. handles the GUI for the editing activity
  *              on an android device. Allows the addition and deletion of instructions
  *              from a scratch basic program. Also opens a dialogue for editing a

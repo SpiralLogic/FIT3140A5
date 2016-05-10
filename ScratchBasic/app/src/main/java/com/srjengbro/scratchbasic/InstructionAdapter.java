@@ -22,7 +22,7 @@ import com.srjengbro.scratchbasic.instructions.RemInstruction;
 import java.util.ArrayList;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Adapter for providing the list of instructions to the list view
  */
 public class InstructionAdapter extends BaseAdapter implements ListAdapter {

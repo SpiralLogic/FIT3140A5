@@ -8,7 +8,7 @@ import com.srjengbro.scratchbasic.instructions.PrintInstruction;
 import com.srjengbro.scratchbasic.instructions.RemInstruction;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Creates an instruction object from  a text string
  */
 public class InstructionMaker {

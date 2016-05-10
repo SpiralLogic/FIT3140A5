@@ -2,7 +2,7 @@ package com.srjengbro.scratchbasic.operators;
 
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description tests if 1 things is bigger than the other. Inherits from the Operator abstract
  *              class and handles the evaluation of any greater than operations
  */

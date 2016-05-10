@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import com.srjengbro.scratchbasic.instructions.Instruction;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Dialogue box for editing an instruction
  */
 public class InstructionDialog extends DialogFragment {

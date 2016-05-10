@@ -3,7 +3,7 @@ package com.srjengbro.scratchbasic.operators;
 import android.util.Log;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Equal operator, tests if 2 things are equal. Inherits from the Operator abstract
  *              class and handles the evaluation of any equals operations
  */

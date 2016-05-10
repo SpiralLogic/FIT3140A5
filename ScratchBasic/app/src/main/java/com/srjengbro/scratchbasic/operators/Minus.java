@@ -1,7 +1,7 @@
 package com.srjengbro.scratchbasic.operators;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description subtracts rhs from lhs
  */
 public class Minus extends Operator {

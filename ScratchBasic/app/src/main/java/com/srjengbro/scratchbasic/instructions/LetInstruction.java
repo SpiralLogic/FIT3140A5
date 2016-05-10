@@ -11,7 +11,7 @@ import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description LetInstruction This class allows for the creation of a LET instruction
  *              It allows an instruction to change the value of a variable in ScratchBasic
  *              program based on the result of an expression. It inherits from the instruction

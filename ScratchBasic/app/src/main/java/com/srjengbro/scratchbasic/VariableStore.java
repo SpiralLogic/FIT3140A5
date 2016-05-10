@@ -3,7 +3,7 @@ package com.srjengbro.scratchbasic;
 import java.util.TreeMap;
 
 /**
- * @author      Sol Jennings
+ * @author      Sol Jennigns & Giles Browne
  * @description Object class for storing and retrieving variables
  *              only integer variables are currently allowed
  */
