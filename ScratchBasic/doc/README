@@ -28,26 +28,28 @@ Save Program
 Load Program
 Statements: REM, LET, PRINT, GOTO, IF ... GOTO
 Operators: +, -, >, <, =
-Meta-Information: Author, Email, Brief Description
+Meta-Information: Author, File Name
 
 
 Getting Started
 ---------------
     Home Screen
-        New Program
-        Load Program
-    Code Editor
-        First Instruction is displayed for a New Program
-            choose a Command from the drop down, enter an Expression
-        Use + button to add more Instructions
-        Use - button to remove Instructions (not possible to remove last remaining Instruction)
-        Use Edit button to modify an Instruction
+        New Program - create a new, blank ScratchBasic program
+        Load Program - provide the file name of a previously saved program
 
-        Click Run button at bottom of screen to open the Output window
+    Code Editor
+        One Default Statement is displayed for a New Program - Line 0
+            - choose a Command from the drop down, enter an Expression
+        Use + button to add Program Statements
+        Use - button to remove Program Statements (not possible to remove last remaining Statement - Line 0)
+        Use Edit button to modify Program Statements
+
+        Click Run button at bottom of Code Editor screen to open the Output window
         
     Output Window
         Click Start to run your program
-        Any output appears in the Output window
+        Any output from PRINT statements appears in the Output window
+        Any error messages are displayed in the Output window
         The Statement being executed appears in the Current Line box
         Click Pause to Pause program execution
         Click Stop to Stop program execution
@@ -57,3 +59,4 @@ Getting Started
 Known Bugs and Limitations
 --------------------------
 Variable names can only contain upper and lowercase letters and the underscore character
+Meta-information currently provides for the Author's name and a file name to save the program
