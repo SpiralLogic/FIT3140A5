@@ -34,7 +34,15 @@ public class EditorActivity extends AppCompatActivity {
      */
     private InstructionAdapter instructionAdapter;
 
+    /**
+     *  Text box for the file name
+     */
     private EditText filenameText;
+
+
+    /**
+     *  The box for the autor
+     */
     private EditText authorText;
     /**
      * @param savedInstanceState
@@ -75,6 +83,16 @@ public class EditorActivity extends AppCompatActivity {
 
                                               }
                                           }
+            );
+        }
+        Button backButton = (Button) findViewById(R.id.back_button);
+        if (backButton != null) {
+            backButton.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {
+                                                 backButton();
+                                             }
+                                         }
             );
         }
 
@@ -127,5 +145,11 @@ public class EditorActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
+    /**
+     * return to the editor activity making sure the program is stopped first
+     */
+    private void backButton() {
+        this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
+        this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
+    }
 }

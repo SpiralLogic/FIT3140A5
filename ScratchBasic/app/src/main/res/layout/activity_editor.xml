@@ -26,16 +26,18 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/instruction_listView"
         android:layout_gravity="center_horizontal"
-        android:text="@string/run" />
+        android:text="@string/run"
+        android:layout_toRightOf="@+id/save_button"
+        android:layout_toEndOf="@+id/save_button" />
 
     <Button
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/save"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/save" />
+        android:layout_alignLeft="@+id/filename_text"
+        android:layout_alignStart="@+id/filename_text" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -44,8 +46,11 @@
         android:layout_above="@+id/save_button"
         android:layout_alignRight="@+id/instruction_listView"
         android:layout_alignEnd="@+id/instruction_listView"
-        android:layout_toRightOf="@+id/save_button"
-        android:layout_toEndOf="@+id/save_button" />
+        android:layout_toEndOf="@+id/back_button"
+        android:layout_toRightOf="@+id/back_button"
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,6 +87,15 @@
         android:layout_toLeftOf="@+id/filename_text"
         android:layout_toStartOf="@+id/filename_text"
         android:layout_alignTop="@+id/author_text" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
