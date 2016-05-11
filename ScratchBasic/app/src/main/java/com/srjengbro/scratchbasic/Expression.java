@@ -11,11 +11,10 @@ import com.srjengbro.scratchbasic.operators.NoOp;
 import com.srjengbro.scratchbasic.operators.Operator;
 
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description Expression class Stores an expression that can be evaluated. An object holds the
- *              LHS, RHS an operator of an expression. The lhs and rhs can be variables or
- *              integer values. Handles the evaluation of an expression at run time
- *
+ * LHS, RHS an operator of an expression. The lhs and rhs can be variables or
+ * integer values. Handles the evaluation of an expression at run time
  */
 public class Expression implements java.io.Serializable {
 
@@ -112,7 +111,7 @@ public class Expression implements java.io.Serializable {
     public Integer evaluate(VariableStore variableStore) throws VariableDoesNotExistException, ExpressionParseException {
         Integer lhsInt;
         Integer rhsInt;
-        if (lhs == null) {
+        if (lhs == null || lhs.length() == 0) {
             throw new ExpressionParseException("Expression missing left hand side");
         }
         try {
