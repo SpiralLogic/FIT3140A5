@@ -180,8 +180,10 @@ public class RunActivity extends AppCompatActivity {
             lineText.setText("Line " + nextLine.toString() + ": " + inst.getName() + " " + inst.getInstruction());
             result = inst.run(variableStore);
         } catch (InstructionRunException e) {
-            result = "Error on line " + nextLine.toString() + ": " + e.getMessage();
+            String error = "Error on line " + nextLine.toString() + ": " + e.getMessage();
             stop();
+            updateCommandOutput(error);
+            return;
         }
         updateCommandOutput(result);
         if (null == inst.getNextLine()) {
