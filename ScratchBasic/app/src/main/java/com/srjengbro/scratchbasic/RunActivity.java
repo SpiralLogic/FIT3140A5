@@ -181,7 +181,7 @@ public class RunActivity extends AppCompatActivity {
             result = inst.run(variableStore);
         } catch (InstructionRunException e) {
             result = "Error on line " + nextLine.toString() + ": " + e.getMessage();
-            running = false;
+            stop();
         }
         updateCommandOutput(result);
         if (null == inst.getNextLine()) {
