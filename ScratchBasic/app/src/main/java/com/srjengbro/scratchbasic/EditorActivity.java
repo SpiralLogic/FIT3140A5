@@ -102,6 +102,9 @@ public class EditorActivity extends AppCompatActivity {
      * Run the program by starting the run activity
      */
     private void run() {
+        ScratchApplication app =((ScratchApplication) getApplication());
+        app.getScratchBasicContext().setFilename(filenameText.getText().toString());
+        app.getScratchBasicContext().setAuthor(authorText.getText().toString());
         Intent i = new Intent(getApplicationContext(), RunActivity.class);
         startActivity(i);
     }
@@ -127,7 +130,6 @@ public class EditorActivity extends AppCompatActivity {
         ScratchApplication app =((ScratchApplication) getApplication());
         instructionAdapter.notifyDataSetChanged();
         authorText.setText(app.getScratchBasicContext().getAuthor());
-
         filenameText.setText(app.getScratchBasicContext().getFilename());
     }
 
