@@ -73,7 +73,7 @@ public class ScratchApplication extends Application {
             fileIn.close();
 
         } catch (FileNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, no save program", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Load failed, file does not exist", Toast.LENGTH_LONG).show();
             return false;
         } catch (IOException e) {
             Toast.makeText(getApplicationContext(), "Load failed, cannot read file", Toast.LENGTH_LONG).show();
