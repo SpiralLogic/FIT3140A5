@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import com.srjengbro.scratchbasic.VariableStore;
+import com.srjengbro.scratchbasic.ScratchBasicContext;
 
 import java.util.ArrayList;
 
@@ -54,11 +54,11 @@ public class GotoInstruction extends Instruction {
     }
 
     /**
-     * @param variableStore variable store
-     * @return the result
+     *
+     * @param scratchBasicContext@return the result
      */
     @Override
-    public String run(VariableStore variableStore) {
+    public String run(ScratchBasicContext scratchBasicContext) {
         return "";
     }
 

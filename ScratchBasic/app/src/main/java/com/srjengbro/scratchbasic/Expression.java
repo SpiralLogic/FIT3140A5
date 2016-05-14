@@ -1,6 +1,5 @@
 package com.srjengbro.scratchbasic;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -193,7 +192,7 @@ public class Expression implements java.io.Serializable {
             if (inst instanceof LetInstruction) {
                 li = (LetInstruction) inst;
                 String varName = li.getVariable();
-                if (varName != null) {
+                if (varName != null && variablelist.indexOf(varName) < 0) {
                     variablelist.add(li.getVariable());
                     if (varName.equals(lhs)) {
                         lhspos = variablelist.size() - 1;
@@ -206,7 +205,7 @@ public class Expression implements java.io.Serializable {
         }
 
 
-        ArrayAdapter<String> variablesAdapter = new ArrayAdapter<String>(layout.getContext(), android.R.layout.simple_spinner_dropdown_item, variablelist);
+        ArrayAdapter<String> variablesAdapter = new ArrayAdapter<>(layout.getContext(), android.R.layout.simple_spinner_dropdown_item, variablelist);
 
         lhsSpinner = (Spinner) layout.findViewById(R.id.lhs_spinner);
         lhsSpinner.setAdapter(variablesAdapter);

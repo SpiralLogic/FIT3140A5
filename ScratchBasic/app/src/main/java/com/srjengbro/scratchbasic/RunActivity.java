@@ -29,10 +29,7 @@ public class RunActivity extends AppCompatActivity {
      * list of instructions to run
      */
     private ArrayList<Instruction> instructions;
-    /**
-     * List of variables created uring execution
-     */
-    private VariableStore variableStore;
+
     /**
      * Whether the program is running
      */
@@ -50,10 +47,7 @@ public class RunActivity extends AppCompatActivity {
      * the text box showing the current line of execution
      */
     private TextView lineText;
-    /**
-     * the next line to execute
-     */
-    private Integer nextLine = 0;
+
     /**
      * button to start the prgram
      */
@@ -72,6 +66,10 @@ public class RunActivity extends AppCompatActivity {
     private Button backButton;
 
     /**
+     * Scratch Basic context
+     */
+    private ScratchBasicContext scratchBasicContext;
+    /**
      * Create the activity
      *
      * @param savedInstanceState
@@ -81,8 +79,9 @@ public class RunActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
         ScratchApplication app = (ScratchApplication) getApplication();
-        instructions = app.getScratchBasicContext().getInstructions();
-        variableStore = new VariableStore();
+        scratchBasicContext = app.getScratchBasicContext();
+        instructions = scratchBasicContext.getInstructions();
+        scratchBasicContext.getVariableStore().clear();
         outputText = (TextView) findViewById(R.id.output_text);
         outputText.setMovementMethod(new ScrollingMovementMethod());
         startButton = (Button) findViewById(R.id.start_button);
@@ -95,6 +94,7 @@ public class RunActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     clearCommandOutput();
+                    scratchBasicContext.setCurrentLine(0);
                     run();
                 }
             });
@@ -148,17 +148,18 @@ public class RunActivity extends AppCompatActivity {
      */
     private void stop() {
         running = false;
-        nextLine = 0;
+        scratchBasicContext.setCurrentLine(0);
         stopButton.setEnabled(false);
         startButton.setEnabled(true);
         pauseButton.setEnabled(false);
-        variableStore.clear();
+        scratchBasicContext.getVariableStore().clear();
     }
 
     /**
-     * handler for run button being pression
+     * handler for run button being expression
      */
     private void run() {
+
         running = true;
         runNextInstruction();
         startButton.setEnabled(false);
@@ -174,24 +175,25 @@ public class RunActivity extends AppCompatActivity {
         if (!running) {
             return;
         }
-        Instruction inst = instructions.get(nextLine);
+        Integer line = scratchBasicContext.getCurrentLine();
+        Instruction inst = instructions.get(line);
         String result;
         try {
-            lineText.setText("Line " + nextLine.toString() + ": " + inst.getName() + " " + inst.getInstruction());
-            result = inst.run(variableStore);
+            lineText.setText("Line " + scratchBasicContext.getCurrentLine().toString() + ": " + inst.getName() + " " + inst.getInstruction());
+            result = inst.run(scratchBasicContext);
         } catch (InstructionRunException e) {
-            String error = "Error on line " + nextLine.toString() + ": " + e.getMessage();
+            String error = "Error on line " + scratchBasicContext.getCurrentLine().toString() + ": " + e.getMessage();
             stop();
             updateCommandOutput(error);
             return;
         }
         updateCommandOutput(result);
         if (null == inst.getNextLine()) {
-            nextLine += 1;
+            scratchBasicContext.setCurrentLine(scratchBasicContext.getCurrentLine() + 1);
         } else {
-            nextLine = inst.getNextLine();
+            scratchBasicContext.setCurrentLine(inst.getNextLine());
         }
-        if (nextLine >= instructions.size()) {
+        if (scratchBasicContext.getCurrentLine() >= instructions.size()) {
             stop();
         }
         if (running) {

@@ -8,8 +8,8 @@ import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
 import com.srjengbro.scratchbasic.ExpressionParseException;
 import com.srjengbro.scratchbasic.R;
+import com.srjengbro.scratchbasic.ScratchBasicContext;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
-import com.srjengbro.scratchbasic.VariableStore;
 
 import java.util.ArrayList;
 
@@ -83,12 +83,12 @@ public class LetInstruction extends Instruction {
     }
 
     /**
-     * @param variableStore variables
-     * @return execute and return the result
+     *
+     * @param scratchBasicContext@return execute and return the result
      * @throws InstructionRunException
      */
     @Override
-    public String run(VariableStore variableStore) throws InstructionRunException {
+    public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
         if (expression == null) {
             throw new InstructionRunException("Instruction missing expression");
         }
@@ -97,8 +97,8 @@ public class LetInstruction extends Instruction {
         }
         Integer result;
         try {
-            result = expression.evaluate(variableStore);
-            variableStore.setVariable(variable, result);
+            result = expression.evaluate(scratchBasicContext.getVariableStore());
+            scratchBasicContext.getVariableStore().setVariable(variable, result);
         } catch (VariableDoesNotExistException | ExpressionParseException e) {
             throw new InstructionRunException(e.getMessage());
         }

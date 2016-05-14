@@ -3,9 +3,11 @@ package com.srjengbro.scratchbasic.instructions;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.srjengbro.scratchbasic.VariableStore;
+import com.srjengbro.scratchbasic.ScratchBasicContext;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.Stack;
 
 /**
  * @author: Sol Jennings 26356015
@@ -13,6 +15,8 @@ import java.util.ArrayList;
  * @description: An instruction for returning from a GoSub instruction
  */
 public class ReturnInstruction extends Instruction {
+
+    private Integer nextLine;
 
     public ReturnInstruction() {
         this.name = "RETURN";
@@ -30,7 +34,17 @@ public class ReturnInstruction extends Instruction {
     }
 
     @Override
-    public String run(VariableStore variableStore) throws InstructionRunException {
+    public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
+        Stack callstack = scratchBasicContext.getCallStack();
+        try {
+            nextLine = (Integer) callstack.pop();
+        } catch (EmptyStackException e) {
+            nextLine = null;
+        }
         return null;
+    }
+
+    public Integer getNextLine() {
+        return nextLine;
     }
 }

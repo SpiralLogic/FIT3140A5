@@ -2,8 +2,10 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
-import com.srjengbro.scratchbasic.VariableStore;
+import com.srjengbro.scratchbasic.R;
+import com.srjengbro.scratchbasic.ScratchBasicContext;
 
 import java.util.ArrayList;
 
@@ -13,6 +15,9 @@ import java.util.ArrayList;
  * @description: command for labelling a sub instruction set
  */
 public class SubInstruction extends Instruction {
+
+    private transient EditText subText;
+
     /**
      * contructor
      */
@@ -23,16 +28,21 @@ public class SubInstruction extends Instruction {
 
     @Override
     public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
-        return null;
+        View layout = inflater.inflate(R.layout.inst_sub, null);
+        subText = (EditText) layout.findViewById(R.id.sub_text);
+        subText.setText(instruction);
+        return layout;
     }
 
     @Override
     public void update() {
+        this.instruction = subText.getText().toString();
+
 
     }
 
     @Override
-    public String run(VariableStore variableStore) throws InstructionRunException {
+    public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
         return null;
     }
 }

@@ -8,8 +8,8 @@ import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
 import com.srjengbro.scratchbasic.ExpressionParseException;
 import com.srjengbro.scratchbasic.R;
+import com.srjengbro.scratchbasic.ScratchBasicContext;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
-import com.srjengbro.scratchbasic.VariableStore;
 
 import java.util.ArrayList;
 
@@ -65,7 +65,7 @@ public class IfInstruction extends Instruction {
         String lhs = expression.lhsText.getText().toString();
         String rhs = expression.rhsText.getText().toString();
         expression = ExpressionMaker.generateExpression(type, lhs, rhs);
-        gotoInstruction.parse(gotoText.getText().toString());
+
         updateInstructionText();
 
     }
@@ -105,24 +105,24 @@ public class IfInstruction extends Instruction {
 
 
     /**
-     * @param variableStore variable store
-     * @return the result of statement
+     *
+     * @param scratchBasicContext@return the result of statement
      * @throws InstructionRunException
      */
     @Override
-    public String run(VariableStore variableStore) throws InstructionRunException {
+    public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
         Integer result;
         if (expression == null) {
             throw new InstructionRunException("Instruction missing expression");
         }
         try {
-            result = expression.evaluate(variableStore);
+            result = expression.evaluate(scratchBasicContext.getVariableStore());
 
         } catch (VariableDoesNotExistException | ExpressionParseException e) {
             throw new InstructionRunException(e.getMessage());
         }
         if (result > 0) {
-            gotoInstruction.run(variableStore);
+            gotoInstruction.run(scratchBasicContext);
             evaluatedAs = true;
         } else {
             evaluatedAs = false;

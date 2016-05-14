@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.srjengbro.scratchbasic.R;
-import com.srjengbro.scratchbasic.VariableStore;
+import com.srjengbro.scratchbasic.ScratchBasicContext;
 
 import java.util.ArrayList;
 
@@ -57,12 +57,12 @@ public class RemInstruction extends Instruction {
     }
 
     /**
-     * @param variableStore variables
-     * @return execute the instruction
+     *
+     * @param scratchBasicContext@return execute the instruction
      * @throws InstructionRunException
      */
     @Override
-    public String run(VariableStore variableStore) throws InstructionRunException {
+    public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
         return null;
     }
 

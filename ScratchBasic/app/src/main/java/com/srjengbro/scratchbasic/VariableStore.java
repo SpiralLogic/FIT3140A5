@@ -1,5 +1,6 @@
 package com.srjengbro.scratchbasic;
 
+import java.io.Serializable;
 import java.util.TreeMap;
 
 /**
@@ -7,7 +8,7 @@ import java.util.TreeMap;
  * @description Object class for storing and retrieving variables
  *              only integer variables are currently allowed
  */
-public class VariableStore {
+public class VariableStore implements Serializable {
     /**
      * treemap for storing the variables by name
      */
@@ -29,7 +30,8 @@ public class VariableStore {
         Variable var;
         var = variables.get(name);
         if (var == null) {
-            var = new Variable();
+            var = new Variable(name);
+
         }
         var.setValue(value);
         variables.put(name,var);

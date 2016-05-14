@@ -5,11 +5,12 @@ import com.srjengbro.scratchbasic.instructions.RemInstruction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description The context of the program, stores the metadata and instructions of a program.
- *              can be serialized so that a program can be saved and loaded.
+ * can be serialized so that a program can be saved and loaded.
  */
 public class ScratchBasicContext implements Serializable {
 
@@ -18,6 +19,20 @@ public class ScratchBasicContext implements Serializable {
      */
     private ArrayList<Instruction> instructions = new ArrayList<>();
     /**
+     * Variable Storage
+     */
+    private  VariableStore variableStore = new VariableStore();
+
+    /**
+     * Stack for storing subroutine stack calls
+     */
+    private transient Stack<Integer> callStack = new Stack<>();
+
+    /**
+     * next line to run
+     */
+    private transient Integer currentLine = 0;
+    /**
      * author of the program
      */
     private String author;
@@ -25,7 +40,6 @@ public class ScratchBasicContext implements Serializable {
      * description of the program
      */
     private String description;
-
 
     /**
      * @return get the filename of the current program
@@ -94,4 +108,34 @@ public class ScratchBasicContext implements Serializable {
         instructions.add(instruction);
     }
 
+    /**
+     * @return Programs Variable store
+     */
+    public VariableStore getVariableStore() {
+        return variableStore;
+    }
+
+    /**
+     * @return getter for call stack
+     */
+    public Stack<Integer> getCallStack() {
+        if (callStack==null) {
+            callStack = new Stack<>();
+        }
+        return callStack;
+    }
+
+    /**
+     * @return the next line of the program to run
+     */
+    public Integer getCurrentLine() {
+        return currentLine;
+    }
+
+    /**
+     * @param currentLine set the next line of the program to run
+     */
+    public void setCurrentLine(Integer currentLine) {
+        this.currentLine = currentLine;
+    }
 }

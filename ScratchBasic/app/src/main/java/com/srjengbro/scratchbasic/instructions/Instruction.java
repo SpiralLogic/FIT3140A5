@@ -4,6 +4,7 @@ package com.srjengbro.scratchbasic.instructions;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.srjengbro.scratchbasic.ScratchBasicContext;
 import com.srjengbro.scratchbasic.VariableStore;
 
 import java.util.ArrayList;
@@ -71,11 +72,11 @@ public abstract class Instruction implements java.io.Serializable {
 
 
     /**
-     * @param variableStore variables
-     * @return run the instruction and return the result
+     *
+     * @param scratchBasicContext@return run the instruction and return the result
      * @throws InstructionRunException
      */
-    public abstract String run(VariableStore variableStore) throws InstructionRunException;
+    public abstract String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException;
 
     /**
      * @return the next line to execture
