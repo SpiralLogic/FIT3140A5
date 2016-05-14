@@ -2,6 +2,7 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
+
 import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
 import com.srjengbro.scratchbasic.ExpressionParseException;
@@ -9,13 +10,15 @@ import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
 
+import java.util.ArrayList;
+
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description PrintInstruction This class allows for the creation of a PRINT instruction
- *              It allows an instruction to change the print the result of an expression in a
- *              ScratchBasic program based on the result of an expression. It inherits from the
- *              instruction class.It handles the layout, running, and processing of any PRINT
- *              instruction.
+ * It allows an instruction to change the print the result of an expression in a
+ * ScratchBasic program based on the result of an expression. It inherits from the
+ * instruction class.It handles the layout, running, and processing of any PRINT
+ * instruction.
  */
 public class PrintInstruction extends Instruction {
 
@@ -34,12 +37,13 @@ public class PrintInstruction extends Instruction {
     }
 
     /**
-     * @param inflater inflater
+     * @param inflater        inflater
+     * @param instructionList current list of instructions
      * @return get layout for the instruction
      */
-    public View getLayout(LayoutInflater inflater) {
+    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
         View layout = inflater.inflate(R.layout.inst_print, null);
-        expression.layout(layout);
+        expression.layout(layout, instructionList);
         return layout;
     }
 

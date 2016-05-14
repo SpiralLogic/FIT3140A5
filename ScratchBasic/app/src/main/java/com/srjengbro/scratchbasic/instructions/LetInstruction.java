@@ -10,6 +10,9 @@ import com.srjengbro.scratchbasic.ExpressionParseException;
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
+
+import java.util.ArrayList;
+
 /**
  * @author      Sol Jennigns & Giles Browne
  * @description LetInstruction This class allows for the creation of a LET instruction
@@ -23,6 +26,16 @@ public class LetInstruction extends Instruction {
      * text box for instruction
      */
     private transient EditText letVariableText;
+
+    /**
+     *
+     * @return Name of variable of let
+     */
+
+    public String getVariable() {
+        return variable;
+    }
+
     /**
      * the variable whos value will change
      */
@@ -44,14 +57,15 @@ public class LetInstruction extends Instruction {
 
     /**
      * @param inflater inflater
+     * @param instructionList current list of instructions
      * @return the layout for the instruction
      */
     @Override
-    public View getLayout(LayoutInflater inflater) {
+    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
         View layout = inflater.inflate(R.layout.inst_let, null);
         letVariableText = (EditText) layout.findViewById(R.id.let_variable);
         letVariableText.setText(variable);
-        expression.layout(layout);
+        expression.layout(layout,instructionList);
         return layout;
     }
 

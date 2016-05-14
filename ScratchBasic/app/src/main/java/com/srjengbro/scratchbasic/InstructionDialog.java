@@ -8,13 +8,13 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.srjengbro.scratchbasic.instructions.Instruction;
 
+import java.util.ArrayList;
+
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description Dialogue box for editing an instruction
  */
 public class InstructionDialog extends DialogFragment {
@@ -35,6 +35,7 @@ public class InstructionDialog extends DialogFragment {
         this.instruction = instruction;
     }
 
+
     /**
      * @param adapter set the instruction adapter
      */
@@ -43,8 +44,8 @@ public class InstructionDialog extends DialogFragment {
     }
 
     /**
-     * @param savedInstanceState
-     * @return
+     * @param savedInstanceState something android needs
+     * @return dialog
      */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -53,8 +54,7 @@ public class InstructionDialog extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View layout = instruction.getLayout(inflater);
-
+        View layout = instruction.getLayout(inflater, adapter.getInstructionList());
 
 
         // Inflate and set the layout for the dialog

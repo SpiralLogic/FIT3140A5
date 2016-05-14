@@ -1,6 +1,7 @@
 package com.srjengbro.scratchbasic;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ import com.srjengbro.scratchbasic.instructions.ReturnInstruction;
 import java.util.ArrayList;
 
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description Adapter for providing the list of instructions to the list view
  */
 public class InstructionAdapter extends BaseAdapter implements ListAdapter {
@@ -32,19 +33,30 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
      * layout inflater
      */
     private LayoutInflater inflater;
+
+    /**
+     * @return get the instruction list
+     */
+    public ArrayList<Instruction> getInstructionList() {
+        return instructionList;
+    }
+
     /**
      * instruction list
      */
     private ArrayList<Instruction> instructionList;
     /**
-     * contxt activity the adapter is for
+     * context activity the adapter is for
      */
     private Context context;
-
+    /**
+     * represents a current instruction being linked
+     */
+    private Integer currentLink;
 
     /**
-     * @param instructionList instuction list
-     * @param ctx context
+     * @param instructionList instruction list
+     * @param ctx             context
      */
     public InstructionAdapter(ArrayList<Instruction> instructionList, Context ctx) {
         super();
@@ -105,22 +117,28 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         } else {
             holder.removeButton.setVisibility(View.VISIBLE);
         }
-        if (i instanceof ReturnInstruction) {
+        if (!i.getHasDialog()) {
             holder.editButton.setVisibility(View.INVISIBLE);
-        }else {
+        } else {
             holder.editButton.setVisibility(View.VISIBLE);
         }
         holder.editButton.setTag(position);
         holder.addButton.setTag(position);
         holder.removeButton.setTag(position);
         holder.commandList.setTag(position);
-
+        holder.instructionText.setTag(position);
+        if (currentLink != null && position == currentLink) {
+            holder.instructionText.setBackgroundColor(Color.GREEN);
+        } else {
+            holder.instructionText.setBackgroundColor(Color.GRAY);
+        }
         Integer cmdpos = ((ArrayAdapter<String>) holder.commandList.getAdapter()).getPosition(i.getName());
         holder.commandList.setSelection(cmdpos);
 
         holder.instructionText.setText(i.getInstruction());
         holder.commandList.setTag(position);
-        convertView.setOnClickListener(onViewClick());
+
+        holder.instructionText.setOnClickListener(onViewClick());
         holder.commandList.setOnItemSelectedListener(onCommandSelected());
         holder.editButton.setOnClickListener(onEditClick());
         holder.addButton.setOnClickListener(onAddClick());
@@ -138,10 +156,11 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // int[] position = new int[2];
-                // v.getLocationOnScreen(position);
-                // Toast.makeText(((View) v.getParent()).getContext(), ((Integer) position[1]).toString(), Toast.LENGTH_SHORT).show();
-
+                Integer position = (Integer) v.getTag();
+                addGotoLink(position);
+                if (currentLink != null && position == currentLink) {
+                    v.setBackgroundColor(Color.GREEN);
+                }
             }
         };
     }
@@ -164,7 +183,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
                     try {
                         i = InstructionMaker.generateInstruction(instructionText);
                         instructionList.set(position, i);
-                        openInstructionDialog(i);
+                        if (i.getHasDialog()) openInstructionDialog(i);
                     } catch (Exception e) {
                         Toast.makeText(((View) parent.getParent()).getContext(), "Not a valid instruction", Toast.LENGTH_SHORT).show();
                     }
@@ -201,6 +220,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     private void openInstructionDialog(Instruction inst) {
         final InstructionAdapter adapter = this;
         InstructionDialog newFragment = new InstructionDialog();
+
         newFragment.setInstruction(inst);
         newFragment.setAdapter(adapter);
         newFragment.show(((FragmentActivity) context).getFragmentManager(), context.getString(R.string.instructiondialog_title));
@@ -286,6 +306,39 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
             }
         }
     }
+
+    /**
+     * Joins a goto instruction to another line.
+     *
+     * @param position position of the instruction in the instruction list
+     */
+    private void addGotoLink(Integer position) {
+        Instruction inst = instructionList.get(position);
+        if (currentLink == null) {
+            if (inst instanceof GotoInstruction || inst instanceof IfInstruction) {
+                currentLink = position;
+            } else {
+                // Toast.makeText(context, "Must select GOTO first", Toast.LENGTH_SHORT).show();
+            }
+            return;
+        }
+        if (inst instanceof GotoInstruction || inst instanceof IfInstruction) {
+            Toast.makeText(context, "Cannot GOTO a GOTO", Toast.LENGTH_SHORT).show();
+        } else {
+            inst = instructionList.get(currentLink);
+            if (inst instanceof GotoInstruction) {
+                GotoInstruction gi = (GotoInstruction) inst;
+                gi.setGotoLine(position);
+            } else if (inst instanceof IfInstruction) {
+                IfInstruction gi = (IfInstruction) inst;
+                gi.getGotoInstruction().setGotoLine(position);
+                gi.updateInstructionText();
+            }
+            currentLink = null;
+            notifyDataSetChanged();
+        }
+    }
+
 
     /**
      * static class for caching all of the instruction line views

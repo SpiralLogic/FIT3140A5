@@ -3,16 +3,21 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
+
 import com.srjengbro.scratchbasic.VariableStore;
+
+import java.util.ArrayList;
 
 
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description This is the main abstract Instruction class for any scratch basic instructions
- *              All instructions must inherit from this class and it dictates which methods
- *              must be implemented by an instruction
+ * All instructions must inherit from this class and it dictates which methods
+ * must be implemented by an instruction
  */
 public abstract class Instruction implements java.io.Serializable {
+
+
     /**
      * Name of the instruction
      */
@@ -39,12 +44,25 @@ public abstract class Instruction implements java.io.Serializable {
         return instruction;
     }
 
+    /**
+     * @return returns whether the instruction has an edit dialogue or not
+     */
+    public Boolean getHasDialog() {
+        return hasDialog;
+    }
+
+    /**
+     * Whether the instruction has an edit dialog
+     */
+    protected Boolean hasDialog = true;
+
 
     /**
      * @param inflater inflater
+     * @param instructionList context of the current program
      * @return layout of the instruction
      */
-    public abstract View getLayout(LayoutInflater inflater);
+    public abstract View getLayout(LayoutInflater inflater, ArrayList instructionList);
 
     /**
      * update the instruction after edit

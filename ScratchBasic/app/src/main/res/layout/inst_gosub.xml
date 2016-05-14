@@ -5,14 +5,16 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/if_label"
+        android:id="@+id/goto_sub_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/expression"
+        android:text="@string/goto_sub"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
-    <include layout="@layout/expression" />
-
-
+    <EditText
+        android:id="@+id/gosub_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

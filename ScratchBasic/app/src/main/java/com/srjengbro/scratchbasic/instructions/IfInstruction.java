@@ -11,6 +11,8 @@ import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 import com.srjengbro.scratchbasic.VariableStore;
 
+import java.util.ArrayList;
+
 
 /**
  * @author      Sol Jennigns & Giles Browne
@@ -83,13 +85,14 @@ public class IfInstruction extends Instruction {
 
     /**
      * @param inflater inflator
+     * @param instructionList current list of instructions
      * @return the layout to display the editor
      */
-    public View getLayout(LayoutInflater inflater) {
+    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
         View layout = inflater.inflate(R.layout.inst_if, null);
-        expression.layout(layout);
-        gotoText = (EditText) layout.findViewById(R.id.goto_line);
-        gotoText.setText(gotoInstruction.getInstruction());
+        expression.layout(layout, instructionList);
+        //gotoText = (EditText) layout.findViewById(R.id.goto_line);
+       // gotoText.setText(gotoInstruction.getInstruction());
         return layout;
     }
 

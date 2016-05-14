@@ -3,25 +3,27 @@ package com.srjengbro.scratchbasic.instructions;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import com.srjengbro.scratchbasic.R;
+
 import com.srjengbro.scratchbasic.VariableStore;
+
+import java.util.ArrayList;
 
 
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description GotoInstruction This class allows for the creation of a goto instruction
- *              It allows an instruction to change the next line to be executed in a ScratchBasic
- *              program. It inherits from the instruction class. It handles the layout, running,
- *              and processing of any GOTO instruction
+ * It allows an instruction to change the next line to be executed in a ScratchBasic
+ * program. It inherits from the instruction class. It handles the layout, running,
+ * and processing of any GOTO instruction
  */
 public class GotoInstruction extends Instruction {
 
     /**
-     *  Textbox for gotolayout
+     * Textbox for gotolayout
      */
     private transient EditText gotoText;
     /**
-     *  The line that the goto will goto
+     * The line that the goto will goto
      */
     private Integer gotoLine;
 
@@ -34,12 +36,21 @@ public class GotoInstruction extends Instruction {
     }
 
     /**
+     * @param line the line number to set the goto instruction to
+     */
+    public void setGotoLine(Integer line) {
+        gotoLine = line;
+        instruction = line.toString();
+    }
+
+    /**
      * Constructor
      */
     public GotoInstruction() {
         name = "GOTO";
         gotoLine = null;
         this.instruction = "";
+        hasDialog = false;
     }
 
     /**
@@ -53,14 +64,12 @@ public class GotoInstruction extends Instruction {
 
     /**
      * @param inflater layout inflator
+     * @param instructionList
      * @return the layout for the instruction
      */
     @Override
-    public View getLayout(LayoutInflater inflater) {
-        View layout = inflater.inflate(R.layout.inst_goto, null);
-        gotoText = (EditText) layout.findViewById(R.id.goto_line);
-        gotoText.setText(instruction);
-        return layout;
+    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
+        return null;
     }
 
     /**
@@ -104,7 +113,7 @@ public class GotoInstruction extends Instruction {
 
 
     /**
-     * @return  the next line that will run
+     * @return the next line that will run
      */
     public Integer getNextLine() {
 
