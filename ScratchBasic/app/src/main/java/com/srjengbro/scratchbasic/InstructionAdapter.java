@@ -18,6 +18,7 @@ import com.srjengbro.scratchbasic.instructions.GotoInstruction;
 import com.srjengbro.scratchbasic.instructions.IfInstruction;
 import com.srjengbro.scratchbasic.instructions.Instruction;
 import com.srjengbro.scratchbasic.instructions.RemInstruction;
+import com.srjengbro.scratchbasic.instructions.ReturnInstruction;
 
 import java.util.ArrayList;
 
@@ -104,7 +105,11 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         } else {
             holder.removeButton.setVisibility(View.VISIBLE);
         }
-
+        if (i instanceof ReturnInstruction) {
+            holder.editButton.setVisibility(View.INVISIBLE);
+        }else {
+            holder.editButton.setVisibility(View.VISIBLE);
+        }
         holder.editButton.setTag(position);
         holder.addButton.setTag(position);
         holder.removeButton.setTag(position);

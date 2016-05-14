@@ -7,6 +7,9 @@
         <item>LET</item>
         <item>PRINT</item>
         <item>REM</item>
+        <item>GOSUB</item>
+        <item>SUB</item>
+        <item>RETURN</item>
     </string-array>
     <string-array name="operator_list">
         <item> </item>

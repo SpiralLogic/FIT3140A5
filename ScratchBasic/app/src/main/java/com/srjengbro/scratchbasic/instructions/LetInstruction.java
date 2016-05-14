@@ -70,7 +70,7 @@ public class LetInstruction extends Instruction {
 
     /**
      * @param variableStore variables
-     * @return execture and return the result
+     * @return execute and return the result
      * @throws InstructionRunException
      */
     @Override
