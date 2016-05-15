@@ -1,9 +1,11 @@
 package com.srjengbro.scratchbasic;
 
+import com.srjengbro.scratchbasic.operators.Div;
 import com.srjengbro.scratchbasic.operators.Equal;
 import com.srjengbro.scratchbasic.operators.GreaterThan;
 import com.srjengbro.scratchbasic.operators.LessThan;
 import com.srjengbro.scratchbasic.operators.Minus;
+import com.srjengbro.scratchbasic.operators.Mod;
 import com.srjengbro.scratchbasic.operators.Operator;
 import com.srjengbro.scratchbasic.operators.Plus;
 
@@ -58,6 +60,12 @@ public class ExpressionMaker {
                 break;
             case "<":
                 op = new LessThan();
+                break;
+            case "%":
+                op = new Mod();
+                break;
+            case "/":
+                op = new Div();
                 break;
             default:
                 return new Expression(lhs);

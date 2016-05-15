@@ -222,7 +222,7 @@ public class Expression implements java.io.Serializable {
         rhsLabel = (TextView) layout.findViewById(R.id.rhs_label);
         lhsText.setText(lhs);
         rhsText.setText(rhs);
-
+        rhsText.setVisibility(View.INVISIBLE);
         opSpinner = (Spinner) layout.findViewById(R.id.operator_spinner);
         opSpinner.setOnItemSelectedListener(onOperatorSelect());
         Integer oppos = ((ArrayAdapter<String>) opSpinner.getAdapter()).getPosition(operator.getSymbol());
@@ -230,15 +230,15 @@ public class Expression implements java.io.Serializable {
     }
 
     /**
-     * @return event for when a user choses an operator
+     * @return event for when a user chooses an operator
      */
     private AdapterView.OnItemSelectedListener onOperatorSelect() {
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
                 Spinner spinner = (Spinner) parent;
-                String instructionText = spinner.getSelectedItem().toString();
-                if (instructionText.length() == 0) {
+                String operatorText = spinner.getSelectedItem().toString();
+                if (operatorText.length() == 0) {
                     rhsText.setVisibility(View.INVISIBLE);
                     rhsLabel.setVisibility(View.INVISIBLE);
                     rhsSpinner.setVisibility(View.INVISIBLE);
@@ -258,7 +258,7 @@ public class Expression implements java.io.Serializable {
     }
 
     /**
-     * @return event for when a user choses an operator
+     * @return event for when a user chooses a LHS variable
      */
     private AdapterView.OnItemSelectedListener onLHSSelect() {
         return new AdapterView.OnItemSelectedListener() {
@@ -284,7 +284,7 @@ public class Expression implements java.io.Serializable {
     }
 
     /**
-     * @return event for when a user choses an operator
+     * @return event for when a user chooses RHS variable
      */
     private AdapterView.OnItemSelectedListener onRHSSelect() {
         return new AdapterView.OnItemSelectedListener() {
