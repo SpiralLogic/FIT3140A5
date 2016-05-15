@@ -5,14 +5,14 @@ package com.srjengbro.scratchbasic.operators;
  * @description Adds the lhs to the rhs. Inherits from the Operator abstract
  *              class and handles the evaluation of any plus operation
  */
-public class Plus extends Operator {
+public class PlusOperator extends Operator {
 
 
     /**
      * constructor
      */
-    public Plus() {
-        name = "Plus";
+    public PlusOperator() {
+        name = "PlusOperator";
         symbol = "+";
     }
 

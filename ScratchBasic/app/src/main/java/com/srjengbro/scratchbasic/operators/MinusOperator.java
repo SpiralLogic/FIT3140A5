@@ -4,12 +4,12 @@ package com.srjengbro.scratchbasic.operators;
  * @author      Sol Jennigns & Giles Browne
  * @description subtracts rhs from lhs
  */
-public class Minus extends Operator {
+public class MinusOperator extends Operator {
     /**
      * constructor
      */
-    public Minus() {
-        name = "Minus";
+    public MinusOperator() {
+        name = "MinusOperator";
         symbol = "-";
     }
 

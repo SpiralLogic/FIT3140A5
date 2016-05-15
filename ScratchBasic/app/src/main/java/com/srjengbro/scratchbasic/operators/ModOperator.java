@@ -5,7 +5,7 @@ package com.srjengbro.scratchbasic.operators;
  * @date: 15/05/16
  * @description Modulo operator, performs modulo arithmatic
  */
-public class Mod extends Operator {
+public class ModOperator extends Operator {
     @Override
     public Integer evaluate(Integer lhs, Integer rhs) {
         return lhs % rhs;

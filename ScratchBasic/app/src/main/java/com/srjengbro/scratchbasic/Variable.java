@@ -3,11 +3,10 @@ package com.srjengbro.scratchbasic;
 import java.io.Serializable;
 
 /**
- * @author      Sol Jennigns & Giles Browne
- * @description Class for storing a single variable. Variables are stored within a
- *              Variable store object.
+ * @author Sol Jenings on 15/05/2016.
+ * @description abstract class for defining variable types
  */
-public class Variable implements Serializable {
+public abstract class Variable  implements Serializable {
     /**
      * name of the current variable
      */
@@ -15,7 +14,7 @@ public class Variable implements Serializable {
     /**
      * value of variable
      */
-    private Integer value;
+    private Object value;
 
     /**
      * @param name constructor
@@ -27,21 +26,22 @@ public class Variable implements Serializable {
     /**
      * @return get the value of the variable
      */
-    public Integer getValue() {
-        return this.value;
-    }
-
+    public abstract Object getValue();
     /**
      * @param value set the value of the variable
      */
-    public void setValue(Integer value) {
-        this.value = value;
-    }
+    public abstract void setValue(Object value);
 
     /**
      * @return the name of the variable
      */
-    public String getName() {
+    public  String getName() {
         return name;
     }
+
+    public String toString() {
+        return this.value.toString();
+    }
+
+
 }

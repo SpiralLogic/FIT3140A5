@@ -1,5 +1,6 @@
 package com.srjengbro.scratchbasic;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 
 import com.srjengbro.scratchbasic.instructions.Instruction;
 import com.srjengbro.scratchbasic.instructions.LetInstruction;
-import com.srjengbro.scratchbasic.operators.NoOp;
+import com.srjengbro.scratchbasic.operators.NoOpOperator;
 import com.srjengbro.scratchbasic.operators.Operator;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class Expression implements java.io.Serializable {
     /**
      * operator of the instruction defaults to no operation
      */
-    private Operator operator = new NoOp();
+    private Operator operator = new NoOpOperator();
     /**
      * lhs textbox
      */
@@ -105,7 +106,7 @@ public class Expression implements java.io.Serializable {
      */
     public Expression(String lhs) {
         this.lhs = lhs;
-        operator = new NoOp();
+        operator = new NoOpOperator();
         this.rhs = null;
     }
 
@@ -113,7 +114,7 @@ public class Expression implements java.io.Serializable {
      *
      */
     public Expression() {
-        operator = new NoOp();
+        operator = new NoOpOperator();
         this.lhs = null;
         this.rhs = null;
     }
@@ -133,27 +134,26 @@ public class Expression implements java.io.Serializable {
         try {
             lhsInt = Integer.parseInt(lhs);
         } catch (NumberFormatException e) {
-            Variable var = variableStore.getVariable(lhs);
+            IntegerVariable var = (IntegerVariable) variableStore.getVariable(lhs);
             if (var == null) {
-                throw new VariableDoesNotExistException("Variable " + lhs + " does not exist");
+                throw new VariableDoesNotExistException("IntegerVariable " + lhs + " does not exist");
             }
             lhsInt = var.getValue();
         }
-        if (rhs == null || operator instanceof NoOp) {
+        if (rhs == null || operator instanceof NoOpOperator) {
             return lhsInt;
         }
         try {
             rhsInt = Integer.parseInt(rhs);
         } catch (NumberFormatException e) {
-            Variable var = variableStore.getVariable(rhs);
+            IntegerVariable var = (IntegerVariable) variableStore.getVariable(rhs);
 
             if (var == null) {
-                throw new VariableDoesNotExistException("Variable " + rhs + " does not exist");
+                throw new VariableDoesNotExistException("IntegerVariable " + rhs + " does not exist");
             }
             rhsInt = var.getValue();
 
         }
-
         return operator.evaluate(lhsInt, rhsInt);
 
 

@@ -1,5 +1,7 @@
 package com.srjengbro.scratchbasic;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.TreeMap;
 
@@ -26,14 +28,16 @@ public class VariableStore implements Serializable {
      * @param name set a variable value by name
      * @param value the value of the variable
      */
-    public void setVariable(String name, Integer value) {
+    public void setVariable(String name, Object value) throws VariableTypeException {
         Variable var;
-        var = variables.get(name);
-        if (var == null) {
-            var = new Variable(name);
 
+        if (value instanceof Integer) {
+            var = new IntegerVariable(name);
+            var.setValue(value);
+            Log.d("variable", var.getValue().toString());
+        } else{
+            throw new VariableTypeException(name + " is not a valid variable");
         }
-        var.setValue(value);
         variables.put(name,var);
     }
 

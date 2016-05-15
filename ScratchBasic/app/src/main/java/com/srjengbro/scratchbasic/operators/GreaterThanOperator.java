@@ -6,13 +6,13 @@ package com.srjengbro.scratchbasic.operators;
  * @description tests if 1 things is bigger than the other. Inherits from the Operator abstract
  *              class and handles the evaluation of any greater than operations
  */
-public class GreaterThan extends Operator {
+public class GreaterThanOperator extends Operator {
 
     /**
      * constructor
      */
-    public GreaterThan() {
-        name = "GreaterThan";
+    public GreaterThanOperator() {
+        name = "GreaterThanOperator";
         symbol = ">";
     }
 

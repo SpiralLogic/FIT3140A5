@@ -4,16 +4,16 @@ import android.util.Log;
 
 /**
  * @author      Sol Jennigns & Giles Browne
- * @description Equal operator, tests if 2 things are equal. Inherits from the Operator abstract
+ * @description EqualOperator operator, tests if 2 things are equal. Inherits from the Operator abstract
  *              class and handles the evaluation of any equals operations
  */
-public class Equal extends Operator {
+public class EqualOperator extends Operator {
 
     /**
      * constructor
      */
-    public Equal() {
-        name = "Equal";
+    public EqualOperator() {
+        name = "EqualOperator";
         symbol = "==";
 
     }

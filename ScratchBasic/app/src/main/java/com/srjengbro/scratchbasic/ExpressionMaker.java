@@ -1,18 +1,18 @@
 package com.srjengbro.scratchbasic;
 
 import com.srjengbro.scratchbasic.operators.DivOperator;
-import com.srjengbro.scratchbasic.operators.Equal;
-import com.srjengbro.scratchbasic.operators.GreaterThan;
-import com.srjengbro.scratchbasic.operators.LessThan;
-import com.srjengbro.scratchbasic.operators.Minus;
-import com.srjengbro.scratchbasic.operators.Mod;
+import com.srjengbro.scratchbasic.operators.EqualOperator;
+import com.srjengbro.scratchbasic.operators.GreaterThanOperator;
+import com.srjengbro.scratchbasic.operators.LessThanOperator;
+import com.srjengbro.scratchbasic.operators.MinusOperator;
+import com.srjengbro.scratchbasic.operators.ModOperator;
 import com.srjengbro.scratchbasic.operators.Operator;
-import com.srjengbro.scratchbasic.operators.Plus;
+import com.srjengbro.scratchbasic.operators.PlusOperator;
 
 /**
  * @author      Sol Jennigns & Giles Browne
  * @description Expression factory. Creates an expression object an returns that object
- *              An expression with just a LHS will default to using a NoOp operator for its
+ *              An expression with just a LHS will default to using a NoOpOperator operator for its
  *              operator
  */
 public class ExpressionMaker {
@@ -47,22 +47,22 @@ public class ExpressionMaker {
         Operator op;
         switch (type) {
             case "+":
-                op = new Plus();
+                op = new PlusOperator();
                 break;
             case "-":
-                op = new Minus();
+                op = new MinusOperator();
                 break;
             case "==":
-                op = new Equal();
+                op = new EqualOperator();
                 break;
             case ">":
-                op = new GreaterThan();
+                op = new GreaterThanOperator();
                 break;
             case "<":
-                op = new LessThan();
+                op = new LessThanOperator();
                 break;
             case "%":
-                op = new Mod();
+                op = new ModOperator();
                 break;
             case "/":
                 op = new DivOperator();

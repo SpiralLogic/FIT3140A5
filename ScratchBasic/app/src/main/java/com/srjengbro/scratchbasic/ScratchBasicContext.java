@@ -19,7 +19,7 @@ public class ScratchBasicContext implements Serializable {
      */
     private ArrayList<Instruction> instructions = new ArrayList<>();
     /**
-     * Variable Storage
+     * IntegerVariable Storage
      */
     private VariableStore variableStore = new VariableStore();
 
@@ -109,7 +109,7 @@ public class ScratchBasicContext implements Serializable {
     }
 
     /**
-     * @return Programs Variable store
+     * @return Programs IntegerVariable store
      */
     public VariableStore getVariableStore() {
         return variableStore;
