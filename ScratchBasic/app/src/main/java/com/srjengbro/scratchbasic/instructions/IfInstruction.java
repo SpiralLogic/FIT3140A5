@@ -4,6 +4,7 @@ package com.srjengbro.scratchbasic.instructions;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+
 import com.srjengbro.scratchbasic.Expression;
 import com.srjengbro.scratchbasic.ExpressionMaker;
 import com.srjengbro.scratchbasic.ExpressionParseException;
@@ -15,12 +16,12 @@ import java.util.ArrayList;
 
 
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description GotoInstruction This class allows for the creation of a IF GOTO instruction
- *              It allows an instruction to change the next line to be executed in a ScratchBasic
- *              program based on the evaluation of an expression. It inherits from the instruction
- *              class. It handles the layout, running,
- *              and processing of any IF GOTO instruction
+ * It allows an instruction to change the next line to be executed in a ScratchBasic
+ * program based on the evaluation of an expression. It inherits from the instruction
+ * class. It handles the layout, running,
+ * and processing of any IF GOTO instruction
  */
 public class IfInstruction extends Instruction {
 
@@ -84,7 +85,7 @@ public class IfInstruction extends Instruction {
     }
 
     /**
-     * @param inflater inflator
+     * @param inflater        inflater
      * @param instructionList current list of instructions
      * @return the layout to display the editor
      */
@@ -92,7 +93,7 @@ public class IfInstruction extends Instruction {
         View layout = inflater.inflate(R.layout.inst_if, null);
         expression.layout(layout, instructionList);
         //gotoText = (EditText) layout.findViewById(R.id.goto_line);
-       // gotoText.setText(gotoInstruction.getInstruction());
+        // gotoText.setText(gotoInstruction.getInstruction());
         return layout;
     }
 
@@ -105,8 +106,8 @@ public class IfInstruction extends Instruction {
 
 
     /**
-     *
-     * @param scratchBasicContext@return the result of statement
+     * @param scratchBasicContext program context
+     * @return the result of statement
      * @throws InstructionRunException
      */
     @Override
@@ -131,12 +132,15 @@ public class IfInstruction extends Instruction {
     }
 
     /**
+     * @param scratchBasicContext program context
      * @return get the next line to execute
      */
-    public Integer getNextLine() {
+    public void updatePointer(ScratchBasicContext scratchBasicContext) {
         if (evaluatedAs) {
-            return gotoInstruction.getNextLine();
+            gotoInstruction.updatePointer(scratchBasicContext);
+        } else {
+            scratchBasicContext.setCurrentLine(scratchBasicContext.getCurrentLine() + 1);
+
         }
-        return null;
     }
 }

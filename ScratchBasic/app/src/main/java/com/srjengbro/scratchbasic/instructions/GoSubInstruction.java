@@ -55,7 +55,7 @@ public class GoSubInstruction extends Instruction {
         throw new InstructionRunException("Could not find sub routine " + this.subLabel);
     }
 
-    public Integer getNextLine() {
-        return nextLine;
+    public void updatePointer(ScratchBasicContext scratchBasicContext) {
+        scratchBasicContext.setCurrentLine(nextLine);
     }
 }

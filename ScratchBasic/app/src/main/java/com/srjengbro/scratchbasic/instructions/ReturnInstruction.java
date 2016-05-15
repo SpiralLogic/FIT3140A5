@@ -41,10 +41,10 @@ public class ReturnInstruction extends Instruction {
         } catch (EmptyStackException e) {
             nextLine = null;
         }
-        return null;
+        return "";
     }
 
-    public Integer getNextLine() {
-        return nextLine;
+    public void updatePointer(ScratchBasicContext scratchBasicContext) {
+        scratchBasicContext.setCurrentLine(nextLine);
     }
 }

@@ -19,10 +19,6 @@ import java.util.ArrayList;
 public class GotoInstruction extends Instruction {
 
     /**
-     * Textbox for gotolayout
-     */
-    private transient EditText gotoText;
-    /**
      * The line that the goto will goto
      */
     private Integer gotoLine;
@@ -72,26 +68,11 @@ public class GotoInstruction extends Instruction {
         return null;
     }
 
-    /**
-     * update the instruction after edit
-     */
     @Override
     public void update() {
 
-        parse(gotoText.getText().toString());
     }
 
-    /**
-     * @param line parse the instruction from a string
-     */
-    public void parse(String line) {
-        try {
-            gotoLine = Integer.parseInt(line);
-            instruction = line;
-        } catch (NumberFormatException e) {
-            System.out.print(e.getMessage());
-        }
-    }
 
     /**
      * decrease the goto line used for autoline numbering
@@ -114,9 +95,9 @@ public class GotoInstruction extends Instruction {
 
     /**
      * @return the next line that will run
+     * @param scratchBasicContext
      */
-    public Integer getNextLine() {
-
-        return getGotoLine();
+    public void updatePointer(ScratchBasicContext scratchBasicContext) {
+scratchBasicContext.setCurrentLine(getGotoLine());
     }
 }

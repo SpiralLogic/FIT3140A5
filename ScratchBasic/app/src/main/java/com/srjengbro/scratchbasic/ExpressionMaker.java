@@ -1,6 +1,6 @@
 package com.srjengbro.scratchbasic;
 
-import com.srjengbro.scratchbasic.operators.Div;
+import com.srjengbro.scratchbasic.operators.DivOperator;
 import com.srjengbro.scratchbasic.operators.Equal;
 import com.srjengbro.scratchbasic.operators.GreaterThan;
 import com.srjengbro.scratchbasic.operators.LessThan;
@@ -65,7 +65,7 @@ public class ExpressionMaker {
                 op = new Mod();
                 break;
             case "/":
-                op = new Div();
+                op = new DivOperator();
                 break;
             default:
                 return new Expression(lhs);

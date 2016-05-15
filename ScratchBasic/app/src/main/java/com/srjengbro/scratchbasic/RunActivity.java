@@ -188,12 +188,9 @@ public class RunActivity extends AppCompatActivity {
             return;
         }
         updateCommandOutput(result);
-        if (null == inst.getNextLine()) {
-            scratchBasicContext.setCurrentLine(scratchBasicContext.getCurrentLine() + 1);
-        } else {
-            scratchBasicContext.setCurrentLine(inst.getNextLine());
-        }
+        inst.updatePointer(scratchBasicContext);
         if (scratchBasicContext.getCurrentLine() >= instructions.size()) {
+            updateCommandOutput("Program Finished!");
             stop();
         }
         if (running) {

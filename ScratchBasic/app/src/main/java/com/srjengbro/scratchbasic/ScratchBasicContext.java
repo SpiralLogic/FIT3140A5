@@ -21,7 +21,7 @@ public class ScratchBasicContext implements Serializable {
     /**
      * Variable Storage
      */
-    private  VariableStore variableStore = new VariableStore();
+    private VariableStore variableStore = new VariableStore();
 
     /**
      * Stack for storing subroutine stack calls
@@ -119,7 +119,7 @@ public class ScratchBasicContext implements Serializable {
      * @return getter for call stack
      */
     public Stack<Integer> getCallStack() {
-        if (callStack==null) {
+        if (callStack == null) {
             callStack = new Stack<>();
         }
         return callStack;
@@ -136,6 +136,10 @@ public class ScratchBasicContext implements Serializable {
      * @param currentLine set the next line of the program to run
      */
     public void setCurrentLine(Integer currentLine) {
+
+        if (currentLine == null) {
+            currentLine = instructions.size();
+        }
         this.currentLine = currentLine;
     }
 }

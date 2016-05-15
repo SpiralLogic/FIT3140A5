@@ -59,7 +59,7 @@ public abstract class Instruction implements java.io.Serializable {
 
 
     /**
-     * @param inflater inflater
+     * @param inflater        inflater
      * @param instructionList context of the current program
      * @return layout of the instruction
      */
@@ -72,17 +72,17 @@ public abstract class Instruction implements java.io.Serializable {
 
 
     /**
-     *
      * @param scratchBasicContext@return run the instruction and return the result
      * @throws InstructionRunException
      */
     public abstract String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException;
 
     /**
+     * @param scratchBasicContext
      * @return the next line to execture
      */
-    public Integer getNextLine() {
-        return null;
+    public void updatePointer(ScratchBasicContext scratchBasicContext) {
+        scratchBasicContext.setCurrentLine(scratchBasicContext.getCurrentLine() + 1);
     }
 
 }
