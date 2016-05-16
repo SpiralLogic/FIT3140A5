@@ -12,4 +12,10 @@ public class ModOperator extends Operator {
 
     }
     @Override
-    public D
+    public Double evaluate(Double lhs, Double rhs) {
+        return lhs % rhs;
+    }
+}
+
+
+

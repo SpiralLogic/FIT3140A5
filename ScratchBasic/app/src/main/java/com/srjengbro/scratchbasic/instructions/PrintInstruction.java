@@ -60,8 +60,8 @@ public class PrintInstruction extends Instruction {
     }
 
     /**
-     *
-     * @param scratchBasicContext@return execute the instruction
+     * @param scratchBasicContext
+     * @return execute the instruction
      * @throws InstructionRunException
      */
     @Override
@@ -76,6 +76,13 @@ public class PrintInstruction extends Instruction {
             throw new InstructionRunException(e.getMessage());
         }
 
+
+        int intResult = result.intValue();
+        double doubleResult = result;
+        if (intResult == doubleResult) {
+            return ((Integer) intResult).toString();
+
+        }
         return result.toString();
     }
 

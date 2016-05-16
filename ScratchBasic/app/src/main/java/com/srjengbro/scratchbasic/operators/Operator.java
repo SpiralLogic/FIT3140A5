@@ -20,7 +20,7 @@ public abstract class Operator implements java.io.Serializable {
      * @param rhs RHS operand
      * @return result of the operation
      */
-    public abstract Integer evaluate(Integer lhs, Integer rhs);
+    public abstract Double evaluate(Double lhs, Double rhs);
 
     /**
      * @return the symbol of the operation
