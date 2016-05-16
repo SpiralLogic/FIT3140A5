@@ -24,13 +24,11 @@ public class EqualOperator extends Operator {
      * @return 1 if things are equal 0 otherwise
      */
     @Override
-    public Integer evaluate(Integer lhs, Integer rhs) {
-        Log.d("LHS",lhs.toString());
-        Log.d("RHS",rhs.toString());
+    public Double evaluate(Double lhs, Double rhs) {
 
         if (lhs.equals(rhs)) {
-            return 1;
+            return 1.1;
         }
-        return 0;
+        return 0.0;
     }
 }

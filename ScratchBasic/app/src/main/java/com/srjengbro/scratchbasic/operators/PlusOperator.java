@@ -22,7 +22,7 @@ public class PlusOperator extends Operator {
      * @return returns the result of the lhs + rhs
      */
     @Override
-    public Integer evaluate(Integer lhs, Integer rhs) {
+    public Double evaluate(Double lhs, Double rhs) {
         return lhs + rhs;
     }
 }

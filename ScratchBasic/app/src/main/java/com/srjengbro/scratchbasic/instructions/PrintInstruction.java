@@ -69,12 +69,13 @@ public class PrintInstruction extends Instruction {
         if (expression == null) {
             throw new InstructionRunException("Instruction missing expression");
         }
-        Integer result;
+        Double result;
         try {
             result = expression.evaluate(scratchBasicContext.getVariableStore());
         } catch (VariableDoesNotExistException | ExpressionParseException e) {
             throw new InstructionRunException(e.getMessage());
         }
+
         return result.toString();
     }
 

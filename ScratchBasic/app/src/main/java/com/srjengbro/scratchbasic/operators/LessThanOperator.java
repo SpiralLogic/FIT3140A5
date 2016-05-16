@@ -20,10 +20,10 @@ public class LessThanOperator extends Operator {
      * @return 1 if lhs < rhs otherwise 0
      */
     @Override
-    public Integer evaluate(Integer lhs, Integer rhs) {
+    public Double evaluate(Double lhs, Double rhs) {
         if (lhs < rhs) {
-            return 1;
+            return 1.0;
         }
-        return 0;
+        return 0.0;
     }
 }

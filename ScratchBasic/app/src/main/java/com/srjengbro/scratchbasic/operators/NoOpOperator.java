@@ -23,7 +23,7 @@ public class NoOpOperator extends Operator {
      * @return just the lhs
      */
     @Override
-    public Integer evaluate(Integer lhs, Integer rhs) {
+    public Double evaluate(Double lhs, Double rhs) {
         return lhs;
     }
 }

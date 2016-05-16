@@ -112,7 +112,7 @@ public class IfInstruction extends Instruction {
      */
     @Override
     public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
-        Integer result;
+        Double result;
         if (expression == null) {
             throw new InstructionRunException("Instruction missing expression");
         }

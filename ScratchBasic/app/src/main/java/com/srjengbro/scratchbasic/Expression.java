@@ -1,6 +1,5 @@
 package com.srjengbro.scratchbasic;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -125,18 +124,18 @@ public class Expression implements java.io.Serializable {
      * @throws VariableDoesNotExistException
      * @throws ExpressionParseException
      */
-    public Integer evaluate(VariableStore variableStore) throws VariableDoesNotExistException, ExpressionParseException {
-        Integer lhsInt;
-        Integer rhsInt;
+    public Double evaluate(VariableStore variableStore) throws VariableDoesNotExistException, ExpressionParseException {
+        Double lhsInt;
+        Double rhsInt;
         if (lhs == null || lhs.length() == 0) {
             throw new ExpressionParseException("Expression missing left hand side");
         }
         try {
-            lhsInt = Integer.parseInt(lhs);
+            lhsInt = Double.parseDouble(lhs);
         } catch (NumberFormatException e) {
-            IntegerVariable var = (IntegerVariable) variableStore.getVariable(lhs);
+            DoubleVariable var = (DoubleVariable) variableStore.getVariable(lhs);
             if (var == null) {
-                throw new VariableDoesNotExistException("IntegerVariable " + lhs + " does not exist");
+                throw new VariableDoesNotExistException("DoubleVariable " + lhs + " does not exist");
             }
             lhsInt = var.getValue();
         }
@@ -144,12 +143,12 @@ public class Expression implements java.io.Serializable {
             return lhsInt;
         }
         try {
-            rhsInt = Integer.parseInt(rhs);
+            rhsInt = Double.parseDouble(rhs);
         } catch (NumberFormatException e) {
-            IntegerVariable var = (IntegerVariable) variableStore.getVariable(rhs);
+            DoubleVariable var = (DoubleVariable) variableStore.getVariable(rhs);
 
             if (var == null) {
-                throw new VariableDoesNotExistException("IntegerVariable " + rhs + " does not exist");
+                throw new VariableDoesNotExistException("DoubleVariable " + rhs + " does not exist");
             }
             rhsInt = var.getValue();
 

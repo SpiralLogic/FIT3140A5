@@ -31,8 +31,8 @@ public class VariableStore implements Serializable {
     public void setVariable(String name, Object value) throws VariableTypeException {
         Variable var;
 
-        if (value instanceof Integer) {
-            var = new IntegerVariable(name);
+        if (value instanceof Double) {
+            var = new DoubleVariable(name);
             var.setValue(value);
             Log.d("variable", var.getValue().toString());
         } else{

@@ -18,5 +18,7 @@
         <item>&lt;</item>
         <item>&gt;</item>
         <item>==</item>
+        <item>/</item>
+        <item>%</item>
     </string-array>
 </resources>

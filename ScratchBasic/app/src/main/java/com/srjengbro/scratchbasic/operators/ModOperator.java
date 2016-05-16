@@ -6,8 +6,10 @@ package com.srjengbro.scratchbasic.operators;
  * @description Modulo operator, performs modulo arithmatic
  */
 public class ModOperator extends Operator {
-    @Override
-    public Integer evaluate(Integer lhs, Integer rhs) {
-        return lhs % rhs;
+    public ModOperator() {
+        name = "Mod";
+        symbol = "%";
+
     }
-}
+    @Override
+    public D

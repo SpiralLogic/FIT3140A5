@@ -6,8 +6,10 @@ package com.srjengbro.scratchbasic.operators;
  * @description Divison operator, divides the lhs by the rhs
  */
 public class DivOperator extends Operator {
-    @Override
-    public Integer evaluate(Integer lhs, Integer rhs) {
-        return lhs / rhs;
+    public DivOperator() {
+        name = "Div";
+        symbol = "/";
+
     }
-}
+    @Override
+    public D

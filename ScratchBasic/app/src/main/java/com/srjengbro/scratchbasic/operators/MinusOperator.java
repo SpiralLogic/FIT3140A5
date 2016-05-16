@@ -19,7 +19,7 @@ public class MinusOperator extends Operator {
      * @return the result of subtracting rhs from lhs
      */
     @Override
-    public Integer evaluate(Integer lhs, Integer rhs) {
+    public Double evaluate(Double lhs, Double rhs) {
 
         return lhs - rhs;
     }

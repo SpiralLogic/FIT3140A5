@@ -95,7 +95,7 @@ public class LetInstruction extends Instruction {
         if (variable == null) {
             throw new InstructionRunException("Instruction missing variable");
         }
-        Integer result;
+        Double result;
         try {
             result = expression.evaluate(scratchBasicContext.getVariableStore());
             scratchBasicContext.getVariableStore().setVariable(variable, result);
