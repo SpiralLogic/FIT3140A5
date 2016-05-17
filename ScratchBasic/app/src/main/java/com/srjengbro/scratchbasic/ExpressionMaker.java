@@ -1,14 +1,14 @@
 package com.srjengbro.scratchbasic;
 
-import com.srjengbro.scratchbasic.Operators.DivOperator;
-import com.srjengbro.scratchbasic.Operators.EqualOperator;
-import com.srjengbro.scratchbasic.Operators.GreaterThanOperator;
-import com.srjengbro.scratchbasic.Operators.LessThanOperator;
-import com.srjengbro.scratchbasic.Operators.MinusOperator;
-import com.srjengbro.scratchbasic.Operators.ModOperator;
-import com.srjengbro.scratchbasic.Operators.MultiplyOperator;
-import com.srjengbro.scratchbasic.Operators.Operator;
-import com.srjengbro.scratchbasic.Operators.PlusOperator;
+import com.srjengbro.scratchbasic.operators.DivOperator;
+import com.srjengbro.scratchbasic.operators.EqualOperator;
+import com.srjengbro.scratchbasic.operators.GreaterThanOperator;
+import com.srjengbro.scratchbasic.operators.LessThanOperator;
+import com.srjengbro.scratchbasic.operators.MinusOperator;
+import com.srjengbro.scratchbasic.operators.ModOperator;
+import com.srjengbro.scratchbasic.operators.MultiplyOperator;
+import com.srjengbro.scratchbasic.operators.Operator;
+import com.srjengbro.scratchbasic.operators.PlusOperator;
 
 /**
  * @author Sol Jennigns & Giles Browne
