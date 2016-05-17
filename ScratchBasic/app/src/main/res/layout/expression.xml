@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/lhs_label"
-        android:digits="_qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
+        android:digits="_qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-"
         android:paddingTop="11dp"
         android:textAlignment="center" />
 
@@ -35,7 +35,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/operator_spinner"
-        android:digits="_qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
+        android:digits="_qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-"
         android:textAlignment="center" />
 
     <TextView
