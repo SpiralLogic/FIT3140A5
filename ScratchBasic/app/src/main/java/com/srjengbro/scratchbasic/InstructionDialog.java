@@ -11,8 +11,6 @@ import android.view.View;
 
 import com.srjengbro.scratchbasic.instructions.Instruction;
 
-import java.util.ArrayList;
-
 /**
  * @author Sol Jennigns & Giles Browne
  * @description Dialogue box for editing an instruction
@@ -54,7 +52,7 @@ public class InstructionDialog extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View layout = instruction.getLayout(inflater, adapter.getInstructionList());
+        View layout = instruction.getLayout(inflater, adapter.getScratchBasicContext());
 
 
         // Inflate and set the layout for the dialog

@@ -10,8 +10,6 @@ import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.ScratchBasicContext;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 
-import java.util.ArrayList;
-
 /**
  * @author Sol Jennigns & Giles Browne
  * @description PrintInstruction This class allows for the creation of a PRINT instruction
@@ -38,12 +36,12 @@ public class PrintInstruction extends Instruction {
 
     /**
      * @param inflater        inflater
-     * @param instructionList current list of instructions
+     * @param scratchBasicContext
      * @return get layout for the instruction
      */
-    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
+    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
         View layout = inflater.inflate(R.layout.inst_print, null);
-        expression.layout(layout, instructionList);
+        expression.layout(layout, scratchBasicContext.getInstructions());
         return layout;
     }
 

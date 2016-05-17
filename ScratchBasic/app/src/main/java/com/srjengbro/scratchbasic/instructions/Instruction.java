@@ -60,10 +60,10 @@ public abstract class Instruction implements java.io.Serializable {
 
     /**
      * @param inflater        inflater
-     * @param instructionList context of the current program
+     * @param scratchBasicContext
      * @return layout of the instruction
      */
-    public abstract View getLayout(LayoutInflater inflater, ArrayList instructionList);
+    public abstract View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext);
 
     /**
      * update the instruction after edit

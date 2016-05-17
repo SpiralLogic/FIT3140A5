@@ -2,11 +2,8 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 
 import com.srjengbro.scratchbasic.ScratchBasicContext;
-
-import java.util.ArrayList;
 
 
 /**
@@ -60,11 +57,11 @@ public class GotoInstruction extends Instruction {
 
     /**
      * @param inflater layout inflator
-     * @param instructionList
+     * @param scratchBasicContext
      * @return the layout for the instruction
      */
     @Override
-    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
+    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
         return null;
     }
 

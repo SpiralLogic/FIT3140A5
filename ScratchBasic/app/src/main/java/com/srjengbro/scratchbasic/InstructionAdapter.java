@@ -19,7 +19,6 @@ import com.srjengbro.scratchbasic.instructions.GotoInstruction;
 import com.srjengbro.scratchbasic.instructions.IfInstruction;
 import com.srjengbro.scratchbasic.instructions.Instruction;
 import com.srjengbro.scratchbasic.instructions.RemInstruction;
-import com.srjengbro.scratchbasic.instructions.ReturnInstruction;
 
 import java.util.ArrayList;
 
@@ -49,19 +48,25 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
      * context activity the adapter is for
      */
     private Context context;
+
+    /**
+     * Scratch Basic program context
+     */
+    private ScratchBasicContext scratchBasicContext;
     /**
      * represents a current instruction being linked
      */
     private Integer currentLink;
 
     /**
-     * @param instructionList instruction list
+     * @param ScratchBasicContext program context
      * @param ctx             context
      */
-    public InstructionAdapter(ArrayList<Instruction> instructionList, Context ctx) {
+    public InstructionAdapter(ScratchBasicContext scratchBasicContext, Context ctx) {
         super();
         inflater = LayoutInflater.from(ctx);
-        this.instructionList = instructionList;
+        this.scratchBasicContext = scratchBasicContext;
+        this.instructionList = scratchBasicContext.getInstructions();
         this.context = ctx;
 
     }
@@ -356,6 +361,23 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
             currentLink = null;
             notifyDataSetChanged();
         }
+
+    }
+
+
+
+    /**
+     * @return getter for context
+     */
+    public ScratchBasicContext getScratchBasicContext() {
+        return scratchBasicContext;
+    }
+
+    /**
+     * @param scratchBasicContext setter for conext
+     */
+    public void setScratchBasicContext(ScratchBasicContext scratchBasicContext) {
+        this.scratchBasicContext = scratchBasicContext;
     }
 
 

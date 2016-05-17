@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.srjengbro.scratchbasic.instructions.Instruction;
 import com.srjengbro.scratchbasic.instructions.LetInstruction;
-import com.srjengbro.scratchbasic.operators.NoOpOperator;
-import com.srjengbro.scratchbasic.operators.Operator;
+import com.srjengbro.scratchbasic.Operators.NoOpOperator;
+import com.srjengbro.scratchbasic.Operators.Operator;
 
 import java.util.ArrayList;
 

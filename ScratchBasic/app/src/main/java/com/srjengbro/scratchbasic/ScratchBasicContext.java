@@ -1,7 +1,10 @@
 package com.srjengbro.scratchbasic;
 
+import android.util.Log;
+
 import com.srjengbro.scratchbasic.instructions.Instruction;
 import com.srjengbro.scratchbasic.instructions.RemInstruction;
+import com.srjengbro.scratchbasic.instructions.SubInstruction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -41,11 +44,27 @@ public class ScratchBasicContext implements Serializable {
      */
     private String description;
 
-
     /**
      * Email metadata of the program
      */
     private String email;
+    /**
+     * filename of the current program
+     */
+    private String filename;
+
+    /**
+     * @return Getter for subroutine list
+     */
+    public ArrayList<String> getSubRoutines() {
+        return subRoutines;
+    }
+
+    /**
+     * Available Sub Routines
+     */
+
+    private ArrayList<String> subRoutines;
 
     /**
      * @return get the filename of the current program
@@ -55,10 +74,24 @@ public class ScratchBasicContext implements Serializable {
     }
 
     /**
+     * @param filename set the filename
+     */
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    /**
      * @return get the description of the current program
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * @param description set the description
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**
@@ -74,25 +107,6 @@ public class ScratchBasicContext implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
-
-    /**
-     * @param description set the description
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     * @param filename set the filename
-     */
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    /**
-     * filename of the current program
-     */
-    private String filename;
 
     /**
      * @return the instructionlist of the current program
@@ -163,5 +177,25 @@ public class ScratchBasicContext implements Serializable {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * Update the list of possbile sub routines
+     */
+    public void updateSubRoutineList() {
+
+        Instruction inst;
+        subRoutines = new ArrayList<>();
+        for (int i = 0; i < instructions.size(); i++) {
+            inst = instructions.get(i);
+            if (inst instanceof SubInstruction) {
+                SubInstruction si = (SubInstruction) inst;
+
+                Log.d("subrotine", si.getInstruction());
+                subRoutines.add(si.getInstruction());
+
+            }
+        }
+
     }
 }

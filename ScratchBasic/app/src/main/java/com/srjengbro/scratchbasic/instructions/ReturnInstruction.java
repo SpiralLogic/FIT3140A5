@@ -5,7 +5,6 @@ import android.view.View;
 
 import com.srjengbro.scratchbasic.ScratchBasicContext;
 
-import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
@@ -24,7 +23,7 @@ public class ReturnInstruction extends Instruction {
     }
 
     @Override
-    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
+    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
         return null;
     }
 

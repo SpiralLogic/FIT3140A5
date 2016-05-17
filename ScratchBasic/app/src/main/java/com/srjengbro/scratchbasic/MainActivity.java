@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *  Create a new program and go the editor activity
+     * Create a new program and go the editor activity
      */
     private void newProgram() {
         ScratchApplication app = (ScratchApplication) getApplication();

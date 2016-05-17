@@ -28,7 +28,7 @@ public class EditorActivity extends AppCompatActivity {
      */
     private ArrayList<Instruction> instructions;
     /**
-     * listview to show the instructions on the screen
+     * list view to show the instructions on the screen
      */
     private ListView instructionListView;
     /**
@@ -36,23 +36,6 @@ public class EditorActivity extends AppCompatActivity {
      */
     private InstructionAdapter instructionAdapter;
 
-    /**
-     * Text box for the file name
-     */
-    private EditText filenameText;
-
-    /**
-     * The box for the author
-     */
-    private EditText authorText;
-    /**
-     * The box for the author
-     */
-    private EditText emailText;
-    /**
-     * The box for the author
-     */
-    private EditText descriptionText;
     /**
      * Current application
      */
@@ -71,14 +54,9 @@ public class EditorActivity extends AppCompatActivity {
 
 
         instructionListView = (ListView) findViewById(R.id.instruction_listView);
-        instructionAdapter = new InstructionAdapter(instructions, this);
+        instructionAdapter = new InstructionAdapter(app.getScratchBasicContext(), this);
         instructionListView.setAdapter(instructionAdapter);
 
-        filenameText = (EditText) findViewById(R.id.filename_text);
-        authorText = (EditText) findViewById(R.id.author_text);
-        emailText = (EditText) findViewById(R.id.email_text);
-        descriptionText = (EditText) findViewById(R.id.description_text);
-        getMetadata();
 
         Button runButton = (Button) findViewById(R.id.run_button);
         if (runButton != null) {
@@ -111,7 +89,16 @@ public class EditorActivity extends AppCompatActivity {
                                           }
             );
         }
-
+        Button metaButton = (Button) findViewById(R.id.meta_info_button);
+        if (metaButton != null) {
+            metaButton.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  meta();
+                                              }
+                                          }
+            );
+        }
     }
 
     /**
@@ -119,9 +106,16 @@ public class EditorActivity extends AppCompatActivity {
      */
     private void run() {
         app = ((ScratchApplication) getApplication());
-        app.getScratchBasicContext().setFilename(filenameText.getText().toString());
-        app.getScratchBasicContext().setAuthor(authorText.getText().toString());
         Intent i = new Intent(getApplicationContext(), RunActivity.class);
+        startActivity(i);
+    }
+
+    /**
+     * view program meta
+     */
+    private void meta() {
+        app = ((ScratchApplication) getApplication());
+        Intent i = new Intent(getApplicationContext(), MetaInfoActivity.class);
         startActivity(i);
     }
 
@@ -130,7 +124,6 @@ public class EditorActivity extends AppCompatActivity {
      */
     private void saveProgram() {
         app = ((ScratchApplication) getApplication());
-        setMetadata();
         app.saveProgram();
     }
 
@@ -142,31 +135,8 @@ public class EditorActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         instructionAdapter.notifyDataSetChanged();
-        getMetadata();
     }
 
-
-    /**
-     * Get the metadata for the program
-     */
-    private void getMetadata() {
-        app = ((ScratchApplication) getApplication());
-        authorText.setText(app.getScratchBasicContext().getAuthor());
-        emailText.setText(app.getScratchBasicContext().getEmail());
-        descriptionText.setText(app.getScratchBasicContext().getDescription());
-        filenameText.setText(app.getScratchBasicContext().getFilename());
-    }
-
-    /**
-     * Set the metadata for the program
-     */
-    private void setMetadata() {
-        app = ((ScratchApplication) getApplication());
-        app.getScratchBasicContext().setAuthor(authorText.getText().toString());
-        app.getScratchBasicContext().setEmail(emailText.getText().toString());
-        app.getScratchBasicContext().setDescription(descriptionText.getText().toString());
-        app.getScratchBasicContext().setFilename(filenameText.getText().toString());
-    }
 
     /**
      * @param keyCode

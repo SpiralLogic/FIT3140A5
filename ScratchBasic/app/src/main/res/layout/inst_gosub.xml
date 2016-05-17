@@ -12,9 +12,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/gosub_text"
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/gosub_spinner"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

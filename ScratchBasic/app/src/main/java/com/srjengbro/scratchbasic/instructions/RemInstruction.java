@@ -7,8 +7,6 @@ import android.widget.EditText;
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.ScratchBasicContext;
 
-import java.util.ArrayList;
-
 /**
  * @author      Sol Jennigns & Giles Browne
  * @description RemInstruction This class allows for the creation of a REM instruction
@@ -31,10 +29,10 @@ public class RemInstruction extends Instruction {
 
     /**
      * @param inflater inflater
-     * @param instructionList
+     * @param scratchBasicContext
      * @return get layout for the instruction
      */
-    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
+    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
         View layout = inflater.inflate(R.layout.inst_rem, null);
         remText = (EditText) layout.findViewById(R.id.rem_text);
         remText.setText(instruction);

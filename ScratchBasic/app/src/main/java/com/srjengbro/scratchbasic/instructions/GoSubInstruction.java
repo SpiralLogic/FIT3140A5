@@ -2,7 +2,9 @@ package com.srjengbro.scratchbasic.instructions;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.ScratchBasicContext;
@@ -17,28 +19,66 @@ import java.util.Stack;
  */
 public class GoSubInstruction extends Instruction {
 
+    /**
+     * Next line to go to
+     */
     private Integer nextLine;
+    /**
+     * Instruction lavel to go to
+     */
     private String subLabel;
-    private transient EditText goSubText;
+    /**
+     * Sub Routine spinner
+     */
+    private transient Spinner goSubSpinner;
 
+    /**
+     * constructor
+     */
     public GoSubInstruction() {
         this.name = "GOSUB";
     }
 
+    /**
+     * @param inflater            inflater
+     * @param scratchBasicContext program ontext
+     * @return kayout for the gosub instruction
+     */
     @Override
-    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
+    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
+        scratchBasicContext.updateSubRoutineList();
         View layout = inflater.inflate(R.layout.inst_gosub, null);
-        goSubText = (EditText) layout.findViewById(R.id.gosub_text);
-        goSubText.setText(instruction);
+        ArrayList<String> routineList = scratchBasicContext.getSubRoutines();
+        ArrayAdapter<String> routinesAdapter = new ArrayAdapter<>(layout.getContext(), android.R.layout.simple_spinner_dropdown_item,routineList);
+
+        goSubSpinner = (Spinner) layout.findViewById(R.id.gosub_spinner);
+        goSubSpinner.setAdapter(routinesAdapter);
+        int pos = routineList.indexOf(subLabel);
+        goSubSpinner.setSelection(pos);
         return layout;
     }
 
+    /**
+     * update the intruction after edit
+     */
     @Override
     public void update() {
-        this.instruction = goSubText.getText().toString();
+        Object spinnerItem = goSubSpinner.getSelectedItem();
+        if (spinnerItem != null) {
+
+            this.instruction = spinnerItem.toString();
+        } else {
+            this.instruction = "";
+        }
         this.subLabel = this.instruction;
+
     }
 
+    /**
+     * @param scratchBasicContext program context
+     * @return run the instruction and return the result
+     * @throws InstructionRunException
+     */
     @Override
     public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
         ArrayList<Instruction> instructionList = scratchBasicContext.getInstructions();
@@ -55,6 +95,10 @@ public class GoSubInstruction extends Instruction {
         throw new InstructionRunException("Could not find sub routine " + this.subLabel);
     }
 
+    /**
+     * @param scratchBasicContext
+     * update the program context pointer
+     */
     public void updatePointer(ScratchBasicContext scratchBasicContext) {
         scratchBasicContext.setCurrentLine(nextLine);
     }

@@ -7,8 +7,6 @@ import android.widget.EditText;
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.ScratchBasicContext;
 
-import java.util.ArrayList;
-
 /**
  * @author: Sol Jennings 26356015
  * @date: 14/05/16
@@ -27,7 +25,7 @@ public class SubInstruction extends Instruction {
     }
 
     @Override
-    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
+    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
         View layout = inflater.inflate(R.layout.inst_sub, null);
         subText = (EditText) layout.findViewById(R.id.sub_text);
         subText.setText(instruction);

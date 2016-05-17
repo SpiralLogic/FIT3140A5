@@ -18,17 +18,20 @@ an instructionText.
         android:paddingTop="11dp"
         android:text="1"
         android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:background="@color/colorPrimary"
+        android:textColor="#f4f4f4" />
 
     <Spinner
         android:id="@+id/spn_command"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/line_number"
         android:entries="@array/command_list"
         android:gravity="left"
         android:spinnerMode="dialog"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/instruction"

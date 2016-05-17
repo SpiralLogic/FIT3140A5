@@ -11,8 +11,6 @@ import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.ScratchBasicContext;
 import com.srjengbro.scratchbasic.VariableDoesNotExistException;
 
-import java.util.ArrayList;
-
 /**
  * @author      Sol Jennigns & Giles Browne
  * @description LetInstruction This class allows for the creation of a LET instruction
@@ -57,15 +55,15 @@ public class LetInstruction extends Instruction {
 
     /**
      * @param inflater inflater
-     * @param instructionList current list of instructions
+     * @param scratchBasicContext
      * @return the layout for the instruction
      */
     @Override
-    public View getLayout(LayoutInflater inflater, ArrayList instructionList) {
+    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
         View layout = inflater.inflate(R.layout.inst_let, null);
         letVariableText = (EditText) layout.findViewById(R.id.let_variable);
         letVariableText.setText(variable);
-        expression.layout(layout,instructionList);
+        expression.layout(layout,scratchBasicContext.getInstructions());
         return layout;
     }
 
