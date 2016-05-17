@@ -23,6 +23,14 @@ public abstract class Instruction implements java.io.Serializable {
      * Name of the instruction
      */
     protected String name = "UNKNOWN";
+    /**
+     * string representation of the instruction
+     */
+    protected String instruction = "";
+    /**
+     * Whether the instruction has an edit dialog
+     */
+    protected Boolean hasDialog = true;
 
     /**
      * @return name of the instruction
@@ -31,11 +39,6 @@ public abstract class Instruction implements java.io.Serializable {
 
         return name;
     }
-
-    /**
-     * string representation of the instruction
-     */
-    protected String instruction = "";
 
     /**
      * @return instruction text
@@ -51,12 +54,6 @@ public abstract class Instruction implements java.io.Serializable {
     public Boolean getHasDialog() {
         return hasDialog;
     }
-
-    /**
-     * Whether the instruction has an edit dialog
-     */
-    protected Boolean hasDialog = true;
-
 
     /**
      * @param inflater        inflater

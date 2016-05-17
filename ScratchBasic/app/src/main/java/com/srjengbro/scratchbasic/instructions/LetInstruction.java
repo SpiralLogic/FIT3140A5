@@ -24,16 +24,6 @@ public class LetInstruction extends Instruction {
      * text box for instruction
      */
     private transient EditText letVariableText;
-
-    /**
-     *
-     * @return Name of variable of let
-     */
-
-    public String getVariable() {
-        return variable;
-    }
-
     /**
      * the variable whos value will change
      */
@@ -42,7 +32,6 @@ public class LetInstruction extends Instruction {
      * The expression of the instruction
      */
     private Expression expression;
-
     /**
      * constructor
      */
@@ -52,6 +41,14 @@ public class LetInstruction extends Instruction {
 
     }
 
+    /**
+     *
+     * @return Name of variable of let
+     */
+
+    public String getVariable() {
+        return variable;
+    }
 
     /**
      * @param inflater inflater

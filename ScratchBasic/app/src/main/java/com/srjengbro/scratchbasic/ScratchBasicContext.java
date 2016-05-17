@@ -52,6 +52,11 @@ public class ScratchBasicContext implements Serializable {
      * filename of the current program
      */
     private String filename;
+    /**
+     * Available Sub Routines
+     */
+
+    private ArrayList<String> subRoutines;
 
     /**
      * @return Getter for subroutine list
@@ -59,12 +64,6 @@ public class ScratchBasicContext implements Serializable {
     public ArrayList<String> getSubRoutines() {
         return subRoutines;
     }
-
-    /**
-     * Available Sub Routines
-     */
-
-    private ArrayList<String> subRoutines;
 
     /**
      * @return get the filename of the current program

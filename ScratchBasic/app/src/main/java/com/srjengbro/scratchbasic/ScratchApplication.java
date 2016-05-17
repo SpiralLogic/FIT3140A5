@@ -12,9 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description overides the main android application to store the state of the program
- *
  */
 public class ScratchApplication extends Application {
 
@@ -32,6 +31,7 @@ public class ScratchApplication extends Application {
 
     /**
      * used when loading
+     *
      * @param scratchBasicContext set the context of the program
      */
     public void setScratchBasicContext(ScratchBasicContext scratchBasicContext) {
@@ -61,12 +61,12 @@ public class ScratchApplication extends Application {
     /**
      * load a specific filename if it exists
      */
-    public Boolean loadProgram(String filename){
+    public Boolean loadProgram(String filename) {
 
         FileInputStream fileIn;
         ObjectInputStream in;
         try {
-            fileIn = new FileInputStream(getFilesDir()  + filename + ".sb");
+            fileIn = new FileInputStream(getFilesDir() + filename + ".sb");
             in = new ObjectInputStream(fileIn);
             setScratchBasicContext((ScratchBasicContext) in.readObject());
             in.close();

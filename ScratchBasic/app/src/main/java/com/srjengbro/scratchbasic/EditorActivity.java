@@ -23,9 +23,6 @@ import java.util.ArrayList;
  */
 public class EditorActivity extends AppCompatActivity {
 
-    /**
-     * the set of instructions of the program
-     */
     private ArrayList<Instruction> instructions;
     /**
      * list view to show the instructions on the screen
@@ -50,8 +47,6 @@ public class EditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editor);
 
         app = (ScratchApplication) getApplication();
-        instructions = app.getScratchBasicContext().getInstructions();
-
 
         instructionListView = (ListView) findViewById(R.id.instruction_listView);
         instructionAdapter = new InstructionAdapter(app.getScratchBasicContext(), this);
@@ -127,20 +122,9 @@ public class EditorActivity extends AppCompatActivity {
         app.saveProgram();
     }
 
-
     /**
-     * resumes the activity, make sure that the instructions and the metadata are up to date
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        instructionAdapter.notifyDataSetChanged();
-    }
-
-
-    /**
-     * @param keyCode
-     * @param event
+     * @param keyCode pressed key
+     * @param event   key event
      * @return finish this activity when the back buttn is pressed
      */
     @Override
@@ -149,6 +133,15 @@ public class EditorActivity extends AppCompatActivity {
             finish();
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    /**
+     * resumes the activity, make sure that the instructions and the metadata are up to date
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        instructionAdapter.notifyDataSetChanged();
     }
 
     /**

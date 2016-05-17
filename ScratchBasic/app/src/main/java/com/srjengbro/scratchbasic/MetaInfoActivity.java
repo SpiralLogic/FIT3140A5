@@ -32,6 +32,7 @@ public class MetaInfoActivity extends AppCompatActivity {
      * Current application
      */
     private ScratchApplication app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +54,31 @@ public class MetaInfoActivity extends AppCompatActivity {
                                           }
             );
         }
+        Button saveButton = (Button) findViewById(R.id.save_button);
+        if (saveButton != null) {
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  saveProgram();
+
+                                              }
+                                          }
+            );
+        }
     }
+
+    /**
+     * Save the program
+     */
+    private void saveProgram() {
+        setMetadata();
+        app.saveProgram();
+    }
+
     /**
      * Get the metadata for the program
      */
     private void getMetadata() {
-        app = ((ScratchApplication) getApplication());
         authorText.setText(app.getScratchBasicContext().getAuthor());
         emailText.setText(app.getScratchBasicContext().getEmail());
         descriptionText.setText(app.getScratchBasicContext().getDescription());
@@ -69,11 +89,23 @@ public class MetaInfoActivity extends AppCompatActivity {
      * Set the metadata for the program
      */
     private void setMetadata() {
-        app = ((ScratchApplication) getApplication());
         app.getScratchBasicContext().setAuthor(authorText.getText().toString());
         app.getScratchBasicContext().setEmail(emailText.getText().toString());
         app.getScratchBasicContext().setDescription(descriptionText.getText().toString());
         app.getScratchBasicContext().setFilename(filenameText.getText().toString());
+    }
+
+    /**
+     * @param keyCode key code pressed
+     * @param event   key event
+     * @return finish this activity when the back button is pressed
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            setMetadata();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     /**
@@ -85,18 +117,6 @@ public class MetaInfoActivity extends AppCompatActivity {
         getMetadata();
     }
 
-    /**
-     * @param keyCode
-     * @param event
-     * @return finish this activity when the back buttn is pressed
-     */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            setMetadata();
-        }
-        return super.onKeyDown(keyCode, event);
-    }
     /**
      * return to the editor activity making sure the program is stopped first
      */

@@ -28,10 +28,6 @@ public class IfInstruction extends Instruction {
      */
     protected GotoInstruction gotoInstruction;
     /**
-     * text box for the goto instruction
-     */
-    protected transient EditText gotoText;
-    /**
      * Expression of the if statement
      */
     protected Expression expression;
@@ -57,32 +53,6 @@ public class IfInstruction extends Instruction {
     }
 
     /**
-     * update after edit
-     */
-    public void update() {
-        String type = expression.opSpinner.getSelectedItem().toString();
-        String lhs = expression.lhsText.getText().toString();
-        String rhs = expression.rhsText.getText().toString();
-        expression = ExpressionMaker.generateExpression(type, lhs, rhs);
-
-        updateInstructionText();
-
-    }
-
-    /**
-     * update the text representation after edit
-     */
-    public void updateInstructionText() {
-        StringBuilder s = new StringBuilder();
-        s.append(expression.toString());
-        s.append(" ");
-        s.append(gotoInstruction.getName());
-        s.append(" ");
-        s.append(gotoInstruction.getInstruction());
-        instruction = s.toString();
-    }
-
-    /**
      * @param inflater        inflater
      * @param scratchBasicContext
      * @return the layout to display the editor
@@ -96,12 +66,17 @@ public class IfInstruction extends Instruction {
     }
 
     /**
-     * @return goto instruction related to the if statement
+     * update after edit
      */
-    public GotoInstruction getGotoInstruction() {
-        return gotoInstruction;
-    }
+    public void update() {
+        String type = expression.opSpinner.getSelectedItem().toString();
+        String lhs = expression.lhsText.getText().toString();
+        String rhs = expression.rhsText.getText().toString();
+        expression = ExpressionMaker.generateExpression(type, lhs, rhs);
 
+        updateInstructionText();
+
+    }
 
     /**
      * @param scratchBasicContext program context
@@ -140,5 +115,25 @@ public class IfInstruction extends Instruction {
             scratchBasicContext.setCurrentLine(scratchBasicContext.getCurrentLine() + 1);
 
         }
+    }
+
+    /**
+     * update the text representation after edit
+     */
+    public void updateInstructionText() {
+        StringBuilder s = new StringBuilder();
+        s.append(expression.toString());
+        s.append(" ");
+        s.append(gotoInstruction.getName());
+        s.append(" ");
+        s.append(gotoInstruction.getInstruction());
+        instruction = s.toString();
+    }
+
+    /**
+     * @return goto instruction related to the if statement
+     */
+    public GotoInstruction getGotoInstruction() {
+        return gotoInstruction;
     }
 }

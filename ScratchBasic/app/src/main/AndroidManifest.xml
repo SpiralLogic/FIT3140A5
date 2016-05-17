@@ -30,8 +30,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MetaInfoActivity"
-            android:label="@string/title_activity_meta_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_meta_info"></activity>
     </application>
 
 </manifest>

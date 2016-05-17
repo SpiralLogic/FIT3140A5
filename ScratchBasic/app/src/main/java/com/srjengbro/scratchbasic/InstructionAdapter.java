@@ -32,14 +32,6 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
      * layout inflater
      */
     private LayoutInflater inflater;
-
-    /**
-     * @return get the instruction list
-     */
-    public ArrayList<Instruction> getInstructionList() {
-        return instructionList;
-    }
-
     /**
      * instruction list
      */
@@ -48,7 +40,6 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
      * context activity the adapter is for
      */
     private Context context;
-
     /**
      * Scratch Basic program context
      */
@@ -57,7 +48,6 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
      * represents a current instruction being linked
      */
     private Integer currentLink;
-
     /**
      * @param ScratchBasicContext program context
      * @param ctx             context
@@ -69,6 +59,13 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         this.instructionList = scratchBasicContext.getInstructions();
         this.context = ctx;
 
+    }
+
+    /**
+     * @return get the instruction list
+     */
+    public ArrayList<Instruction> getInstructionList() {
+        return instructionList;
     }
 
     /**

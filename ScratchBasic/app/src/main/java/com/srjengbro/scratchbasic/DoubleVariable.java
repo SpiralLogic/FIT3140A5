@@ -30,16 +30,12 @@ public class DoubleVariable extends Variable {
         return this.value;
     }
 
-    @Override
-    public void setValue(Object value) {
-        setValue((Double) value);
-    }
-
     /**
      * @param value set the value of the variable
      */
-    public void setValue(Double value) {
-        this.value = value;
+    @Override
+    public void setValue(Object value) {
+        setValue((Double) value);
     }
 
     /**
@@ -47,5 +43,12 @@ public class DoubleVariable extends Variable {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * @param value set the value of the variable
+     */
+    public void setValue(Double value) {
+        this.value = value;
     }
 }

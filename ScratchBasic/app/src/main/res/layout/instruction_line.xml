@@ -11,11 +11,10 @@ an instructionText.
     <TextView
         android:id="@+id/line_number"
         android:layout_width="30dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:layout_alignBottom="@+id/instruction"
         android:layout_alignParentStart="true"
         android:gravity="center"
-        android:paddingTop="11dp"
         android:text="1"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -25,10 +24,10 @@ an instructionText.
     <Spinner
         android:id="@+id/spn_command"
         android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_toEndOf="@+id/line_number"
         android:entries="@array/command_list"
-        android:gravity="left"
+        android:gravity="center_vertical|left"
         android:spinnerMode="dialog"
         android:textAlignment="center"
         android:layout_alignParentTop="true" />
@@ -36,12 +35,13 @@ an instructionText.
     <TextView
         android:id="@+id/instruction"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignBottom="@+id/edit_button"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/spn_command"
         android:layout_toStartOf="@+id/edit_button"
-        android:gravity="center_vertical|left" />
+        android:gravity="center_vertical|left"
+        android:textColor="#000000" />
 
     <Button
         android:id="@+id/edit_button"

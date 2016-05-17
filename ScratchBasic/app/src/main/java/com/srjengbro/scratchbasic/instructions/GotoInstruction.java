@@ -21,6 +21,16 @@ public class GotoInstruction extends Instruction {
     private Integer gotoLine;
 
     /**
+     * Constructor
+     */
+    public GotoInstruction() {
+        name = "GOTO";
+        gotoLine = null;
+        this.instruction = "";
+        hasDialog = false;
+    }
+
+    /**
      * @return the line to goto
      */
     public Integer getGotoLine() {
@@ -37,17 +47,24 @@ public class GotoInstruction extends Instruction {
     }
 
     /**
-     * Constructor
+     * @param inflater            layout inflater
+     * @param scratchBasicContext program context
+     * @return the layout for the instruction
      */
-    public GotoInstruction() {
-        name = "GOTO";
-        gotoLine = null;
-        this.instruction = "";
-        hasDialog = false;
+    @Override
+    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
+        return null;
     }
 
     /**
-     *
+     * Update after edit
+     */
+    @Override
+    public void update() {
+
+    }
+
+    /**
      * @param scratchBasicContext@return the result
      */
     @Override
@@ -56,20 +73,12 @@ public class GotoInstruction extends Instruction {
     }
 
     /**
-     * @param inflater layout inflator
      * @param scratchBasicContext
-     * @return the layout for the instruction
+     * @return the next line that will run
      */
-    @Override
-    public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
-        return null;
+    public void updatePointer(ScratchBasicContext scratchBasicContext) {
+        scratchBasicContext.setCurrentLine(getGotoLine());
     }
-
-    @Override
-    public void update() {
-
-    }
-
 
     /**
      * decrease the goto line used for autoline numbering
@@ -87,14 +96,5 @@ public class GotoInstruction extends Instruction {
         if (gotoLine == null) return;
         gotoLine += 1;
         instruction = gotoLine.toString();
-    }
-
-
-    /**
-     * @return the next line that will run
-     * @param scratchBasicContext
-     */
-    public void updatePointer(ScratchBasicContext scratchBasicContext) {
-scratchBasicContext.setCurrentLine(getGotoLine());
     }
 }

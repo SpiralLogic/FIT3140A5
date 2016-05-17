@@ -69,6 +69,7 @@ public class RunActivity extends AppCompatActivity {
      * Scratch Basic context
      */
     private ScratchBasicContext scratchBasicContext;
+
     /**
      * Create the activity
      *

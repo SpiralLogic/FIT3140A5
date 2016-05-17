@@ -36,7 +36,7 @@ public class PrintInstruction extends Instruction {
 
     /**
      * @param inflater        inflater
-     * @param scratchBasicContext
+     * @param scratchBasicContext program context
      * @return get layout for the instruction
      */
     public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {

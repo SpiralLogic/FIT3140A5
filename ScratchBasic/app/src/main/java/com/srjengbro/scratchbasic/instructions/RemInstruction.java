@@ -15,7 +15,7 @@ import com.srjengbro.scratchbasic.ScratchBasicContext;
  */
 public class RemInstruction extends Instruction {
     /**
-     * textbox for the instruction
+     * text box for the instruction
      */
     protected transient EditText remText;
 
@@ -48,13 +48,6 @@ public class RemInstruction extends Instruction {
     }
 
     /**
-     * @param instruction allow instruction to be aded by string
-     */
-    public void update(String instruction) {
-        this.instruction = instruction;
-    }
-
-    /**
      *
      * @param scratchBasicContext@return execute the instruction
      * @throws InstructionRunException
@@ -62,6 +55,13 @@ public class RemInstruction extends Instruction {
     @Override
     public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
         return null;
+    }
+
+    /**
+     * @param instruction allow instruction to be aded by string
+     */
+    public void update(String instruction) {
+        this.instruction = instruction;
     }
 
 

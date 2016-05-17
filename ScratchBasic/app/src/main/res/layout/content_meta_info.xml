@@ -67,7 +67,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/author_text"
-            android:layout_toRightOf="@+id/email_label" />
+            android:layout_toRightOf="@+id/email_label"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/filename_text"
@@ -122,14 +123,24 @@
             android:textColor="@color/background_floating_material_light"
             android:layout_alignRight="@+id/filename_label"
             android:layout_alignEnd="@+id/filename_label" />
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:layout_below="@+id/filename_text"
+            android:layout_alignRight="@+id/filename_text"
+            android:layout_alignEnd="@+id/filename_text" />
+
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/back"
             android:id="@+id/back_button"
-            android:layout_below="@+id/filename_text"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/filename_label"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

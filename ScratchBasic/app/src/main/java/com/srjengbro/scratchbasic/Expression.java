@@ -23,31 +23,25 @@ import java.util.ArrayList;
 public class Expression implements java.io.Serializable {
 
     /**
-     * @return get LHS of the expression
+     * lhs textbox
      */
-    public String getLhs() {
-        return lhs;
-    }
-
+    public transient EditText lhsText;
+    /**
+     * operator spinner
+     */
+    public transient Spinner opSpinner;
+    /**
+     * rhs textbox
+     */
+    public transient EditText rhsText;
+    /**
+     * rhs label
+     */
+    public transient TextView rhsLabel;
     /**
      * lhs of the expression
      */
     private String lhs;
-
-    /**
-     * @return get the rhs of the expression
-     */
-    public String getRhs() {
-        return rhs;
-    }
-
-    /**
-     * @return get the expressions operator
-     */
-    public Operator getOperator() {
-        return operator;
-    }
-
     /**
      * rhs of the instruction
      */
@@ -57,33 +51,14 @@ public class Expression implements java.io.Serializable {
      */
     private Operator operator = new NoOpOperator();
     /**
-     * lhs textbox
-     */
-    public transient EditText lhsText;
-    /**
-     * operator spinner
-     */
-    public transient Spinner opSpinner;
-
-    /**
      * lhs variable spinner
      */
     private transient Spinner lhsSpinner;
-
     /**
      * rhs variable spinner
      */
 
     private transient Spinner rhsSpinner;
-
-    /**
-     * rhs textbox
-     */
-    public transient EditText rhsText;
-    /**
-     * rhs label
-     */
-    public transient TextView rhsLabel;
 
     /**
      * @param op
@@ -116,6 +91,27 @@ public class Expression implements java.io.Serializable {
         operator = new NoOpOperator();
         this.lhs = null;
         this.rhs = null;
+    }
+
+    /**
+     * @return get LHS of the expression
+     */
+    public String getLhs() {
+        return lhs;
+    }
+
+    /**
+     * @return get the rhs of the expression
+     */
+    public String getRhs() {
+        return rhs;
+    }
+
+    /**
+     * @return get the expressions operator
+     */
+    public Operator getOperator() {
+        return operator;
     }
 
     /**

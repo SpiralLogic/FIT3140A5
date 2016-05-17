@@ -11,6 +11,12 @@ public class DivOperator extends Operator {
         symbol = "/";
 
     }
+
+    /**
+     * @param lhs LHS operand
+     * @param rhs RHS operand
+     * @return evaluate the expression
+     */
     @Override
     public Double evaluate(Double lhs, Double rhs) {
         return lhs / rhs;

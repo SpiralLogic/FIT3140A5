@@ -4,7 +4,6 @@ import com.srjengbro.scratchbasic.instructions.InstructionRunException;
 
 /**
  * @author   Sol Jennings
- * @date    ${date}
  * @description Exception for invalid variable types
  */
 public class VariableTypeException extends InstructionRunException {

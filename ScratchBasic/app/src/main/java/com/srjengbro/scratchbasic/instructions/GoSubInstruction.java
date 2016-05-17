@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.srjengbro.scratchbasic.R;
 import com.srjengbro.scratchbasic.ScratchBasicContext;
@@ -49,6 +50,11 @@ public class GoSubInstruction extends Instruction {
         scratchBasicContext.updateSubRoutineList();
         View layout = inflater.inflate(R.layout.inst_gosub, null);
         ArrayList<String> routineList = scratchBasicContext.getSubRoutines();
+        if (routineList.isEmpty()) {
+            Toast.makeText(inflater.getContext(), "No sub routines to choose from", Toast.LENGTH_SHORT).show();
+
+        }
+
         ArrayAdapter<String> routinesAdapter = new ArrayAdapter<>(layout.getContext(), android.R.layout.simple_spinner_dropdown_item,routineList);
 
         goSubSpinner = (Spinner) layout.findViewById(R.id.gosub_spinner);

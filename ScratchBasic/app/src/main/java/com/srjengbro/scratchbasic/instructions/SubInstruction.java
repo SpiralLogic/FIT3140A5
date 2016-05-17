@@ -17,13 +17,18 @@ public class SubInstruction extends Instruction {
     private transient EditText subText;
 
     /**
-     * contructor
+     * constructor
      */
     public SubInstruction() {
         this.name = "SUB";
 
     }
 
+    /**
+     * @param inflater            inflater
+     * @param scratchBasicContext program context
+     * @return get layout for editing instruction
+     */
     @Override
     public View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext) {
         View layout = inflater.inflate(R.layout.inst_sub, null);
@@ -32,13 +37,19 @@ public class SubInstruction extends Instruction {
         return layout;
     }
 
+    /**
+     * update instruction after edit
+     */
     @Override
     public void update() {
         this.instruction = subText.getText().toString();
-
-
     }
 
+    /**
+     * @param scratchBasicContext program context
+     * @return run the instruction and return the result
+     * @throws InstructionRunException
+     */
     @Override
     public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
         return null;
