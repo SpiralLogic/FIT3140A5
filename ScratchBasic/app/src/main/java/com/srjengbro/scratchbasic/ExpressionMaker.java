@@ -6,14 +6,15 @@ import com.srjengbro.scratchbasic.operators.GreaterThanOperator;
 import com.srjengbro.scratchbasic.operators.LessThanOperator;
 import com.srjengbro.scratchbasic.operators.MinusOperator;
 import com.srjengbro.scratchbasic.operators.ModOperator;
+import com.srjengbro.scratchbasic.operators.MultiplyOperator;
 import com.srjengbro.scratchbasic.operators.Operator;
 import com.srjengbro.scratchbasic.operators.PlusOperator;
 
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description Expression factory. Creates an expression object an returns that object
- *              An expression with just a LHS will default to using a NoOpOperator operator for its
- *              operator
+ * An expression with just a LHS will default to using a NoOpOperator operator for its
+ * operator
  */
 public class ExpressionMaker {
 
@@ -39,8 +40,8 @@ public class ExpressionMaker {
 
     /**
      * @param type type of operator to use
-     * @param lhs lhs of the pexression
-     * @param rhs rhs of the expression
+     * @param lhs  lhs of the pexression
+     * @param rhs  rhs of the expression
      * @return
      */
     public static Expression generateExpression(String type, String lhs, String rhs) {
@@ -66,6 +67,9 @@ public class ExpressionMaker {
                 break;
             case "/":
                 op = new DivOperator();
+                break;
+            case "*":
+                op = new MultiplyOperator();
                 break;
             default:
                 return new Expression(lhs);

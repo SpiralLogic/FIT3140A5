@@ -12,7 +12,7 @@ public class GreaterThanOperator extends Operator {
      * constructor
      */
     public GreaterThanOperator() {
-        name = "GreaterThanOperator";
+        name = "Greater Than";
         symbol = ">";
     }
 

@@ -10,7 +10,7 @@ public class LessThanOperator extends Operator {
      * constructor
      */
     public LessThanOperator() {
-        name = "LessThanOperator";
+        name = "Less Than";
         symbol = "<";
     }
 

@@ -13,7 +13,7 @@ public class EqualOperator extends Operator {
      * constructor
      */
     public EqualOperator() {
-        name = "EqualOperator";
+        name = "Equals";
         symbol = "==";
 
     }

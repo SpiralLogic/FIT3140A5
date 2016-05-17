@@ -127,11 +127,30 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         holder.removeButton.setTag(position);
         holder.commandList.setTag(position);
         holder.instructionText.setTag(position);
+        Boolean needsGotoLink = false;
+        if (i instanceof GotoInstruction) {
+            GotoInstruction gi = (GotoInstruction) i;
+            if (gi.getGotoLine() == null) {
+
+                needsGotoLink = true;
+            }
+
+        }
+        if (i instanceof IfInstruction) {
+            IfInstruction ifi = (IfInstruction) i;
+            if (ifi.getGotoInstruction().getGotoLine() == null) {
+                needsGotoLink = true;
+            }
+        }
         if (currentLink != null && position == currentLink) {
             holder.instructionText.setBackgroundColor(Color.GREEN);
+        } else if (needsGotoLink) {
+            holder.instructionText.setBackgroundColor(Color.RED);
         } else {
-            holder.instructionText.setBackgroundColor(Color.GRAY);
+            holder.instructionText.setBackgroundColor(Color.WHITE);
         }
+
+
         Integer cmdpos = ((ArrayAdapter<String>) holder.commandList.getAdapter()).getPosition(i.getName());
         holder.commandList.setSelection(cmdpos);
 

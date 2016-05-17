@@ -13,7 +13,7 @@ public class NoOpOperator extends Operator {
      * constructor
      */
     public NoOpOperator() {
-        name = "NoOpOperator";
+        name = "NoOp";
         symbol = " ";
     }
 

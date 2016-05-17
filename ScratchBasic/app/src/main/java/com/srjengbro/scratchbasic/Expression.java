@@ -181,7 +181,7 @@ public class Expression implements java.io.Serializable {
     public void layout(View layout, ArrayList instructionList) {
 
         ArrayList<String> variablelist = new ArrayList<>();
-        variablelist.add("Integer");
+        variablelist.add("Number");
         Instruction inst;
         LetInstruction li;
         int lhspos = 0;
@@ -226,6 +226,8 @@ public class Expression implements java.io.Serializable {
         opSpinner.setOnItemSelectedListener(onOperatorSelect());
         Integer oppos = ((ArrayAdapter<String>) opSpinner.getAdapter()).getPosition(operator.getSymbol());
         opSpinner.setSelection(oppos);
+        rhsText.setVisibility(View.INVISIBLE);
+
     }
 
     /**
@@ -265,7 +267,7 @@ public class Expression implements java.io.Serializable {
             public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
                 Spinner spinner = (Spinner) parent;
                 String lhstext = spinner.getSelectedItem().toString();
-                if (lhstext.equals("Integer")) {
+                if (lhstext.equals("Number")) {
                     lhsText.setText("");
                     lhsText.setVisibility(View.VISIBLE);
 
@@ -291,7 +293,7 @@ public class Expression implements java.io.Serializable {
             public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
                 Spinner spinner = (Spinner) parent;
                 String rhstext = spinner.getSelectedItem().toString();
-                if (rhstext.equals("Integer")) {
+                if (rhstext.equals("Number")) {
                     rhsText.setText("");
                     rhsText.setVisibility(View.VISIBLE);
                 } else {

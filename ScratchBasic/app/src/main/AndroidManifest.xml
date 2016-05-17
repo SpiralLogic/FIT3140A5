@@ -22,7 +22,9 @@
         <activity
             android:name=".EditorActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".RunActivity"
             android:configChanges="orientation"

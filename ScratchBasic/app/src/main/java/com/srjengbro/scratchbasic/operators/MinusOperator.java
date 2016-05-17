@@ -9,7 +9,7 @@ public class MinusOperator extends Operator {
      * constructor
      */
     public MinusOperator() {
-        name = "MinusOperator";
+        name = "Minus";
         symbol = "-";
     }
 

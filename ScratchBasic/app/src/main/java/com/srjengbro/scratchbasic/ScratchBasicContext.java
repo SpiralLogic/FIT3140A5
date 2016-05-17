@@ -41,6 +41,12 @@ public class ScratchBasicContext implements Serializable {
      */
     private String description;
 
+
+    /**
+     * Email metadata of the program
+     */
+    private String email;
+
     /**
      * @return get the filename of the current program
      */
@@ -102,6 +108,8 @@ public class ScratchBasicContext implements Serializable {
     public void newProgram() {
         instructions.clear();
         setAuthor("");
+        setEmail("");
+        setDescription("");
         setFilename("newfile");
         RemInstruction instruction = new RemInstruction();
         instruction.update("Your first line!");
@@ -141,5 +149,19 @@ public class ScratchBasicContext implements Serializable {
             currentLine = instructions.size();
         }
         this.currentLine = currentLine;
+    }
+
+    /**
+     * @return Getter for email metadata
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email Setter for email metadata
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

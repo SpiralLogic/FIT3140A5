@@ -11,13 +11,15 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.srjengbro.scratchbasic.instructions.*;
+
 import java.util.ArrayList;
+
 /**
- * @author      Sol Jennigns & Giles Browne
+ * @author Sol Jennigns & Giles Browne
  * @description Activity Class for editing a program. handles the GUI for the editing activity
- *              on an android device. Allows the addition and deletion of instructions
- *              from a scratch basic program. Also opens a dialogue for editing a
- *              scratch basic instruction
+ * on an android device. Allows the addition and deletion of instructions
+ * from a scratch basic program. Also opens a dialogue for editing a
+ * scratch basic instruction
  */
 public class EditorActivity extends AppCompatActivity {
 
@@ -35,15 +37,27 @@ public class EditorActivity extends AppCompatActivity {
     private InstructionAdapter instructionAdapter;
 
     /**
-     *  Text box for the file name
+     * Text box for the file name
      */
     private EditText filenameText;
 
-
     /**
-     *  The box for the autor
+     * The box for the author
      */
     private EditText authorText;
+    /**
+     * The box for the author
+     */
+    private EditText emailText;
+    /**
+     * The box for the author
+     */
+    private EditText descriptionText;
+    /**
+     * Current application
+     */
+    private ScratchApplication app;
+
     /**
      * @param savedInstanceState
      */
@@ -52,7 +66,7 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        ScratchApplication app = (ScratchApplication) getApplication();
+        app = (ScratchApplication) getApplication();
         instructions = app.getScratchBasicContext().getInstructions();
 
 
@@ -62,8 +76,10 @@ public class EditorActivity extends AppCompatActivity {
 
         filenameText = (EditText) findViewById(R.id.filename_text);
         authorText = (EditText) findViewById(R.id.author_text);
-        authorText.setText(app.getScratchBasicContext().getAuthor());
-        filenameText.setText(app.getScratchBasicContext().getFilename());
+        emailText = (EditText) findViewById(R.id.email_text);
+        descriptionText = (EditText) findViewById(R.id.description_text);
+        getMetadata();
+
         Button runButton = (Button) findViewById(R.id.run_button);
         if (runButton != null) {
             runButton.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +95,7 @@ public class EditorActivity extends AppCompatActivity {
             saveButton.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View v) {
-                                                saveProgram();
+                                                  saveProgram();
 
                                               }
                                           }
@@ -88,11 +104,11 @@ public class EditorActivity extends AppCompatActivity {
         Button backButton = (Button) findViewById(R.id.back_button);
         if (backButton != null) {
             backButton.setOnClickListener(new View.OnClickListener() {
-                                             @Override
-                                             public void onClick(View v) {
-                                                 backButton();
-                                             }
-                                         }
+                                              @Override
+                                              public void onClick(View v) {
+                                                  backButton();
+                                              }
+                                          }
             );
         }
 
@@ -102,7 +118,7 @@ public class EditorActivity extends AppCompatActivity {
      * Run the program by starting the run activity
      */
     private void run() {
-        ScratchApplication app =((ScratchApplication) getApplication());
+        app = ((ScratchApplication) getApplication());
         app.getScratchBasicContext().setFilename(filenameText.getText().toString());
         app.getScratchBasicContext().setAuthor(authorText.getText().toString());
         Intent i = new Intent(getApplicationContext(), RunActivity.class);
@@ -113,12 +129,10 @@ public class EditorActivity extends AppCompatActivity {
      * Save the program
      */
     private void saveProgram() {
-        ScratchApplication app =((ScratchApplication) getApplication());
-        app.getScratchBasicContext().setFilename(filenameText.getText().toString());
-        app.getScratchBasicContext().setAuthor(authorText.getText().toString());
+        app = ((ScratchApplication) getApplication());
+        setMetadata();
         app.saveProgram();
     }
-
 
 
     /**
@@ -127,10 +141,31 @@ public class EditorActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ScratchApplication app =((ScratchApplication) getApplication());
         instructionAdapter.notifyDataSetChanged();
+        getMetadata();
+    }
+
+
+    /**
+     * Get the metadata for the program
+     */
+    private void getMetadata() {
+        app = ((ScratchApplication) getApplication());
         authorText.setText(app.getScratchBasicContext().getAuthor());
+        emailText.setText(app.getScratchBasicContext().getEmail());
+        descriptionText.setText(app.getScratchBasicContext().getDescription());
         filenameText.setText(app.getScratchBasicContext().getFilename());
+    }
+
+    /**
+     * Set the metadata for the program
+     */
+    private void setMetadata() {
+        app = ((ScratchApplication) getApplication());
+        app.getScratchBasicContext().setAuthor(authorText.getText().toString());
+        app.getScratchBasicContext().setEmail(emailText.getText().toString());
+        app.getScratchBasicContext().setDescription(descriptionText.getText().toString());
+        app.getScratchBasicContext().setFilename(filenameText.getText().toString());
     }
 
     /**
@@ -139,14 +174,13 @@ public class EditorActivity extends AppCompatActivity {
      * @return finish this activity when the back buttn is pressed
      */
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        if ((keyCode == KeyEvent.KEYCODE_BACK))
-        {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             finish();
         }
         return super.onKeyDown(keyCode, event);
     }
+
     /**
      * return to the editor activity making sure the program is stopped first
      */

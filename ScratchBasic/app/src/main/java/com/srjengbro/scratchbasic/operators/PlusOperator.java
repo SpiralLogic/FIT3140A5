@@ -12,7 +12,7 @@ public class PlusOperator extends Operator {
      * constructor
      */
     public PlusOperator() {
-        name = "PlusOperator";
+        name = "Plus";
         symbol = "+";
     }
 
