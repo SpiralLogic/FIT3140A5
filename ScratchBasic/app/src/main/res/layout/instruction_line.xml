@@ -60,7 +60,7 @@ an instructionText.
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/remove_button"
-        android:text="+" />
+        android:text="Add" />
 
     <Button
         android:id="@+id/remove_button"
@@ -69,5 +69,5 @@ an instructionText.
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:text="-" />
+        android:text="Del" />
 </RelativeLayout>

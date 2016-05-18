@@ -131,7 +131,7 @@ public class Expression implements java.io.Serializable {
         } catch (NumberFormatException e) {
             DoubleVariable var = (DoubleVariable) variableStore.getVariable(lhs);
             if (var == null) {
-                throw new VariableDoesNotExistException("DoubleVariable " + lhs + " does not exist");
+                throw new VariableDoesNotExistException("Variable " + lhs + " does not exist");
             }
             lhsInt = var.getValue();
         }
@@ -144,7 +144,7 @@ public class Expression implements java.io.Serializable {
             DoubleVariable var = (DoubleVariable) variableStore.getVariable(rhs);
 
             if (var == null) {
-                throw new VariableDoesNotExistException("DoubleVariable " + rhs + " does not exist");
+                throw new VariableDoesNotExistException("Variable " + rhs + " does not exist");
             }
             rhsInt = var.getValue();
 

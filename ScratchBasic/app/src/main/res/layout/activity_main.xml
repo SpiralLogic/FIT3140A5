@@ -13,18 +13,31 @@
         android:id="@+id/new_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="113dp"
+        android:text="@string/new_program"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="146dp"
-        android:text="@string/new_program" />
+        android:layout_alignLeft="@+id/load_button"
+        android:layout_alignStart="@+id/load_button" />
 
     <Button
         android:id="@+id/load_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/load_program"
+        android:layout_below="@+id/file_list_spinner"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/file_list_spinner"
         android:layout_below="@+id/new_button"
-        android:layout_centerHorizontal="true"
-        android:text="@string/load_program" />
+        android:spinnerMode="dialog"
+        android:gravity="center|center_horizontal"
+        android:layout_alignLeft="@+id/new_button"
+        android:layout_alignStart="@+id/new_button"
+        android:layout_alignRight="@+id/new_button"
+        android:layout_alignEnd="@+id/new_button" />
 
 
 </RelativeLayout>

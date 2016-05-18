@@ -43,7 +43,7 @@ public class ScratchApplication extends Application {
      */
     public void saveProgram() {
         try {
-            FileOutputStream fos = new FileOutputStream(getFilesDir() + scratchBasicContext.getFilename() + ".sb");
+            FileOutputStream fos = openFileOutput(scratchBasicContext.getFilename() + ".sb", MODE_PRIVATE);
             // Serialize data object to a file
             ObjectOutputStream out = new ObjectOutputStream(fos);
             out.writeObject(getScratchBasicContext());
@@ -66,7 +66,7 @@ public class ScratchApplication extends Application {
         FileInputStream fileIn;
         ObjectInputStream in;
         try {
-            fileIn = new FileInputStream(getFilesDir() + filename + ".sb");
+            fileIn = openFileInput(filename + ".sb");
             in = new ObjectInputStream(fileIn);
             setScratchBasicContext((ScratchBasicContext) in.readObject());
             in.close();

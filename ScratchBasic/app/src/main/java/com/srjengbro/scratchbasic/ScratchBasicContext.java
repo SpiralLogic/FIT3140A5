@@ -190,7 +190,7 @@ public class ScratchBasicContext implements Serializable {
             if (inst instanceof SubInstruction) {
                 SubInstruction si = (SubInstruction) inst;
 
-                Log.d("subrotine", si.getInstruction());
+                Log.d("subroutine", si.getInstruction());
                 subRoutines.add(si.getInstruction());
 
             }
