@@ -27,8 +27,8 @@
         android:layout_gravity="center_horizontal"
         android:text="="
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="50sp"
-        android:background="@android:color/holo_blue_bright"
+        android:textSize="30sp"
+        android:background="@android:color/holo_orange_light"
         android:gravity="center" />
 
     <TextView

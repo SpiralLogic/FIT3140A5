@@ -111,35 +111,15 @@ public class MainActivity extends AppCompatActivity {
      * Load a program and go to the editor activity
      */
     private void loadProgram() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.file_prompt);
-        // Set up the input
-        final EditText input = new EditText(this);
-        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder.setView(input);
-
-        // Set up the buttons
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                filename = input.getText().toString();
-                ScratchApplication app = (ScratchApplication) getApplication();
-                if (app.loadProgram(filename)) {
-                    Intent i = new Intent(getApplicationContext(), EditorActivity.class);
-                    startActivity(i);
-                }
+        Object spinnerItem = fileListSpinner.getSelectedItem();
+        if (spinnerItem != null) {
+            ScratchApplication app = (ScratchApplication) getApplication();
+            if (app.loadProgram(spinnerItem.toString())) {
+                Intent i = new Intent(getApplicationContext(), EditorActivity.class);
+                startActivity(i);
             }
-        });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        }
 
-        builder.show();
 
     }
 

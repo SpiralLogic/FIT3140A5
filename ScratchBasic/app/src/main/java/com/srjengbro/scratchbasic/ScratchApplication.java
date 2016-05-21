@@ -66,7 +66,7 @@ public class ScratchApplication extends Application {
         FileInputStream fileIn;
         ObjectInputStream in;
         try {
-            fileIn = openFileInput(filename + ".sb");
+            fileIn = openFileInput(filename);
             in = new ObjectInputStream(fileIn);
             setScratchBasicContext((ScratchBasicContext) in.readObject());
             in.close();

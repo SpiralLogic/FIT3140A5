@@ -198,32 +198,24 @@ public class Expression implements java.io.Serializable {
                 }
             }
         }
-
-
         ArrayAdapter<String> variablesAdapter = new ArrayAdapter<>(layout.getContext(), android.R.layout.simple_spinner_dropdown_item, variablelist);
-
         lhsSpinner = (Spinner) layout.findViewById(R.id.lhs_spinner);
         lhsSpinner.setAdapter(variablesAdapter);
         lhsSpinner.setSelection(lhspos);
         lhsSpinner.setOnItemSelectedListener(onLHSSelect());
-
         rhsSpinner = (Spinner) layout.findViewById(R.id.rhs_spinner);
         rhsSpinner.setAdapter(variablesAdapter);
         rhsSpinner.setSelection(rhspos);
         rhsSpinner.setOnItemSelectedListener(onRHSSelect());
-
         lhsText = (EditText) layout.findViewById(R.id.lhs_text);
         rhsText = (EditText) layout.findViewById(R.id.rhs_text);
         rhsLabel = (TextView) layout.findViewById(R.id.rhs_label);
         lhsText.setText(lhs);
         rhsText.setText(rhs);
-        rhsText.setVisibility(View.INVISIBLE);
         opSpinner = (Spinner) layout.findViewById(R.id.operator_spinner);
         opSpinner.setOnItemSelectedListener(onOperatorSelect());
         Integer oppos = ((ArrayAdapter<String>) opSpinner.getAdapter()).getPosition(operator.getSymbol());
         opSpinner.setSelection(oppos);
-        rhsText.setVisibility(View.INVISIBLE);
-
     }
 
     /**
@@ -264,7 +256,7 @@ public class Expression implements java.io.Serializable {
                 Spinner spinner = (Spinner) parent;
                 String lhstext = spinner.getSelectedItem().toString();
                 if (lhstext.equals("Number")) {
-                    lhsText.setText("");
+                    lhsText.setText(lhs);
                     lhsText.setVisibility(View.VISIBLE);
 
                 } else {
@@ -290,7 +282,7 @@ public class Expression implements java.io.Serializable {
                 Spinner spinner = (Spinner) parent;
                 String rhstext = spinner.getSelectedItem().toString();
                 if (rhstext.equals("Number")) {
-                    rhsText.setText("");
+                    rhsText.setText(rhs);
                     rhsText.setVisibility(View.VISIBLE);
                 } else {
                     rhsText.setText(rhstext);

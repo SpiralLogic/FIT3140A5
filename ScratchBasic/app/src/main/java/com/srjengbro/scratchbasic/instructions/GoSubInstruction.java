@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.srjengbro.scratchbasic.R;
@@ -50,14 +51,20 @@ public class GoSubInstruction extends Instruction {
         scratchBasicContext.updateSubRoutineList();
         View layout = inflater.inflate(R.layout.inst_gosub, null);
         ArrayList<String> routineList = scratchBasicContext.getSubRoutines();
+        TextView warningText = (TextView) layout.findViewById(R.id.gosub_text_warning);
+        goSubSpinner = (Spinner) layout.findViewById(R.id.gosub_spinner);
         if (routineList.isEmpty()) {
             Toast.makeText(inflater.getContext(), "No sub routines to choose from", Toast.LENGTH_SHORT).show();
+            warningText.setVisibility(View.VISIBLE);
+            goSubSpinner.setVisibility(View.INVISIBLE);
+        } else {
+            warningText.setVisibility(View.INVISIBLE);
+            goSubSpinner.setVisibility(View.VISIBLE);
 
         }
 
-        ArrayAdapter<String> routinesAdapter = new ArrayAdapter<>(layout.getContext(), android.R.layout.simple_spinner_dropdown_item,routineList);
+        ArrayAdapter<String> routinesAdapter = new ArrayAdapter<>(layout.getContext(), android.R.layout.simple_spinner_dropdown_item, routineList);
 
-        goSubSpinner = (Spinner) layout.findViewById(R.id.gosub_spinner);
         goSubSpinner.setAdapter(routinesAdapter);
         int pos = routineList.indexOf(subLabel);
         goSubSpinner.setSelection(pos);
@@ -102,8 +109,7 @@ public class GoSubInstruction extends Instruction {
     }
 
     /**
-     * @param scratchBasicContext
-     * update the program context pointer
+     * @param scratchBasicContext update the program context pointer
      */
     public void updatePointer(ScratchBasicContext scratchBasicContext) {
         scratchBasicContext.setCurrentLine(nextLine);
