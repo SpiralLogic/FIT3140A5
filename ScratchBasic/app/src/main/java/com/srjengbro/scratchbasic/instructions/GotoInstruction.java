@@ -69,7 +69,8 @@ public class GotoInstruction extends Instruction {
     }
 
     /**
-     * @param scratchBasicContext@return the result
+     * @param scratchBasicContext program context
+     * @return the result
      */
     @Override
     public String run(ScratchBasicContext scratchBasicContext) {
@@ -77,9 +78,8 @@ public class GotoInstruction extends Instruction {
     }
 
     /**
-     * @param scratchBasicContext
-     * @return the next line that will run
-     */
+     * @param scratchBasicContext program context
+          */
     public void updatePointer(ScratchBasicContext scratchBasicContext) {
         scratchBasicContext.setCurrentLine(getGotoLine());
     }
