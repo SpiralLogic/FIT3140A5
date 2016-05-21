@@ -26,7 +26,7 @@ public class GotoInstruction extends Instruction {
     public GotoInstruction() {
         name = "GOTO";
         gotoLine = null;
-        this.instruction = "";
+        this.instruction = "Click to set goto line";
         hasDialog = false;
     }
 
@@ -43,7 +43,11 @@ public class GotoInstruction extends Instruction {
      */
     public void setGotoLine(Integer line) {
         gotoLine = line;
-        instruction = line.toString();
+        if (line == null) {
+            instruction = "Click to set goto line";
+        } else {
+            instruction = line.toString();
+        }
     }
 
     /**

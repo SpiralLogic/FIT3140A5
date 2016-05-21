@@ -1,20 +1,13 @@
 package com.srjengbro.scratchbasic;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.io.File;
-import java.io.FilenameFilter;
 import java.util.ArrayList;
 
 /**
@@ -23,10 +16,6 @@ import java.util.ArrayList;
  */
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * Program Fiename
-     */
-    private String filename;
 
     /**
      * File list spinner
@@ -37,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
      * program load button
      */
     private Button loadButton;
+    /**
+     * program edit button
+     */
+    private Button editButton;
 
     /**
      * @param savedInstanceState something to do with android
@@ -69,11 +62,26 @@ public class MainActivity extends AppCompatActivity {
 
             );
         }
+        editButton = (Button) findViewById(R.id.edit_button);
+        if (editButton != null) {
+            editButton.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  openEditor();
+
+                                              }
+                                          }
+
+            );
+        }
         setupFileSpinner();
 
 
     }
 
+    /**
+     * Load the list of saved files for selection
+     */
     private void setupFileSpinner() {
         String[] savedFiles = fileList();
         ArrayList<String> fileList = new ArrayList<>();
@@ -81,15 +89,14 @@ public class MainActivity extends AppCompatActivity {
 
         for (String file : savedFiles) {
             if (file.endsWith(".sb")) {
-                Log.d("File", file);
-                fileList.add(file);
+
+                fileList.add(file.substring(0, file.length() - 3));
             }
         }
         if (fileList.isEmpty()) {
             fileListSpinner.setVisibility(View.INVISIBLE);
             loadButton.setEnabled(false);
         } else {
-
             ArrayAdapter<String> variablesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, fileList);
             fileListSpinner.setAdapter(variablesAdapter);
             fileListSpinner.setVisibility(View.VISIBLE);
@@ -103,8 +110,7 @@ public class MainActivity extends AppCompatActivity {
     private void newProgram() {
         ScratchApplication app = (ScratchApplication) getApplication();
         app.getScratchBasicContext().newProgram();
-        Intent i = new Intent(getApplicationContext(), EditorActivity.class);
-        startActivity(i);
+        openEditor();
     }
 
     /**
@@ -115,12 +121,19 @@ public class MainActivity extends AppCompatActivity {
         if (spinnerItem != null) {
             ScratchApplication app = (ScratchApplication) getApplication();
             if (app.loadProgram(spinnerItem.toString())) {
-                Intent i = new Intent(getApplicationContext(), EditorActivity.class);
-                startActivity(i);
+                openEditor();
             }
         }
 
 
+    }
+
+    /**
+     * Opens edit activity
+     */
+    private void openEditor() {
+        Intent i = new Intent(getApplicationContext(), EditorActivity.class);
+        startActivity(i);
     }
 
     /**
@@ -130,5 +143,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setupFileSpinner();
+        ScratchApplication app = (ScratchApplication) getApplication();
+        ScratchBasicContext sbc = app.getScratchBasicContext();
+        if (sbc == null || sbc.getInstructions().size() == 0) {
+            editButton.setVisibility(View.INVISIBLE);
+        } else {
+
+            editButton.setVisibility(View.VISIBLE);
+        }
     }
 }

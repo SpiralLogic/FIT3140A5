@@ -19,13 +19,6 @@
         android:layout_alignLeft="@+id/load_button"
         android:layout_alignStart="@+id/load_button" />
 
-    <Button
-        android:id="@+id/load_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/load_program"
-        android:layout_below="@+id/file_list_spinner"
-        android:layout_centerHorizontal="true" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -38,6 +31,22 @@
         android:layout_alignStart="@+id/new_button"
         android:layout_alignRight="@+id/new_button"
         android:layout_alignEnd="@+id/new_button" />
+    <Button
+        android:id="@+id/load_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/load_program"
+        android:layout_below="@+id/file_list_spinner"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue Edit"
+        android:id="@+id/edit_button"
+        android:layout_below="@+id/load_button"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>
