@@ -1,5 +1,6 @@
 package com.srjengbro.scratchbasic.instructions;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -53,5 +54,13 @@ public class SubInstruction extends Instruction {
     @Override
     public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
         return null;
+    }
+
+    /**
+     * @return background colour for instruction
+     */
+    @Override
+    public int getBackgroundColor() {
+        return Color.CYAN;
     }
 }

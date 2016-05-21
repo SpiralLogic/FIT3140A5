@@ -1,6 +1,7 @@
 package com.srjengbro.scratchbasic.instructions;
 
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -63,6 +64,12 @@ public abstract class Instruction implements java.io.Serializable {
     public abstract View getLayout(LayoutInflater inflater, ScratchBasicContext scratchBasicContext);
 
     /**
+     * @return get the background color for the instruction list
+     */
+    public int getBackgroundColor() {
+        return Color.WHITE;
+    }
+    /**
      * update the instruction after edit
      */
     public abstract void update();
@@ -76,10 +83,9 @@ public abstract class Instruction implements java.io.Serializable {
 
     /**
      * @param scratchBasicContext
-     * @return the next line to execture
+     * @return the next line to execute
      */
     public void updatePointer(ScratchBasicContext scratchBasicContext) {
         scratchBasicContext.setCurrentLine(scratchBasicContext.getCurrentLine() + 1);
     }
-
 }

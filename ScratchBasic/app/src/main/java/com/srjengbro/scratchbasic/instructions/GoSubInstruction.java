@@ -1,5 +1,6 @@
 package com.srjengbro.scratchbasic.instructions;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -81,6 +82,7 @@ public class GoSubInstruction extends Instruction {
 
             this.instruction = spinnerItem.toString();
         } else {
+            this.subLabel = null;
             this.instruction = "";
         }
         this.subLabel = this.instruction;
@@ -94,6 +96,10 @@ public class GoSubInstruction extends Instruction {
      */
     @Override
     public String run(ScratchBasicContext scratchBasicContext) throws InstructionRunException {
+        if (subLabel == null) {
+            throw new InstructionRunException("No subroutine chosen to go to");
+
+        }
         ArrayList<Instruction> instructionList = scratchBasicContext.getInstructions();
         Instruction inst;
         for (int i = 0; i < instructionList.size(); i++) {
@@ -113,5 +119,19 @@ public class GoSubInstruction extends Instruction {
      */
     public void updatePointer(ScratchBasicContext scratchBasicContext) {
         scratchBasicContext.setCurrentLine(nextLine);
+    }
+
+    /**
+     * @return background colour for instruction
+     */
+    @Override
+    public int getBackgroundColor() {
+        if (subLabel == null) {
+            return Color.RED;
+        }else
+        {
+            return super.getBackgroundColor();
+        }
+
     }
 }

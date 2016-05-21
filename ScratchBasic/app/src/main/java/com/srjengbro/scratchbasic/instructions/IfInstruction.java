@@ -136,4 +136,12 @@ public class IfInstruction extends Instruction {
     public GotoInstruction getGotoInstruction() {
         return gotoInstruction;
     }
+
+    /**
+     * @return background colour for instruction
+     */
+    @Override
+    public int getBackgroundColor() {
+        return gotoInstruction.getBackgroundColor();
+    }
 }

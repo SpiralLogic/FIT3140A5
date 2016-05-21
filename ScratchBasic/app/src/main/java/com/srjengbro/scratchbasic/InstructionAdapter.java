@@ -48,9 +48,10 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
      * represents a current instruction being linked
      */
     private Integer currentLink;
+
     /**
      * @param ScratchBasicContext program context
-     * @param ctx             context
+     * @param ctx                 context
      */
     public InstructionAdapter(ScratchBasicContext scratchBasicContext, Context ctx) {
         super();
@@ -129,33 +130,14 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         holder.removeButton.setTag(position);
         holder.commandList.setTag(position);
         holder.instructionText.setTag(position);
-        Boolean needsGotoLink = false;
-        if (i instanceof GotoInstruction) {
-            GotoInstruction gi = (GotoInstruction) i;
-            if (gi.getGotoLine() == null) {
-
-                needsGotoLink = true;
-            }
-
-        }
-        if (i instanceof IfInstruction) {
-            IfInstruction ifi = (IfInstruction) i;
-            if (ifi.getGotoInstruction().getGotoLine() == null) {
-                needsGotoLink = true;
-            }
-        }
         if (currentLink != null && position == currentLink) {
             holder.instructionText.setBackgroundColor(Color.GREEN);
-        } else if (needsGotoLink) {
-            holder.instructionText.setBackgroundColor(Color.RED);
         } else {
-            holder.instructionText.setBackgroundColor(Color.WHITE);
+            holder.instructionText.setBackgroundColor(i.getBackgroundColor());
         }
-
 
         Integer cmdpos = ((ArrayAdapter<String>) holder.commandList.getAdapter()).getPosition(i.getName());
         holder.commandList.setSelection(cmdpos);
-
         holder.instructionText.setText(i.getInstruction());
         holder.commandList.setTag(position);
 
@@ -360,7 +342,6 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
         }
 
     }
-
 
 
     /**

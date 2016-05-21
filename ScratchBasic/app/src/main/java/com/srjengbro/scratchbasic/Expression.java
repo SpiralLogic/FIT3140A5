@@ -167,6 +167,9 @@ public class Expression implements java.io.Serializable {
             s.append(" ");
             s.append(rhs);
         }
+        if (s.toString().equals("null")) {
+            return "Incomplete Expression";
+        }
         return s.toString();
     }
 

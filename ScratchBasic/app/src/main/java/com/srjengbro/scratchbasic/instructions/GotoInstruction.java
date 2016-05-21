@@ -1,5 +1,6 @@
 package com.srjengbro.scratchbasic.instructions;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -100,5 +101,19 @@ public class GotoInstruction extends Instruction {
         if (gotoLine == null) return;
         gotoLine += 1;
         instruction = gotoLine.toString();
+    }
+
+    /**
+     * @return background colour for instruction
+     */
+    @Override
+    public int getBackgroundColor() {
+        if (gotoLine == null) {
+            return Color.RED;
+        }else
+        {
+            return super.getBackgroundColor();
+        }
+
     }
 }
