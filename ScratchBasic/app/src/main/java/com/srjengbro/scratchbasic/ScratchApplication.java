@@ -73,16 +73,16 @@ public class ScratchApplication extends Application {
             fileIn.close();
 
         } catch (FileNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, file does not exist", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Load failed, file does not exist", Toast.LENGTH_SHORT).show();
             return false;
         } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, cannot read file", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Load failed, cannot read file", Toast.LENGTH_SHORT).show();
             return false;
         } catch (ClassNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, critical error", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Load failed, critical error", Toast.LENGTH_SHORT).show();
             return false;
         } catch (ClassCastException e) {
-            Toast.makeText(getApplicationContext(), "Load failed, invalid file data", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Load failed, invalid file data", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

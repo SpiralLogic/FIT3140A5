@@ -161,7 +161,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 Integer position = (Integer) v.getTag();
                 addGotoLink(position);
-                if (currentLink != null && position == currentLink) {
+                if (currentLink != null && position.equals(currentLink)) {
                     v.setBackgroundColor(Color.GREEN);
                 }
             }
@@ -169,7 +169,7 @@ public class InstructionAdapter extends BaseAdapter implements ListAdapter {
     }
 
     /**
-     * @return command list listner for when a command is connected
+     * @return command list listener for when a command is connected
      */
     private AdapterView.OnItemSelectedListener onCommandSelected() {
         return new AdapterView.OnItemSelectedListener() {
