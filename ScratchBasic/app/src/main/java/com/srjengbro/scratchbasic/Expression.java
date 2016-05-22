@@ -228,9 +228,7 @@ public class Expression implements java.io.Serializable {
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
-                Spinner spinner = (Spinner) parent;
-                String operatorText = spinner.getSelectedItem().toString();
-                if (operatorText.length() == 0) {
+                if (pos == 0) {
                     rhsText.setVisibility(View.INVISIBLE);
                     rhsLabel.setVisibility(View.INVISIBLE);
                     rhsSpinner.setVisibility(View.INVISIBLE);
@@ -259,7 +257,12 @@ public class Expression implements java.io.Serializable {
                 Spinner spinner = (Spinner) parent;
                 String lhstext = spinner.getSelectedItem().toString();
                 if (lhstext.equals("Number")) {
-                    lhsText.setText(lhs);
+                    try {
+                        Double lhsDouble = Double.parseDouble(lhs);
+                        lhsText.setText(lhsDouble.toString());
+                    } catch (NumberFormatException | NullPointerException e) {
+                        lhsText.setText("");
+                    }
                     lhsText.setVisibility(View.VISIBLE);
 
                 } else {
@@ -285,8 +288,14 @@ public class Expression implements java.io.Serializable {
                 Spinner spinner = (Spinner) parent;
                 String rhstext = spinner.getSelectedItem().toString();
                 if (rhstext.equals("Number")) {
-                    rhsText.setText(rhs);
-                    rhsText.setVisibility(View.VISIBLE);
+                    try {
+                        Double rhsDouble = Double.parseDouble(rhs);
+                        rhsText.setText(rhsDouble.toString());
+                    } catch (NumberFormatException | NullPointerException e) {
+                        rhsText.setText("");
+                    }
+                    if (opSpinner.getSelectedItemPosition() > 0)
+                        rhsText.setVisibility(View.VISIBLE);
                 } else {
                     rhsText.setText(rhstext);
                     rhsText.setVisibility(View.INVISIBLE);
