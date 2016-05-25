@@ -43,6 +43,7 @@ public class SubInstruction extends Instruction {
      */
     @Override
     public void update() {
+
         this.instruction = subText.getText().toString();
     }
 

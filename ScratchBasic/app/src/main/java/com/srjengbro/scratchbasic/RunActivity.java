@@ -94,9 +94,7 @@ public class RunActivity extends AppCompatActivity {
             startButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clearCommandOutput();
-                    scratchBasicContext.setCurrentLine(0);
-                    run();
+                    start();
                 }
             });
         }
@@ -129,6 +127,17 @@ public class RunActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * Start the program from the beginning
+     */
+    private void start() {
+        clearCommandOutput();
+        scratchBasicContext.setCurrentLine(0);
+        scratchBasicContext.resetCallStack();
+        startButton.setEnabled(false);
+        run();
+    }
 
     /**
      * handler for pause button being pressed
@@ -227,5 +236,14 @@ public class RunActivity extends AppCompatActivity {
         stop();
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
         this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
+    }
+
+    /**
+     * When the activity resumes
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stop();
     }
 }
