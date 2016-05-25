@@ -147,6 +147,13 @@ public class ScratchBasicContext implements Serializable {
     }
 
     /**
+     * Resets the current calling stack
+     */
+    public void resetCallStack() {
+        callStack = new Stack<>();
+    }
+
+    /**
      * @return the next line of the program to run
      */
     public Integer getCurrentLine() {
@@ -190,7 +197,6 @@ public class ScratchBasicContext implements Serializable {
             if (inst instanceof SubInstruction) {
                 SubInstruction si = (SubInstruction) inst;
 
-                Log.d("subroutine", si.getInstruction());
                 subRoutines.add(si.getInstruction());
 
             }

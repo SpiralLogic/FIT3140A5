@@ -34,7 +34,6 @@ public class VariableStore implements Serializable {
         if (value instanceof Double) {
             var = new DoubleVariable(name);
             var.setValue(value);
-            Log.d("variable", var.getValue().toString());
         } else{
             throw new VariableTypeException(name + " is not a valid variable");
         }
